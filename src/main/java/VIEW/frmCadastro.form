@@ -127,8 +127,8 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="txtEmail" min="-2" pref="260" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="199" max="-2" attributes="0"/>
-                                      <Component id="btnCadastrar" min="-2" pref="93" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btnCadastrar" min="-2" pref="103" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="btnAlterar" min="-2" pref="93" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="txtCpf" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
@@ -140,7 +140,7 @@
                               <Component id="txtTelefone" min="-2" pref="162" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="136" max="32767" attributes="0"/>
+                      <EmptySpace pref="114" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
