@@ -37,20 +37,20 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jTextField2 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnCliente = new javax.swing.JMenu();
-        mnCadClien = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Principal");
@@ -58,8 +58,14 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/20230402_202120_0000.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, -130, -1, -1));
+        jButton1.setText("Pesquisar Cliente");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, 120, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -76,14 +82,6 @@ public class PrincipalVIEW extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 510, 290));
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 210, -1));
-
-        jButton1.setText("Pesquisar Cliente");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, 120, -1));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -102,33 +100,41 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 200, 200, -1));
 
         jButton2.setText("Pesquisar Veiculo");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 200, -1, -1));
 
         jButton3.setText("Alugar");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 560, 150, 40));
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/20230402_202120_0000.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, -130, -1, -1));
+
+        jMenuBar1.setFont(new java.awt.Font("Lucida Fax", 0, 14)); // NOI18N
+
+        mnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8-usuário-masculino-tipo-de-pele-com-círculo-1-2.gif"))); // NOI18N
         mnCliente.setText("Cliente");
         mnCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        mnCadClien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/avatar.png"))); // NOI18N
-        mnCadClien.setText("Cadastro de Cliente");
-        mnCadClien.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        mnCadClien.addMouseListener(new java.awt.event.MouseAdapter() {
+        mnCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mnCadClienMouseClicked(evt);
+                mnClienteMouseClicked(evt);
             }
         });
-        mnCadClien.addActionListener(new java.awt.event.ActionListener() {
+        mnCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnCadClienActionPerformed(evt);
+                mnClienteActionPerformed(evt);
             }
         });
-        mnCliente.add(mnCadClien);
-
         jMenuBar1.add(mnCliente);
 
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/car_telPrinc.gif"))); // NOI18N
         jMenu2.setText("Veículo");
+        jMenu2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuBar1.add(jMenu2);
+
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/user_agora_teste.gif"))); // NOI18N
+        jMenu1.setText("Cliente");
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -140,26 +146,25 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    // NAVEGAÇÃO (ABRE TELA DE CADASTRO)
-    private void mnCadClienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnCadClienMouseClicked
-        frmCadastro fCad = new frmCadastro();
-        fCad.setVisible(true);
-    }//GEN-LAST:event_mnCadClienMouseClicked
-
-    private void mnCadClienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCadClienActionPerformed
-
-    }//GEN-LAST:event_mnCadClienActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void mnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnClienteActionPerformed
+     
+    }//GEN-LAST:event_mnClienteActionPerformed
+
+    private void mnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnClienteMouseClicked
+        frmCadastro fCad = new frmCadastro();
+        fCad.setVisible(true);
+    }//GEN-LAST:event_mnClienteMouseClicked
 
     /**
      * @param args the command line arguments
@@ -201,6 +206,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
@@ -210,7 +216,6 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JMenu mnCadClien;
     private javax.swing.JMenu mnCliente;
     // End of variables declaration//GEN-END:variables
 }

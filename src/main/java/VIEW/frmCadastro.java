@@ -64,36 +64,37 @@ public class frmCadastro extends JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cliente");
 
-        jPanel1.setBackground(new java.awt.Color(223, 255, 223));
+        jPanel1.setBackground(new java.awt.Color(60, 0, 90));
 
         labelCadastro.setFont(new java.awt.Font("Lucida Fax", 1, 24)); // NOI18N
-        labelCadastro.setForeground(new java.awt.Color(90, 0, 0));
+        labelCadastro.setForeground(new java.awt.Color(255, 255, 255));
         labelCadastro.setText("Cadastro de Cliente");
 
-        jPanel2.setBackground(new java.awt.Color(223, 255, 223));
+        jPanel2.setBackground(new java.awt.Color(60, 0, 90));
+        jPanel2.setForeground(new java.awt.Color(58, 0, 90));
 
         labelNome.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
-        labelNome.setForeground(new java.awt.Color(90, 0, 0));
+        labelNome.setForeground(new java.awt.Color(255, 255, 255));
         labelNome.setText("Nome:");
 
         labelEndereco.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
-        labelEndereco.setForeground(new java.awt.Color(90, 0, 0));
+        labelEndereco.setForeground(new java.awt.Color(255, 255, 255));
         labelEndereco.setText("Endereço:");
 
         labelUF.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
-        labelUF.setForeground(new java.awt.Color(90, 0, 0));
+        labelUF.setForeground(new java.awt.Color(255, 255, 255));
         labelUF.setText("UF:");
 
         labelCPF.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
-        labelCPF.setForeground(new java.awt.Color(90, 0, 0));
+        labelCPF.setForeground(new java.awt.Color(255, 255, 255));
         labelCPF.setText("CPF:");
 
         labelEmail.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
-        labelEmail.setForeground(new java.awt.Color(90, 0, 0));
+        labelEmail.setForeground(new java.awt.Color(255, 255, 255));
         labelEmail.setText("E-mail:");
 
         labelTelefone.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
-        labelTelefone.setForeground(new java.awt.Color(90, 0, 0));
+        labelTelefone.setForeground(new java.awt.Color(255, 255, 255));
         labelTelefone.setText("Telefone:");
 
         btnCadastrar.setBackground(new java.awt.Color(223, 255, 223));
