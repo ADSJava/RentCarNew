@@ -18,12 +18,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author igora
  */
-public class frmCadastro extends JDialog {
+public class frmCliente extends JDialog {
 
     /**
      * Creates new form PrincipalVIEW
      */
-    public frmCadastro() {
+    public frmCliente() {
         initComponents();
         listarClientes();
         //setExtendedState(MAXIMIZED_BOTH);
@@ -44,12 +44,9 @@ public class frmCadastro extends JDialog {
         jPanel2 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         panDadosCliente = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaCl = new javax.swing.JTable();
         labelNome = new javax.swing.JLabel();
-        txtNome = new javax.swing.JTextField();
         labelEndereco = new javax.swing.JLabel();
-        txtEndereco = new javax.swing.JTextField();
+        txtNomeDados = new javax.swing.JTextField();
         labelCPF = new javax.swing.JLabel();
         txtCpf = new javax.swing.JFormattedTextField();
         labelTelefone = new javax.swing.JLabel();
@@ -60,7 +57,17 @@ public class frmCadastro extends JDialog {
         btnCadastrar = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
         cbUF = new javax.swing.JComboBox<>();
+        txtEndereco = new javax.swing.JTextField();
         panConsultarClientes = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabelaCl = new javax.swing.JTable();
+        labelNome1 = new javax.swing.JLabel();
+        btnPesquisar = new javax.swing.JButton();
+        btnNovo = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
+        txtNomeCons = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cliente");
@@ -95,26 +102,11 @@ public class frmCadastro extends JDialog {
         jTabbedPane1.setForeground(new java.awt.Color(0, 0, 0));
         jTabbedPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        tabelaCl.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "ID", "Nome", "Endereço", "UF", "Telefone", "CPF", "E-mail"
-            }
-        ));
-        jScrollPane1.setViewportView(tabelaCl);
+        panDadosCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         labelNome.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
         labelNome.setForeground(new java.awt.Color(0, 0, 0));
         labelNome.setText("Nome:");
-
-        txtNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         labelEndereco.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
         labelEndereco.setForeground(new java.awt.Color(0, 0, 0));
@@ -187,55 +179,60 @@ public class frmCadastro extends JDialog {
         });
 
         cbUF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
+        cbUF.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout panDadosClienteLayout = new javax.swing.GroupLayout(panDadosCliente);
         panDadosCliente.setLayout(panDadosClienteLayout);
         panDadosClienteLayout.setHorizontalGroup(
             panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(panDadosClienteLayout.createSequentialGroup()
-                .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panDadosClienteLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panDadosClienteLayout.createSequentialGroup()
+                                .addComponent(labelTelefone)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panDadosClienteLayout.createSequentialGroup()
                                 .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(labelEndereco)
                                     .addComponent(labelNome)
                                     .addComponent(labelCPF)
                                     .addComponent(labelEmail))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtNome)
-                                        .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(panDadosClienteLayout.createSequentialGroup()
-                                .addComponent(labelTelefone)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(panDadosClienteLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(panDadosClienteLayout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtNomeDados, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(labelUF)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbUF, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panDadosClienteLayout.createSequentialGroup()
-                        .addGap(309, 309, 309)
-                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(295, 295, 295)
+                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(374, Short.MAX_VALUE))
         );
         panDadosClienteLayout.setVerticalGroup(
             panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panDadosClienteLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(labelNome)
+                .addGap(28, 28, 28)
+                .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(labelNome)
+                        .addComponent(txtNomeDados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panDadosClienteLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNome)
                             .addComponent(labelUF)
                             .addComponent(cbUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -254,26 +251,98 @@ public class frmCadastro extends JDialog {
                 .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelEmail))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(113, 113, 113)
                 .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCadastrar)
-                    .addComponent(btnAlterar))
-                .addGap(15, 15, 15))
+                    .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(179, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Dados Pessoais", panDadosCliente);
+
+        panConsultarClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        tabelaCl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nome", "Endereço", "UF", "Telefone", "CPF", "E-mail"
+            }
+        ));
+        jScrollPane1.setViewportView(tabelaCl);
+
+        labelNome1.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
+        labelNome1.setForeground(new java.awt.Color(0, 0, 0));
+        labelNome1.setText("Nome:");
+
+        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
+
+        btnNovo.setText("NOVO");
+        btnNovo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btnEditar.setText("EDITAR");
+        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btnSalvar.setText("SALVAR");
+        btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btnExcluir.setText("EXCLUIR");
+        btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout panConsultarClientesLayout = new javax.swing.GroupLayout(panConsultarClientes);
         panConsultarClientes.setLayout(panConsultarClientesLayout);
         panConsultarClientesLayout.setHorizontalGroup(
             panConsultarClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 915, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 915, Short.MAX_VALUE)
+            .addGroup(panConsultarClientesLayout.createSequentialGroup()
+                .addGroup(panConsultarClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panConsultarClientesLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(labelNome1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNomeCons, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPesquisar))
+                    .addGroup(panConsultarClientesLayout.createSequentialGroup()
+                        .addGap(229, 229, 229)
+                        .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panConsultarClientesLayout.setVerticalGroup(
             panConsultarClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 525, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panConsultarClientesLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(panConsultarClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPesquisar)
+                    .addComponent(txtNomeCons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelNome1))
+                .addGap(44, 44, 44)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panConsultarClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Consultar Clientes", panConsultarClientes);
@@ -309,7 +378,7 @@ public class frmCadastro extends JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        if (txtNome.getText().equals("") || txtEndereco.getText().equals("")
+        if (txtNomeDados.getText().equals("") || txtNomeDados.getText().equals("")
                 || cbUF.getSelectedItem().equals("") || txtCpf.getText().equals("")
                 || txtTelefone.getText().equals("")
                 || txtEmail.getText().equals("")) {
@@ -350,6 +419,10 @@ public class frmCadastro extends JDialog {
         btnAlterar.setForeground(Color.decode("#3F7D3F"));
     }//GEN-LAST:event_btnAlterarMouseExited
 
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -367,21 +440,27 @@ public class frmCadastro extends JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmCadastro().setVisible(true);
+                new frmCliente().setVisible(true);
             }
         });
     }
@@ -389,6 +468,11 @@ public class frmCadastro extends JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnCadastrar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnNovo;
+    private javax.swing.JButton btnPesquisar;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cbUF;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -399,6 +483,7 @@ public class frmCadastro extends JDialog {
     private javax.swing.JLabel labelEmail;
     private javax.swing.JLabel labelEndereco;
     private javax.swing.JLabel labelNome;
+    private javax.swing.JLabel labelNome1;
     private javax.swing.JLabel labelTelefone;
     private javax.swing.JLabel labelUF;
     private javax.swing.JPanel panConsultarClientes;
@@ -407,14 +492,15 @@ public class frmCadastro extends JDialog {
     private javax.swing.JFormattedTextField txtCpf;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereco;
-    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtNomeCons;
+    private javax.swing.JTextField txtNomeDados;
     private javax.swing.JFormattedTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
 
     private void Cadastrar() {
         String nome, endereco, uf, cpf, telefone, email;
-        nome = txtNome.getText();
-        endereco = txtEndereco.getText();
+        nome = txtNomeDados.getText();
+        endereco = txtNomeDados.getText();
         uf = cbUF.getSelectedItem().toString();
         cpf = txtCpf.getText();
         telefone = txtTelefone.getText();
@@ -463,19 +549,19 @@ public class frmCadastro extends JDialog {
 
     public void LimparCampo() {
 
-        txtNome.setText("");
-        txtEndereco.setText("");
+        txtNomeDados.setText("");
+        txtNomeDados.setText("");
         cbUF.setSelectedItem("");
         txtCpf.setText("");
         txtTelefone.setText("");
         txtEmail.setText("");
-        txtNome.requestFocus();
+        txtNomeDados.requestFocus();
     }
 
     public void CarregarDados() {
         int setar = tabelaCl.getSelectedRow();
-        txtNome.setText(tabelaCl.getModel().getValueAt(setar, 1).toString());
-        txtEndereco.setText(tabelaCl.getModel().getValueAt(setar, 2).toString());
+        txtNomeDados.setText(tabelaCl.getModel().getValueAt(setar, 1).toString());
+        txtNomeDados.setText(tabelaCl.getModel().getValueAt(setar, 2).toString());
         cbUF.setSelectedItem(tabelaCl.getModel().getValueAt(setar, 3).toString());
         txtCpf.setText(tabelaCl.getModel().getValueAt(setar, 4).toString());
         txtTelefone.setText(tabelaCl.getModel().getValueAt(setar, 5).toString());
@@ -487,8 +573,8 @@ public class frmCadastro extends JDialog {
 
         String nomeCliente, endereco, uf, telefone, cpf, email;
 
-        nomeCliente = txtNome.getText();
-        endereco = txtEndereco.getText();
+        nomeCliente = txtNomeDados.getText();
+        endereco = txtNomeDados.getText();
         uf = cbUF.getSelectedItem().toString();
         telefone = txtTelefone.getText();
         cpf = txtCpf.getText();

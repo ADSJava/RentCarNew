@@ -49,7 +49,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnCliente = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        mnVeiculo = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -127,10 +127,20 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         });
         jMenuBar1.add(mnCliente);
 
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/car_telPrinc.gif"))); // NOI18N
-        jMenu2.setText("Veículo");
-        jMenu2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jMenuBar1.add(jMenu2);
+        mnVeiculo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/car_telPrinc.gif"))); // NOI18N
+        mnVeiculo.setText("Veículo");
+        mnVeiculo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mnVeiculo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnVeiculoMouseClicked(evt);
+            }
+        });
+        mnVeiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnVeiculoActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(mnVeiculo);
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/user_agora_teste.gif"))); // NOI18N
         jMenu1.setText("Cliente");
@@ -162,9 +172,18 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_mnClienteActionPerformed
 
     private void mnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnClienteMouseClicked
-        frmCadastro fCad = new frmCadastro();
-        fCad.setVisible(true);
+        frmCliente fClien = new frmCliente();
+        fClien.setVisible(true);
     }//GEN-LAST:event_mnClienteMouseClicked
+
+    private void mnVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnVeiculoActionPerformed
+      
+    }//GEN-LAST:event_mnVeiculoActionPerformed
+
+    private void mnVeiculoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnVeiculoMouseClicked
+        frmVeiculo fVei = new frmVeiculo();
+        fVei.setVisible(true);
+    }//GEN-LAST:event_mnVeiculoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -207,7 +226,6 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -217,5 +235,6 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JMenu mnCliente;
+    private javax.swing.JMenu mnVeiculo;
     // End of variables declaration//GEN-END:variables
 }
