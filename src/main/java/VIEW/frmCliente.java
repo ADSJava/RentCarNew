@@ -272,7 +272,7 @@ public class frmCliente extends JDialog {
                 {null, null, null, null}
             },
             new String [] {
-                "ID", "Nome", "Endereço", "UF", "Telefone", "CPF", "E-mail"
+                "ID", "Nome", "Endereço", "UF", "CPF", "Telefone", "E-mail"
             }
         ));
         jScrollPane1.setViewportView(tabelaCl);
@@ -434,7 +434,7 @@ public class frmCliente extends JDialog {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Window".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

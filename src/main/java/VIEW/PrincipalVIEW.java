@@ -50,7 +50,6 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         mnCliente = new javax.swing.JMenu();
         mnVeiculo = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Principal");
@@ -65,7 +64,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, 120, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, 140, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -75,7 +74,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nome", "CPF", "Email", "Telefone"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -91,7 +90,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Modelo", "Número", "Placa", "Qtd Portas"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
@@ -141,10 +140,6 @@ public class PrincipalVIEW extends javax.swing.JFrame {
             }
         });
         jMenuBar1.add(mnVeiculo);
-
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/user_agora_teste.gif"))); // NOI18N
-        jMenu1.setText("Cliente");
-        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -196,7 +191,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Window".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -225,7 +220,6 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
