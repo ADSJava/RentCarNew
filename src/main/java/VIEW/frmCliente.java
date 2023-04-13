@@ -500,7 +500,7 @@ public class frmCliente extends JDialog {
     private void Cadastrar() {
         String nome, endereco, uf, cpf, telefone, email;
         nome = txtNomeDados.getText();
-        endereco = txtNomeDados.getText();
+        endereco = txtEndereco.getText();
         uf = cbUF.getSelectedItem().toString();
         cpf = txtCpf.getText();
         telefone = txtTelefone.getText();
@@ -550,7 +550,7 @@ public class frmCliente extends JDialog {
     public void LimparCampo() {
 
         txtNomeDados.setText("");
-        txtNomeDados.setText("");
+        txtEndereco.setText("");
         cbUF.setSelectedItem("");
         txtCpf.setText("");
         txtTelefone.setText("");
@@ -561,7 +561,7 @@ public class frmCliente extends JDialog {
     public void CarregarDados() {
         int setar = tabelaCl.getSelectedRow();
         txtNomeDados.setText(tabelaCl.getModel().getValueAt(setar, 1).toString());
-        txtNomeDados.setText(tabelaCl.getModel().getValueAt(setar, 2).toString());
+        txtEndereco.setText(tabelaCl.getModel().getValueAt(setar, 2).toString());
         cbUF.setSelectedItem(tabelaCl.getModel().getValueAt(setar, 3).toString());
         txtCpf.setText(tabelaCl.getModel().getValueAt(setar, 4).toString());
         txtTelefone.setText(tabelaCl.getModel().getValueAt(setar, 5).toString());
@@ -574,7 +574,7 @@ public class frmCliente extends JDialog {
         String nomeCliente, endereco, uf, telefone, cpf, email;
 
         nomeCliente = txtNomeDados.getText();
-        endereco = txtNomeDados.getText();
+        endereco = txtEndereco.getText();
         uf = cbUF.getSelectedItem().toString();
         telefone = txtTelefone.getText();
         cpf = txtCpf.getText();
