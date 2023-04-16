@@ -21,8 +21,8 @@ public class ClienteDAO {
     PreparedStatement p;
     ResultSet rs;
     ArrayList<ClienteDTO> lista = new ArrayList<>();
-    
-     public void cadastrarFuncionario(ClienteDTO clientedto) {
+
+    public void cadastrarFuncionario(ClienteDTO clientedto) {
         String cadastrar = "INSERT INTO cliente(nomeCliente, endereco, uf, telefone, cpf, email) VALUES(?,?,?,?,?,?)";
         c = new ConexaoDAO().conectaBD();
 
@@ -43,8 +43,8 @@ public class ClienteDAO {
         }
 
     }
-     
-     public ArrayList<ClienteDTO> PesquisarCliente() {
+
+    public ArrayList<ClienteDTO> PesquisarCliente() {
         String pesquisar = "SELECT * FROM cliente";
         c = new ConexaoDAO().conectaBD();
 
@@ -70,11 +70,11 @@ public class ClienteDAO {
         }
         return lista;
     }
-     
-    public void alterarCliente(ClienteDTO clienteDTO){
+
+    public void alterarCliente(ClienteDTO clienteDTO) {
         String alterar = "UPDATE cliente SET nomeCliente = ?, endereco=?,uf=?, telefone=?,cpf=?, email=? where idCliente = ?";
         c = new ConexaoDAO().conectaBD();
-        
+
         try {
             p = c.prepareStatement(alterar);
             p.setString(1, clienteDTO.getNomeCliente());

@@ -75,7 +75,7 @@ public class frmLogin extends javax.swing.JFrame {
             }
         });
 
-        txtSenhaUser.setFont(new java.awt.Font("Lucida Sans", 0, 13)); // NOI18N
+        txtSenhaUser.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         txtSenhaUser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtSenhaUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,8 +172,8 @@ public class frmLogin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtSenhaUser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnLogar)
-                .addGap(161, 161, 161))
+                .addComponent(btnLogar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(153, 153, 153))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -228,7 +228,7 @@ public class frmLogin extends javax.swing.JFrame {
     //----------------------------------------------
     private void btnLogarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogarMouseEntered
         btnLogar.setForeground(Color.decode("#3C005A"));
-        btnLogar.setBackground(Color.decode("#FFFFFF"));
+        btnLogar.setBackground(Color.decode("#b280ff"));
 
     }//GEN-LAST:event_btnLogarMouseEntered
 
