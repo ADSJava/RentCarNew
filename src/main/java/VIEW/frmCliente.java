@@ -13,23 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class frmCliente extends JDialog {
 
-    public void bloquear(){
-        listarClientes();
-        panBotCad.setVisible(true);
-        panBotEdit.setVisible(false);
-
-        //TORNANDO OS CAMPOS DE DADOS NÃO EDITAVEIS
-        this.txtNomeDados.setEnabled(false);
-        this.txtEndereco.setEnabled(false);
-        this.txtCpf.setEnabled(false);
-        this.txtTelefone.setEnabled(false);
-        this.txtEmail.setEnabled(false);
-        this.cbUF.setEnabled(false);
-        this.txtId.setEnabled(false);
-
-        //setExtendedState(MAXIMIZED_BOTH);
-        this.setModal(true);
-    }
+   
     public frmCliente() {
         initComponents();
         listarClientes();
@@ -891,6 +875,23 @@ public class frmCliente extends JDialog {
         ClienteDAO cldao = new ClienteDAO();
         cldao.alterarCliente(cldto);
 
+    }
+     public void bloquear(){
+        listarClientes();
+        panBotCad.setVisible(true);
+        panBotEdit.setVisible(false);
+
+        //TORNANDO OS CAMPOS DE DADOS NÃO EDITAVEIS
+        this.txtNomeDados.setEnabled(false);
+        this.txtEndereco.setEnabled(false);
+        this.txtCpf.setEnabled(false);
+        this.txtTelefone.setEnabled(false);
+        this.txtEmail.setEnabled(false);
+        this.cbUF.setEnabled(false);
+        this.txtId.setEnabled(false);
+
+        //setExtendedState(MAXIMIZED_BOTH);
+        this.setModal(true);
     }
 
 }
