@@ -6,6 +6,7 @@ import DTO.ClienteDTO;
 import java.awt.Color;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -129,6 +130,9 @@ public class frmCliente extends JDialog {
         btnPesquisar.setText("Pesquisar");
         btnPesquisar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPesquisar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPesquisarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnPesquisarMouseEntered(evt);
             }
@@ -191,6 +195,17 @@ public class frmCliente extends JDialog {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnExcluirMouseExited(evt);
+            }
+        });
+
+        txtNomeCons.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeConsActionPerformed(evt);
+            }
+        });
+        txtNomeCons.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNomeConsKeyPressed(evt);
             }
         });
 
@@ -494,7 +509,20 @@ public class frmCliente extends JDialog {
     // AÇOES DE BOTOES
     //---------------------------------------------------------
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-       
+
+        String nome = txtNomeDados.getText();
+        ClienteDTO obj = new ClienteDTO();
+        ClienteDAO dao = new ClienteDAO();
+        ArrayList<ClienteDTO> lista = dao.buscarCliente(nome);
+
+        if (obj.getNomeCliente() != null) {
+            txtNomeDados.setText(obj.getNomeCliente());
+            txtCpf.setText(obj.getCpf());
+            txtEmail.setText(obj.getEmail());
+            txtTelefone.setText(obj.getTelefone());
+            txtEndereco.setText(obj.getEndereco());
+            cbUF.setSelectedItem(obj.getUf());
+        }
 
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
@@ -620,6 +648,42 @@ public class frmCliente extends JDialog {
         btnCadastrar.setForeground(Color.decode("#3C005A"));
         btnCadastrar.setBackground(Color.decode("#b280ff"));
     }//GEN-LAST:event_btnCadastrarMouseEntered
+
+    private void txtNomeConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeConsActionPerformed
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_txtNomeConsActionPerformed
+
+    private void txtNomeConsKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeConsKeyPressed
+        // A PESQUISA OCORRE ENQUANTO ESTÁ SENDO DIGITADO O NOME.
+        
+        String nome = "%" + txtNomeCons.getText() + "%"; // A PESQUISA É FEITA NO BD COM O ARGUMENTO LIKE, 
+                                                         //NO METODO BUSCAR CLIENTE
+
+        // CRIAÇÃO DO OBJ E DA LISTA QUE TERÁ O RETORNO DO DADOS.
+        ClienteDAO obj = new ClienteDAO();  
+        List<ClienteDTO> lista = obj.buscarCliente(nome);
+        DefaultTableModel dados = (DefaultTableModel) tabelaCl.getModel(); // INSTANCIANDO O MODO PADRÃO DA TABELA
+        dados.setNumRows(0);
+
+        for (ClienteDTO c : lista) {
+            dados.addRow(new Object[]{    // A CADA REGISTRO NO BANCO DE DADOS, ELE SERÁ SETADO OS DADOS.
+                c.getId(),
+                c.getNomeCliente(),
+                c.getCpf(),
+                c.getEmail(),
+                c.getTelefone(),
+                c.getEndereco(),
+                c.getUf()
+            });
+        }
+    }//GEN-LAST:event_txtNomeConsKeyPressed
+
+    private void btnPesquisarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisarMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_btnPesquisarMouseClicked
 
     /**
      * @param args the command line arguments

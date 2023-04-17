@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
  * @author igora
  */
 public class ClienteDAO {
+
     Connection c;
     PreparedStatement p;
     ResultSet rs;
@@ -45,7 +46,7 @@ public class ClienteDAO {
         }
 
     }
-    
+
     // ALIMENTA A TABELA -----------------------------------------------
     public ArrayList<ClienteDTO> PesquisarCliente() {
         String pesquisar = "SELECT * FROM cliente ORDER BY nomeCliente";
@@ -101,8 +102,6 @@ public class ClienteDAO {
             return null;
         }
     }*/
-    
-    
     public void alterarCliente(ClienteDTO clienteDTO) {
         String alterar = "UPDATE cliente SET nomeCliente = ?, endereco=?,uf=?, telefone=?,cpf=?, email=? where idCliente = ?";
         c = new ConexaoDAO().conectaBD();
@@ -123,5 +122,33 @@ public class ClienteDAO {
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "ClienteDAO Alterar" + erro);
         }
+    }
+
+    public ArrayList<ClienteDTO> buscarCliente(String nome) {
+        String buscar = "SELECT * FROM cliente WHERE nomeCliente like ?";
+        c = new ConexaoDAO().conectaBD();
+
+        try {
+            p = c.prepareStatement(buscar);
+            p.setString(1, nome);
+            rs = p.executeQuery();
+            
+            while (rs.next()) {
+                ClienteDTO obj = new ClienteDTO();
+                obj.setId(rs.getInt("idCliente"));
+                obj.setNomeCliente(rs.getString("nomeCliente"));
+                obj.setEndereco(rs.getString("endereco"));
+                obj.setUf(rs.getString("uf"));
+                obj.setTelefone(rs.getString("telefone"));
+                obj.setCpf(rs.getString("cpf"));
+                obj.setEmail(rs.getString("email"));
+
+                lista.add(obj);
+            }
+
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "ClienteDAO Pesquisar" + erro);
+        }
+        return lista;
     }
 }
