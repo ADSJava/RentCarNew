@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -43,9 +45,10 @@ public class ClienteDAO {
         }
 
     }
-
+    
+    // ALIMENTA A TABELA -----------------------------------------------
     public ArrayList<ClienteDTO> PesquisarCliente() {
-        String pesquisar = "SELECT * FROM cliente";
+        String pesquisar = "SELECT * FROM cliente ORDER BY nomeCliente";
         c = new ConexaoDAO().conectaBD();
 
         try {
@@ -71,6 +74,35 @@ public class ClienteDAO {
         return lista;
     }
 
+    // FUNÇÃO PARA O BOTÃO PESQUISAR
+    /*public ClienteDTO consultar(String idCliente){
+        try {
+            ClienteDTO c1 = new ClienteDTO();
+            
+            p = c.prepareStatement("SELECT * FROM cliente WHERE idCliente = ?");
+            p.setString(1, idCliente);
+            
+            rs = p.executeQuery();
+            if (rs.next()) {
+                c1.setNomeCliente(rs.getString("idCliente"));
+                c1.setNomeCliente(rs.getString("nomeCliente"));
+                c1.setNomeCliente(rs.getString("endereco"));
+                c1.setNomeCliente(rs.getString("uf"));
+                c1.setNomeCliente(rs.getString("telefone"));
+                c1.setNomeCliente(rs.getString("cpf"));
+                c1.setNomeCliente(rs.getString("email"));
+                
+                return c1;
+            } else {
+                return null;
+            }
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "ClienteDAO Consultar: " + erro);
+            return null;
+        }
+    }*/
+    
+    
     public void alterarCliente(ClienteDTO clienteDTO) {
         String alterar = "UPDATE cliente SET nomeCliente = ?, endereco=?,uf=?, telefone=?,cpf=?, email=? where idCliente = ?";
         c = new ConexaoDAO().conectaBD();

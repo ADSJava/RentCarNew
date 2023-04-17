@@ -4,10 +4,12 @@
  */
 package VIEW;
 
+import java.awt.Color;
 import java.awt.Toolkit;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
 
 /**
  *
@@ -21,6 +23,8 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     public PrincipalVIEW() {
         initComponents();
 
+        
+        
         //-----------------------------------
         //INICIALIZA A PÁGINA MAXIMIZADA
         //-----------------------------------
@@ -54,7 +58,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Principal");
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(229, 229, 229));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("Pesquisar Cliente");
@@ -109,6 +113,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/20230402_202120_0000.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, -130, -1, -1));
 
+        jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setFont(new java.awt.Font("Lucida Fax", 0, 14)); // NOI18N
 
         mnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8-usuário-masculino-tipo-de-pele-com-círculo-1-2.gif"))); // NOI18N
