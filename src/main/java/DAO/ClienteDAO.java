@@ -125,13 +125,14 @@ public class ClienteDAO {
         }
     }
 
-    public ArrayList<ClienteDTO> buscarCliente(String nome) {
-        String buscar = "SELECT * FROM cliente WHERE nomeCliente like ?";
+    public ArrayList<ClienteDTO> buscarCliente(String nome, String cpf) {
+        String buscar = "SELECT * FROM cliente WHERE nomeCliente like ? OR cpf like ?";
         c = new ConexaoDAO().conectaBD();
 
         try {
             p = c.prepareStatement(buscar);
             p.setString(1, nome);
+            p.setString(2, cpf);
             rs = p.executeQuery();
 
             while (rs.next()) {

@@ -373,7 +373,7 @@
                                           <Component id="cbUF" min="-2" pref="114" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
-                                          <Component id="labelEmail1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblId" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="txtId" min="-2" pref="46" max="-2" attributes="0"/>
                                       </Group>
@@ -424,12 +424,14 @@
                               </Group>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtEmail" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                              <Component id="labelEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                   <Component id="txtId" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                                  <Component id="labelEmail1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblId" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txtEmail" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                                  <Component id="labelEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
@@ -721,7 +723,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="labelEmail1">
+                <Component class="javax.swing.JLabel" name="lblId">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Lucida Fax" size="18" style="1"/>

@@ -13,12 +13,15 @@ import javax.swing.table.DefaultTableModel;
 
 public class frmCliente extends JDialog {
 
-   
     public frmCliente() {
         initComponents();
         listarClientes();
         panBotCad.setVisible(false);
         panBotEdit.setVisible(false);
+        
+        // ESCONDE OS CAMPOS ID DA DELA DE "DADOS CLIENTE"
+        txtId.setVisible(false);
+        lblId.setVisible(false);
 
         //TORNANDO OS CAMPOS DE DADOS NÃO EDITAVEIS
         this.txtNomeDados.setEnabled(false);
@@ -67,7 +70,7 @@ public class frmCliente extends JDialog {
         panBotEdit = new javax.swing.JPanel();
         btnCancelar = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
-        labelEmail1 = new javax.swing.JLabel();
+        lblId = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -372,9 +375,9 @@ public class frmCliente extends JDialog {
         });
         panBotEdit.add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 93, 44));
 
-        labelEmail1.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
-        labelEmail1.setForeground(new java.awt.Color(60, 0, 90));
-        labelEmail1.setText("Id:");
+        lblId.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
+        lblId.setForeground(new java.awt.Color(60, 0, 90));
+        lblId.setText("Id:");
 
         txtId.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         txtId.setPreferredSize(new java.awt.Dimension(64, 19));
@@ -424,7 +427,7 @@ public class frmCliente extends JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cbUF, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panDadosClienteLayout.createSequentialGroup()
-                                .addComponent(labelEmail1)
+                                .addComponent(lblId)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(370, 370, Short.MAX_VALUE))
@@ -460,12 +463,13 @@ public class frmCliente extends JDialog {
                         .addGap(1, 1, 1)
                         .addComponent(txtTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelEmail)
+                .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(labelEmail1)))
+                        .addComponent(lblId))
+                    .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelEmail)))
                 .addGap(111, 111, 111)
                 .addComponent(panBotCad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -511,11 +515,15 @@ public class frmCliente extends JDialog {
         this.abaDados.setSelectedIndex(1);
         panBotCad.setVisible(false);
         panBotEdit.setVisible(true);
+        
+        // ESCONDE OS CAMPOS ID DA DELA DE "DADOS CLIENTE"
+        txtId.setVisible(false);
+        lblId.setVisible(false);
 
         // TORNANDO TODOS OS CAMPOS EDITAVEIS
         this.txtNomeDados.setEnabled(true);
         this.txtEndereco.setEnabled(true);
-        this.txtCpf.setEnabled(true);
+        this.txtCpf.setEnabled(false);
         this.txtTelefone.setEnabled(true);
         this.txtEmail.setEnabled(true);
         this.cbUF.setEnabled(true);
@@ -536,7 +544,7 @@ public class frmCliente extends JDialog {
         this.txtEmail.setEnabled(true);
         this.cbUF.setEnabled(true);
         this.txtId.setEnabled(false);
-        
+
         this.txtNomeDados.setText("");
         this.txtEndereco.setText("");
         this.txtCpf.setText("");
@@ -589,12 +597,12 @@ public class frmCliente extends JDialog {
         obj.setEmail(txtEmail.getText());
         obj.setId(Integer.parseInt(txtId.getText()));
 
-        ClienteDAO dao = new ClienteDAO();      
+        ClienteDAO dao = new ClienteDAO();
         dao.alterarCliente(obj);                 // enviando o objeto para o metodo da alteração no ClienteDAO
 
         this.abaDados.setSelectedIndex(0);
         listarClientes();
-        LimparCampo();               
+        LimparCampo();
         bloquear();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -659,10 +667,10 @@ public class frmCliente extends JDialog {
 
         String nome = "%" + txtNomeCons.getText() + "%"; // A PESQUISA É FEITA NO BD COM O ARGUMENTO LIKE, 
         //NO METODO BUSCAR CLIENTE
-
+        String cpf = "%" + txtNomeCons.getText() + "%";
         // CRIAÇÃO DO OBJ E DA LISTA QUE TERÁ O RETORNO DO DADOS.
         ClienteDAO obj = new ClienteDAO();
-        List<ClienteDTO> lista = obj.buscarCliente(nome);
+        List<ClienteDTO> lista = obj.buscarCliente(nome, cpf);
         DefaultTableModel dados = (DefaultTableModel) tabelaCl.getModel(); // INSTANCIANDO O MODO PADRÃO DA TABELA
         dados.setNumRows(0);
 
@@ -762,12 +770,12 @@ public class frmCliente extends JDialog {
     private javax.swing.JLabel labelCPF;
     private javax.swing.JLabel labelCadastro;
     private javax.swing.JLabel labelEmail;
-    private javax.swing.JLabel labelEmail1;
     private javax.swing.JLabel labelEndereco;
     private javax.swing.JLabel labelNome;
     private javax.swing.JLabel labelNome1;
     private javax.swing.JLabel labelTelefone;
     private javax.swing.JLabel labelUF;
+    private javax.swing.JLabel lblId;
     private javax.swing.JPanel panBotCad;
     private javax.swing.JPanel panBotEdit;
     private javax.swing.JPanel panConsultarClientes;
@@ -850,6 +858,7 @@ public class frmCliente extends JDialog {
         txtCpf.setText(tabelaCl.getModel().getValueAt(setar, 4).toString());
         txtTelefone.setText(tabelaCl.getModel().getValueAt(setar, 5).toString());
         txtEmail.setText(tabelaCl.getModel().getValueAt(setar, 6).toString());
+        
 
     }
 
@@ -876,7 +885,8 @@ public class frmCliente extends JDialog {
         cldao.alterarCliente(cldto);
 
     }
-     public void bloquear(){
+
+    public void bloquear() {
         listarClientes();
         panBotCad.setVisible(true);
         panBotEdit.setVisible(false);
