@@ -43,7 +43,6 @@ public class frmCliente extends JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaCl = new javax.swing.JTable();
         labelNome1 = new javax.swing.JLabel();
-        btnPesquisar = new javax.swing.JButton();
         btnNovo = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
@@ -115,7 +114,7 @@ public class frmCliente extends JDialog {
                 {null, null, null, null}
             },
             new String [] {
-                "ID", "Nome", "Endereço", "UF", "CPF", "Telefone", "E-mail"
+                "Nome", "Endereço", "UF", "CPF", "Telefone", "E-mail"
             }
         ));
         jScrollPane1.setViewportView(tabelaCl);
@@ -123,28 +122,6 @@ public class frmCliente extends JDialog {
         labelNome1.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
         labelNome1.setForeground(new java.awt.Color(60, 0, 90));
         labelNome1.setText("Nome:");
-
-        btnPesquisar.setBackground(new java.awt.Color(60, 0, 90));
-        btnPesquisar.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        btnPesquisar.setForeground(new java.awt.Color(255, 255, 255));
-        btnPesquisar.setText("Pesquisar");
-        btnPesquisar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnPesquisar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnPesquisarMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnPesquisarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnPesquisarMouseExited(evt);
-            }
-        });
-        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarActionPerformed(evt);
-            }
-        });
 
         btnNovo.setBackground(new java.awt.Color(60, 0, 90));
         btnNovo.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
@@ -220,9 +197,7 @@ public class frmCliente extends JDialog {
                         .addContainerGap()
                         .addComponent(labelNome1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNomeCons, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPesquisar))
+                        .addComponent(txtNomeCons, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panConsultarClientesLayout.createSequentialGroup()
                         .addGap(229, 229, 229)
                         .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -235,12 +210,11 @@ public class frmCliente extends JDialog {
         panConsultarClientesLayout.setVerticalGroup(
             panConsultarClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panConsultarClientesLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(40, 40, 40)
                 .addGroup(panConsultarClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPesquisar)
                     .addComponent(txtNomeCons, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelNome1))
-                .addGap(44, 44, 44)
+                .addGap(36, 36, 36)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panConsultarClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -505,27 +479,6 @@ public class frmCliente extends JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    //---------------------------------------------------------
-    // AÇOES DE BOTOES
-    //---------------------------------------------------------
-    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-
-        String nome = txtNomeDados.getText();
-        ClienteDTO obj = new ClienteDTO();
-        ClienteDAO dao = new ClienteDAO();
-        ArrayList<ClienteDTO> lista = dao.buscarCliente(nome);
-
-        if (obj.getNomeCliente() != null) {
-            txtNomeDados.setText(obj.getNomeCliente());
-            txtCpf.setText(obj.getCpf());
-            txtEmail.setText(obj.getEmail());
-            txtTelefone.setText(obj.getTelefone());
-            txtEndereco.setText(obj.getEndereco());
-            cbUF.setSelectedItem(obj.getUf());
-        }
-
-    }//GEN-LAST:event_btnPesquisarActionPerformed
-
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         this.abaDados.setSelectedIndex(1);
         panBotCad.setVisible(false);
@@ -583,16 +536,6 @@ public class frmCliente extends JDialog {
         btnExcluir.setBackground(Color.decode("#3C005A"));
         btnExcluir.setForeground(Color.decode("#FFFFFF"));
     }//GEN-LAST:event_btnExcluirMouseExited
-
-    private void btnPesquisarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisarMouseExited
-        btnPesquisar.setBackground(Color.decode("#3C005A"));
-        btnPesquisar.setForeground(Color.decode("#FFFFFF"));
-    }//GEN-LAST:event_btnPesquisarMouseExited
-
-    private void btnPesquisarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisarMouseEntered
-        btnPesquisar.setForeground(Color.decode("#3C005A"));
-        btnPesquisar.setBackground(Color.decode("#b280ff"));
-    }//GEN-LAST:event_btnPesquisarMouseEntered
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         this.abaDados.setSelectedIndex(1);
@@ -669,21 +612,15 @@ public class frmCliente extends JDialog {
 
         for (ClienteDTO c : lista) {
             dados.addRow(new Object[]{    // A CADA REGISTRO NO BANCO DE DADOS, ELE SERÁ SETADO OS DADOS.
-                c.getId(),
                 c.getNomeCliente(),
-                c.getCpf(),
-                c.getEmail(),
-                c.getTelefone(),
                 c.getEndereco(),
-                c.getUf()
+                c.getUf(),
+                c.getCpf(),
+                c.getTelefone(),
+                c.getEmail()
             });
         }
     }//GEN-LAST:event_txtNomeConsKeyPressed
-
-    private void btnPesquisarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisarMouseClicked
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnPesquisarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -734,7 +671,6 @@ public class frmCliente extends JDialog {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnNovo;
-    private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cbUF;
     private javax.swing.JPanel jPanel1;
@@ -793,8 +729,7 @@ public class frmCliente extends JDialog {
             ArrayList<ClienteDTO> lista = userdao.PesquisarCliente();
 
             for (int rows = 0; rows < lista.size(); rows++) {
-                model.addRow(new Object[]{
-                    lista.get(rows).getId(),
+                model.addRow(new Object[]{                    
                     lista.get(rows).getNomeCliente(),
                     lista.get(rows).getEndereco(),
                     lista.get(rows).getUf(),

@@ -134,13 +134,12 @@ public class ClienteDAO {
             rs = p.executeQuery();
             
             while (rs.next()) {
-                ClienteDTO obj = new ClienteDTO();
-                obj.setId(rs.getInt("idCliente"));
+                ClienteDTO obj = new ClienteDTO();                
                 obj.setNomeCliente(rs.getString("nomeCliente"));
                 obj.setEndereco(rs.getString("endereco"));
                 obj.setUf(rs.getString("uf"));
-                obj.setTelefone(rs.getString("telefone"));
                 obj.setCpf(rs.getString("cpf"));
+                obj.setTelefone(rs.getString("telefone"));
                 obj.setEmail(rs.getString("email"));
 
                 lista.add(obj);
