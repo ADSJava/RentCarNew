@@ -13,6 +13,23 @@ import javax.swing.table.DefaultTableModel;
 
 public class frmCliente extends JDialog {
 
+    public void bloquear(){
+        listarClientes();
+        panBotCad.setVisible(true);
+        panBotEdit.setVisible(false);
+
+        //TORNANDO OS CAMPOS DE DADOS NÃO EDITAVEIS
+        this.txtNomeDados.setEnabled(false);
+        this.txtEndereco.setEnabled(false);
+        this.txtCpf.setEnabled(false);
+        this.txtTelefone.setEnabled(false);
+        this.txtEmail.setEnabled(false);
+        this.cbUF.setEnabled(false);
+        this.txtId.setEnabled(false);
+
+        //setExtendedState(MAXIMIZED_BOTH);
+        this.setModal(true);
+    }
     public frmCliente() {
         initComponents();
         listarClientes();
@@ -26,6 +43,7 @@ public class frmCliente extends JDialog {
         this.txtTelefone.setEnabled(false);
         this.txtEmail.setEnabled(false);
         this.cbUF.setEnabled(false);
+        this.txtId.setEnabled(false);
 
         //setExtendedState(MAXIMIZED_BOTH);
         this.setModal(true);
@@ -65,6 +83,8 @@ public class frmCliente extends JDialog {
         panBotEdit = new javax.swing.JPanel();
         btnCancelar = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
+        labelEmail1 = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cliente");
@@ -114,9 +134,14 @@ public class frmCliente extends JDialog {
                 {null, null, null, null}
             },
             new String [] {
-                "Nome", "Endereço", "UF", "CPF", "Telefone", "E-mail"
+                "Nome", "Endereço", "UF", "CPF", "Telefone", "E-mail","ID"
             }
         ));
+        tabelaCl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaClMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelaCl);
 
         labelNome1.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
@@ -346,6 +371,9 @@ public class frmCliente extends JDialog {
         btnSalvar.setText("Salvar");
         btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalvarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnSalvarMouseEntered(evt);
             }
@@ -360,6 +388,13 @@ public class frmCliente extends JDialog {
         });
         panBotEdit.add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 93, 44));
 
+        labelEmail1.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
+        labelEmail1.setForeground(new java.awt.Color(60, 0, 90));
+        labelEmail1.setText("Id:");
+
+        txtId.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        txtId.setPreferredSize(new java.awt.Dimension(64, 19));
+
         javax.swing.GroupLayout panDadosClienteLayout = new javax.swing.GroupLayout(panDadosCliente);
         panDadosCliente.setLayout(panDadosClienteLayout);
         panDadosClienteLayout.setHorizontalGroup(
@@ -367,6 +402,12 @@ public class frmCliente extends JDialog {
             .addGroup(panDadosClienteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panDadosClienteLayout.createSequentialGroup()
+                        .addGap(296, 296, 296)
+                        .addComponent(panBotCad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panDadosClienteLayout.createSequentialGroup()
+                        .addGap(254, 254, 254)
+                        .addComponent(panBotEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panDadosClienteLayout.createSequentialGroup()
                         .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panDadosClienteLayout.createSequentialGroup()
@@ -387,22 +428,22 @@ public class frmCliente extends JDialog {
                                     .addGroup(panDadosClienteLayout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtCpf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(133, 133, 133)))))
+                                        .addGap(133, 133, 133))))
+                            .addGroup(panDadosClienteLayout.createSequentialGroup()
+                                .addComponent(labelEmail)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelUF)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbUF, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panDadosClienteLayout.createSequentialGroup()
-                        .addGap(296, 296, 296)
-                        .addComponent(panBotCad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panDadosClienteLayout.createSequentialGroup()
-                        .addGap(254, 254, 254)
-                        .addComponent(panBotEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panDadosClienteLayout.createSequentialGroup()
-                        .addComponent(labelEmail)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panDadosClienteLayout.createSequentialGroup()
+                                .addComponent(labelUF)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbUF, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panDadosClienteLayout.createSequentialGroup()
+                                .addComponent(labelEmail1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(370, 370, Short.MAX_VALUE))
         );
         panDadosClienteLayout.setVerticalGroup(
             panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -437,12 +478,15 @@ public class frmCliente extends JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelEmail))
-                .addGap(33, 33, 33)
+                    .addComponent(labelEmail)
+                    .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelEmail1)))
+                .addGap(111, 111, 111)
                 .addComponent(panBotCad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panBotEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         abaDados.addTab("Dados Pessoais", panDadosCliente);
@@ -491,6 +535,8 @@ public class frmCliente extends JDialog {
         this.txtTelefone.setEnabled(true);
         this.txtEmail.setEnabled(true);
         this.cbUF.setEnabled(true);
+        this.txtId.setEnabled(false);
+
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
@@ -505,6 +551,15 @@ public class frmCliente extends JDialog {
         this.txtTelefone.setEnabled(true);
         this.txtEmail.setEnabled(true);
         this.cbUF.setEnabled(true);
+        this.txtId.setEnabled(false);
+        
+        this.txtNomeDados.setText("");
+        this.txtEndereco.setText("");
+        this.txtCpf.setText("");
+        this.txtTelefone.setText("");
+        this.txtEmail.setText("");
+        this.cbUF.setSelectedItem("");
+        this.txtId.setText("");
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnNovoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoMouseEntered
@@ -539,8 +594,24 @@ public class frmCliente extends JDialog {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         this.abaDados.setSelectedIndex(1);
+        // botao do metodo de alteração dos clientes
 
+        ClienteDTO obj = new ClienteDTO();                  // abastecendo os campos
+        obj.setNomeCliente(txtNomeDados.getText());
+        obj.setEndereco(txtEndereco.getText());
+        obj.setUf(cbUF.getSelectedItem().toString());
+        obj.setTelefone(txtTelefone.getText());
+        obj.setCpf(txtCpf.getText());
+        obj.setEmail(txtEmail.getText());
+        obj.setId(Integer.parseInt(txtId.getText()));
 
+        ClienteDAO dao = new ClienteDAO();      
+        dao.alterarCliente(obj);                 // enviando o objeto para o metodo da alteração no ClienteDAO
+
+        this.abaDados.setSelectedIndex(0);
+        listarClientes();
+        LimparCampo();               
+        bloquear();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnSalvarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseExited
@@ -580,6 +651,7 @@ public class frmCliente extends JDialog {
             LimparCampo();
             this.abaDados.setSelectedIndex(0);
         }
+        bloquear();
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnCadastrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrarMouseExited
@@ -600,18 +672,18 @@ public class frmCliente extends JDialog {
 
     private void txtNomeConsKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeConsKeyPressed
         // A PESQUISA OCORRE ENQUANTO ESTÁ SENDO DIGITADO O NOME.
-        
+
         String nome = "%" + txtNomeCons.getText() + "%"; // A PESQUISA É FEITA NO BD COM O ARGUMENTO LIKE, 
-                                                         //NO METODO BUSCAR CLIENTE
+        //NO METODO BUSCAR CLIENTE
 
         // CRIAÇÃO DO OBJ E DA LISTA QUE TERÁ O RETORNO DO DADOS.
-        ClienteDAO obj = new ClienteDAO();  
+        ClienteDAO obj = new ClienteDAO();
         List<ClienteDTO> lista = obj.buscarCliente(nome);
         DefaultTableModel dados = (DefaultTableModel) tabelaCl.getModel(); // INSTANCIANDO O MODO PADRÃO DA TABELA
         dados.setNumRows(0);
 
         for (ClienteDTO c : lista) {
-            dados.addRow(new Object[]{    // A CADA REGISTRO NO BANCO DE DADOS, ELE SERÁ SETADO OS DADOS.
+            dados.addRow(new Object[]{ // A CADA REGISTRO NO BANCO DE DADOS, ELE SERÁ SETADO OS DADOS.
                 c.getNomeCliente(),
                 c.getEndereco(),
                 c.getUf(),
@@ -621,6 +693,25 @@ public class frmCliente extends JDialog {
             });
         }
     }//GEN-LAST:event_txtNomeConsKeyPressed
+
+    private void tabelaClMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClMouseClicked
+        // TODO add your handling code here:
+        abaDados.setSelectedIndex(0);
+
+        txtNomeDados.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 0).toString());
+        txtEndereco.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 1).toString());
+        cbUF.setSelectedItem(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 2).toString());
+        txtCpf.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 3).toString());
+        txtTelefone.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 4).toString());
+        txtEmail.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 5).toString());
+        txtId.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 6).toString());
+
+
+    }//GEN-LAST:event_tabelaClMouseClicked
+
+    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
+        // TODO add your handling code here:                
+    }//GEN-LAST:event_btnSalvarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -636,16 +727,24 @@ public class frmCliente extends JDialog {
                 if ("Window".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmCliente.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmCliente.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmCliente.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmCliente.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -679,6 +778,7 @@ public class frmCliente extends JDialog {
     private javax.swing.JLabel labelCPF;
     private javax.swing.JLabel labelCadastro;
     private javax.swing.JLabel labelEmail;
+    private javax.swing.JLabel labelEmail1;
     private javax.swing.JLabel labelEndereco;
     private javax.swing.JLabel labelNome;
     private javax.swing.JLabel labelNome1;
@@ -692,6 +792,7 @@ public class frmCliente extends JDialog {
     private javax.swing.JFormattedTextField txtCpf;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereco;
+    private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNomeCons;
     private javax.swing.JTextField txtNomeDados;
     private javax.swing.JFormattedTextField txtTelefone;
@@ -729,14 +830,14 @@ public class frmCliente extends JDialog {
             ArrayList<ClienteDTO> lista = userdao.PesquisarCliente();
 
             for (int rows = 0; rows < lista.size(); rows++) {
-                model.addRow(new Object[]{                    
+                model.addRow(new Object[]{
                     lista.get(rows).getNomeCliente(),
                     lista.get(rows).getEndereco(),
                     lista.get(rows).getUf(),
                     lista.get(rows).getCpf(),
                     lista.get(rows).getTelefone(),
-                    lista.get(rows).getEmail()
-
+                    lista.get(rows).getEmail(),
+                    lista.get(rows).getId()
                 });
             }
 

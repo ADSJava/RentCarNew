@@ -103,10 +103,10 @@ public class ClienteDAO {
         }
     }*/
     public void alterarCliente(ClienteDTO clienteDTO) {
-        String alterar = "UPDATE cliente SET nomeCliente = ?, endereco=?,uf=?, telefone=?,cpf=?, email=? where idCliente = ?";
         c = new ConexaoDAO().conectaBD();
 
         try {
+            String alterar = "UPDATE cliente SET nomeCliente=?, endereco=?,uf=?, telefone=?,cpf=?, email=? where idCliente = ?";
             p = c.prepareStatement(alterar);
             p.setString(1, clienteDTO.getNomeCliente());
             p.setString(2, clienteDTO.getEndereco());
@@ -114,6 +114,7 @@ public class ClienteDAO {
             p.setString(4, clienteDTO.getTelefone());
             p.setString(5, clienteDTO.getCpf());
             p.setString(6, clienteDTO.getEmail());
+                    
             p.setInt(7, clienteDTO.getId());
 
             p.execute();
@@ -132,9 +133,9 @@ public class ClienteDAO {
             p = c.prepareStatement(buscar);
             p.setString(1, nome);
             rs = p.executeQuery();
-            
+
             while (rs.next()) {
-                ClienteDTO obj = new ClienteDTO();                
+                ClienteDTO obj = new ClienteDTO();
                 obj.setNomeCliente(rs.getString("nomeCliente"));
                 obj.setEndereco(rs.getString("endereco"));
                 obj.setUf(rs.getString("uf"));
