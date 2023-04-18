@@ -74,34 +74,7 @@ public class ClienteDAO {
         }
         return lista;
     }
-
-    // FUNÇÃO PARA O BOTÃO PESQUISAR
-    /*public ClienteDTO consultar(String idCliente){
-        try {
-            ClienteDTO c1 = new ClienteDTO();
-            
-            p = c.prepareStatement("SELECT * FROM cliente WHERE idCliente = ?");
-            p.setString(1, idCliente);
-            
-            rs = p.executeQuery();
-            if (rs.next()) {
-                c1.setNomeCliente(rs.getString("idCliente"));
-                c1.setNomeCliente(rs.getString("nomeCliente"));
-                c1.setNomeCliente(rs.getString("endereco"));
-                c1.setNomeCliente(rs.getString("uf"));
-                c1.setNomeCliente(rs.getString("telefone"));
-                c1.setNomeCliente(rs.getString("cpf"));
-                c1.setNomeCliente(rs.getString("email"));
-                
-                return c1;
-            } else {
-                return null;
-            }
-        } catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null, "ClienteDAO Consultar: " + erro);
-            return null;
-        }
-    }*/
+    
     public void alterarCliente(ClienteDTO clienteDTO) {
         c = new ConexaoDAO().conectaBD();
 
@@ -126,7 +99,7 @@ public class ClienteDAO {
     }
 
     public ArrayList<ClienteDTO> buscarCliente(String nome, String cpf) {
-        String buscar = "SELECT * FROM cliente WHERE nomeCliente like ? OR cpf like ?";
+        String buscar = "SELECT * FROM cliente WHERE nomeCliente like ? OR cpf like ? ORDER BY nomeCliente";
         c = new ConexaoDAO().conectaBD();
 
         try {
