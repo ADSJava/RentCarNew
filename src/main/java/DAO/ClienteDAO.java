@@ -143,6 +143,7 @@ public class ClienteDAO {
                 obj.setCpf(rs.getString("cpf"));
                 obj.setTelefone(rs.getString("telefone"));
                 obj.setEmail(rs.getString("email"));
+                obj.setId(rs.getInt("idCliente"));
 
                 lista.add(obj);
             }

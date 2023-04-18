@@ -681,7 +681,8 @@ public class frmCliente extends JDialog {
                 c.getUf(),
                 c.getCpf(),
                 c.getTelefone(),
-                c.getEmail()
+                c.getEmail(),
+                c.getId()
             });
         }
     }//GEN-LAST:event_txtNomeConsKeyPressed
