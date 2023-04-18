@@ -74,12 +74,12 @@ public class ClienteDAO {
         }
         return lista;
     }
-    
+
     public void alterarCliente(ClienteDTO clienteDTO) {
+        String alterar = "UPDATE cliente SET nomeCliente=?, endereco=?,uf=?, telefone=?,cpf=?, email=? where idCliente = ?";
         c = new ConexaoDAO().conectaBD();
 
         try {
-            String alterar = "UPDATE cliente SET nomeCliente=?, endereco=?,uf=?, telefone=?,cpf=?, email=? where idCliente = ?";
             p = c.prepareStatement(alterar);
             p.setString(1, clienteDTO.getNomeCliente());
             p.setString(2, clienteDTO.getEndereco());
@@ -87,7 +87,7 @@ public class ClienteDAO {
             p.setString(4, clienteDTO.getTelefone());
             p.setString(5, clienteDTO.getCpf());
             p.setString(6, clienteDTO.getEmail());
-                    
+
             p.setInt(7, clienteDTO.getId());
 
             p.execute();
@@ -125,5 +125,21 @@ public class ClienteDAO {
             JOptionPane.showMessageDialog(null, "ClienteDAO Pesquisar" + erro);
         }
         return lista;
+    }
+
+    public void excluirCliente(ClienteDTO obj) {        
+        String excluir = "DELETE FROM cliente WHERE idCliente = ?";
+        c = new ConexaoDAO().conectaBD();
+       
+        try {
+            
+            p = c.prepareStatement(excluir);
+            p.setInt(1, obj.getId());
+            
+            p.execute();
+            p.close();
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "ClienteDAO Alterar" + erro);
+        }
     }
 }

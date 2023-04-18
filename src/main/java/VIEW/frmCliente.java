@@ -187,6 +187,11 @@ public class frmCliente extends JDialog {
                 btnExcluirMouseExited(evt);
             }
         });
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         txtNomeCons.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         txtNomeCons.addActionListener(new java.awt.event.ActionListener() {
@@ -752,6 +757,24 @@ public class frmCliente extends JDialog {
         LimparCampo();
         bloquearCampos();
     }//GEN-LAST:event_btnCancelarBotEditActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        // JOptionPane tratando a confirmação da exclusão.
+        int resposta = JOptionPane.showConfirmDialog(null,
+                "Você tem certeza que deseja excluir?", "Confirmação",
+                JOptionPane.YES_NO_OPTION);
+        if (resposta == JOptionPane.YES_OPTION) {
+            // O usuário clicou em "Sim"
+            ClienteDTO obj = new ClienteDTO();                  // abastecendo o campo do ID
+            obj.setId(Integer.parseInt(txtId.getText()));
+
+            ClienteDAO dao = new ClienteDAO();
+            dao.excluirCliente(obj);                 // enviando o objeto para o metodo da exclusão no ClienteDAO
+
+            this.abaDados.setSelectedIndex(0);
+            listarClientes();
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
      * @param args the command line arguments
