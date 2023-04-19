@@ -48,7 +48,6 @@ public class frmVeiculo extends JDialog {
         txtPlaca = new javax.swing.JTextField();
         txtFabricante = new javax.swing.JTextField();
         txtAcessorios = new javax.swing.JTextField();
-        txtQtdPortas = new javax.swing.JTextField();
         btnCadDados = new javax.swing.JButton();
         IdModelo = new javax.swing.JLabel();
         txtModelo = new javax.swing.JTextField();
@@ -57,6 +56,7 @@ public class frmVeiculo extends JDialog {
         txtIdVe = new javax.swing.JTextField();
         btnCancEdit = new javax.swing.JButton();
         btnCancCad = new javax.swing.JButton();
+        cbQtdPortas = new javax.swing.JComboBox<>();
         panHeader = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -270,6 +270,8 @@ public class frmVeiculo extends JDialog {
             }
         });
 
+        cbQtdPortas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "Outros" }));
+
         javax.swing.GroupLayout panDadosLayout = new javax.swing.GroupLayout(panDados);
         panDados.setLayout(panDadosLayout);
         panDadosLayout.setHorizontalGroup(
@@ -304,10 +306,11 @@ public class frmVeiculo extends JDialog {
                     .addComponent(IdAcessorios)
                     .addComponent(IdVe))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtQtdPortas, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                    .addComponent(txtAcessorios)
-                    .addComponent(txtIdVe))
+                .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtAcessorios, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                        .addComponent(txtIdVe))
+                    .addComponent(cbQtdPortas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(278, Short.MAX_VALUE))
             .addGroup(panDadosLayout.createSequentialGroup()
                 .addGap(240, 240, 240)
@@ -331,7 +334,7 @@ public class frmVeiculo extends JDialog {
                     .addComponent(IdModelo)
                     .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(IdQtdPortas)
-                    .addComponent(txtQtdPortas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbQtdPortas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(IdNum)
@@ -422,7 +425,7 @@ public class frmVeiculo extends JDialog {
 
         if (txtModelo.getText().equals("") || txtNum.equals("") || txtPlaca.getText().equals("")
                 || txtFabricante.getText().equals("")
-                || txtAno.getText().equals("") || txtQtdPortas.getText().equals("") || txtAcessorios.getText().equals("")) {
+                || txtAno.getText().equals("") || cbQtdPortas.getSelectedItem().equals("") || txtAcessorios.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
         } else {
             Cadastrar();
@@ -454,7 +457,7 @@ public class frmVeiculo extends JDialog {
             txtPlaca.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 2).toString());
             txtFabricante.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 3).toString());
             txtAno.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 4).toString());
-            txtQtdPortas.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 5).toString());
+            cbQtdPortas.setSelectedItem(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 5).toString());
             txtAcessorios.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 6).toString());
             txtIdVe.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 7).toString());
         } else {
@@ -470,7 +473,7 @@ public class frmVeiculo extends JDialog {
 
         if (txtModelo.getText().equals("") || txtNum.equals("") || txtPlaca.getText().equals("")
                 || txtFabricante.getText().equals("")
-                || txtAno.getText().equals("") || txtQtdPortas.getText().equals("") || txtAcessorios.getText().equals("")) {
+                || txtAno.getText().equals("") || cbQtdPortas.getSelectedItem().equals("") || txtAcessorios.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
         } else {
             //validarDados();
@@ -480,7 +483,7 @@ public class frmVeiculo extends JDialog {
             obj.setPlaca(txtPlaca.getText());
             obj.setFabricante(txtFabricante.getText());
             obj.setAnoModelo(Integer.parseInt(txtAno.getText()));
-            obj.setQtdPortas(Integer.parseInt(txtQtdPortas.getText()));
+            obj.setQtdPortas(Integer.parseInt(cbQtdPortas.getSelectedItem().toString()));
             obj.setAcessorios(txtAcessorios.getText());
             obj.setIdVeiculo(Integer.parseInt(txtIdVe.getText()));
 
@@ -502,7 +505,7 @@ public class frmVeiculo extends JDialog {
         txtPlaca.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 2).toString());
         txtFabricante.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 3).toString());
         txtAno.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 4).toString());
-        txtQtdPortas.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 5).toString());
+        cbQtdPortas.setSelectedItem(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 5).toString());
         txtAcessorios.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 6).toString());
         txtIdVe.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 7).toString());
     }//GEN-LAST:event_tabelaVeMouseClicked
@@ -576,7 +579,7 @@ public class frmVeiculo extends JDialog {
         this.txtPlaca.setEnabled(true);
         this.txtFabricante.setEnabled(true);
         this.txtAno.setEnabled(true);
-        this.txtQtdPortas.setEnabled(true);
+        this.cbQtdPortas.setEnabled(true);
         this.txtAcessorios.setEnabled(true);
         this.IdVe.setVisible(false);
         this.txtIdVe.setVisible(false);
@@ -586,7 +589,7 @@ public class frmVeiculo extends JDialog {
         this.txtPlaca.setText("");
         this.txtFabricante.setText("");
         this.txtAno.setText("");
-        this.txtQtdPortas.setText("");
+        this.cbQtdPortas.setSelectedItem("");
         this.txtAcessorios.setText("");
     }//GEN-LAST:event_btnNovoActionPerformed
 
@@ -647,7 +650,7 @@ public class frmVeiculo extends JDialog {
         obj.setPlaca(txtPlaca.getText());
         obj.setFabricante(txtFabricante.getText());
         obj.setAnoModelo(Integer.parseInt(txtAno.getText()));
-        obj.setQtdPortas(Integer.parseInt(txtQtdPortas.getText()));
+        obj.setQtdPortas(Integer.parseInt(cbQtdPortas.getSelectedItem().toString()));
         obj.setAcessorios(txtAcessorios.getText());
 
         VeiculoDAO dao = new VeiculoDAO();
@@ -685,7 +688,7 @@ public class frmVeiculo extends JDialog {
         txtPlaca.setText("");
         txtFabricante.setText("");
         txtAno.setText("");
-        txtQtdPortas.setText("");
+        cbQtdPortas.setSelectedItem("");
         txtAcessorios.setText("");
     }
 
@@ -696,7 +699,7 @@ public class frmVeiculo extends JDialog {
         txtPlaca.setText(tabelaVe.getModel().getValueAt(setar, 3).toString());
         txtFabricante.setText(tabelaVe.getModel().getValueAt(setar, 4).toString());
         txtAno.setText(tabelaVe.getModel().getValueAt(setar, 5).toString());
-        txtQtdPortas.setText(tabelaVe.getModel().getValueAt(setar, 6).toString());
+        cbQtdPortas.setSelectedItem(tabelaVe.getModel().getValueAt(setar, 6).toString());
         txtAcessorios.setText(tabelaVe.getModel().getValueAt(setar, 7).toString());
     }
 
@@ -707,7 +710,7 @@ public class frmVeiculo extends JDialog {
         obj.setPlaca(txtPlaca.getText());
         obj.setFabricante(txtModelo.getText());
         obj.setAnoModelo(Integer.parseInt(txtAno.getText()));
-        obj.setQtdPortas(Integer.parseInt(txtQtdPortas.getText()));
+        obj.setQtdPortas(Integer.parseInt(cbQtdPortas.getSelectedItem().toString()));
         obj.setAcessorios(txtAcessorios.getText());
 
         VeiculoDAO dao = new VeiculoDAO();
@@ -730,7 +733,7 @@ public class frmVeiculo extends JDialog {
         this.IdFabricante.setVisible(false);
         this.txtAno.setVisible(false);
         this.IdAno.setVisible(false);
-        this.txtQtdPortas.setVisible(false);
+        this.cbQtdPortas.setVisible(false);
         this.IdQtdPortas.setVisible(false);
         this.txtAcessorios.setVisible(false);
         this.IdAcessorios.setVisible(false);
@@ -762,7 +765,7 @@ public class frmVeiculo extends JDialog {
         this.IdFabricante.setVisible(true);
         this.txtAno.setVisible(true);
         this.IdAno.setVisible(true);
-        this.txtQtdPortas.setVisible(true);
+        this.cbQtdPortas.setVisible(true);
         this.IdQtdPortas.setVisible(true);
         this.txtAcessorios.setVisible(true);
         this.IdAcessorios.setVisible(true);
@@ -794,6 +797,7 @@ public class frmVeiculo extends JDialog {
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnSalvarEdit;
+    private javax.swing.JComboBox<String> cbQtdPortas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
@@ -810,6 +814,5 @@ public class frmVeiculo extends JDialog {
     private javax.swing.JTextField txtModelo;
     private javax.swing.JTextField txtNum;
     private javax.swing.JTextField txtPlaca;
-    private javax.swing.JTextField txtQtdPortas;
     // End of variables declaration//GEN-END:variables
 }

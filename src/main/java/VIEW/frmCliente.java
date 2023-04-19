@@ -296,6 +296,11 @@ public class frmCliente extends JDialog {
         cbUF.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         cbUF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
         cbUF.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cbUF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbUFActionPerformed(evt);
+            }
+        });
 
         txtEndereco.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         txtEndereco.setPreferredSize(new java.awt.Dimension(64, 19));
@@ -775,6 +780,10 @@ public class frmCliente extends JDialog {
             listarClientes();
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void cbUFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbUFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbUFActionPerformed
 
     /**
      * @param args the command line arguments
