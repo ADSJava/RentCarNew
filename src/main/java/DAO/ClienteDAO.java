@@ -42,7 +42,7 @@ public class ClienteDAO {
             p.close();
 
         } catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null, "ClienteDAO Cadastrar" + erro);
+            JOptionPane.showMessageDialog(null, "ERRO: " + erro);
         }
 
     }
@@ -127,15 +127,15 @@ public class ClienteDAO {
         return lista;
     }
 
-    public void excluirCliente(ClienteDTO obj) {        
+    public void excluirCliente(ClienteDTO obj) {
         String excluir = "DELETE FROM cliente WHERE idCliente = ?";
         c = new ConexaoDAO().conectaBD();
-       
+
         try {
-            
+
             p = c.prepareStatement(excluir);
             p.setInt(1, obj.getId());
-            
+
             p.execute();
             p.close();
         } catch (SQLException erro) {

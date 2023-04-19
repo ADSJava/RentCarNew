@@ -1,22 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DTO;
 
-import java.sql.Date;
 
-/**
- *
- * @author João Carser
- */
 public class VeiculoDTO {
     private int idVeiculo;
     private String nome;
     private int numero;
-    private int placa;
+    private String placa;
     private String fabricante;
-    private Date anoModelo;
+    private int anoModelo;
     private int qtdPortas;
     private String acessorios;
 
@@ -44,11 +35,11 @@ public class VeiculoDTO {
         this.numero = numero;
     }
 
-    public int getPlaca() {
+    public String getPlaca() {
         return placa;
     }
 
-    public void setPlaca(int placa) {
+    public void setPlaca(String placa) {
         this.placa = placa;
     }
 
@@ -60,11 +51,11 @@ public class VeiculoDTO {
         this.fabricante = fabricante;
     }
 
-    public Date getAnoModelo() {
+    public int getAnoModelo() {
         return anoModelo;
     }
 
-    public void setAnoModelo(Date anoModelo) {
+    public void setAnoModelo(int anoModelo) {
         this.anoModelo = anoModelo;
     }
 
@@ -83,6 +74,4 @@ public class VeiculoDTO {
     public void setAcessorios(String acessorios) {
         this.acessorios = acessorios;
     }
-    
-    
 }

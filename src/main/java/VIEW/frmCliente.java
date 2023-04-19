@@ -122,7 +122,7 @@ public class frmCliente extends JDialog {
                 {null, null, null, null}
             },
             new String [] {
-                "Nome", "Endereço", "UF", "CPF", "Telefone", "E-mail","ID"
+                "Nome", "Endereço", "UF", "CPF", "Telefone", "E-mail", "ID"
             }
         ));
         tabelaCl.addMouseListener(new java.awt.event.MouseAdapter() {
