@@ -10,7 +10,6 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-
 /**
  *
  * @author igora
@@ -23,8 +22,6 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     public PrincipalVIEW() {
         initComponents();
 
-        
-        
         //-----------------------------------
         //INICIALIZA A PÁGINA MAXIMIZADA
         //-----------------------------------
@@ -41,15 +38,15 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnPesqCliente = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jTextField2 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnPesqVeiculo = new javax.swing.JButton();
+        btnAlugar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnCliente = new javax.swing.JMenu();
@@ -58,17 +55,28 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Principal");
 
-        jPanel1.setBackground(new java.awt.Color(229, 229, 229));
+        jPanel1.setBackground(new java.awt.Color(239, 204, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Pesquisar Cliente");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        btnPesqCliente.setBackground(new java.awt.Color(60, 0, 90));
+        btnPesqCliente.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        btnPesqCliente.setForeground(new java.awt.Color(255, 255, 255));
+        btnPesqCliente.setText("Pesquisar Cliente");
+        btnPesqCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPesqCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPesqClienteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPesqClienteMouseExited(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, 140, -1));
+        btnPesqCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesqClienteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnPesqCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, 150, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -84,7 +92,9 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 510, 290));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 210, -1));
+
+        jTextField1.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 210, 27));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -100,15 +110,39 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 230, 460, 290));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 200, 200, -1));
 
-        jButton2.setText("Pesquisar Veiculo");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 200, -1, -1));
+        jTextField2.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 200, 200, 27));
 
-        jButton3.setText("Alugar");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 560, 150, 40));
+        btnPesqVeiculo.setBackground(new java.awt.Color(60, 0, 90));
+        btnPesqVeiculo.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        btnPesqVeiculo.setForeground(new java.awt.Color(255, 255, 255));
+        btnPesqVeiculo.setText("Pesquisar Veiculo");
+        btnPesqVeiculo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPesqVeiculo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPesqVeiculoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPesqVeiculoMouseExited(evt);
+            }
+        });
+        jPanel1.add(btnPesqVeiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 200, 150, -1));
+
+        btnAlugar.setBackground(new java.awt.Color(60, 0, 90));
+        btnAlugar.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        btnAlugar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAlugar.setText("Alugar");
+        btnAlugar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAlugar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAlugarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAlugarMouseExited(evt);
+            }
+        });
+        jPanel1.add(btnAlugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 560, 160, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/20230402_202120_0000.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, -130, -1, -1));
@@ -163,12 +197,12 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnPesqClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnPesqClienteActionPerformed
 
     private void mnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnClienteActionPerformed
-     
+
     }//GEN-LAST:event_mnClienteActionPerformed
 
     private void mnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnClienteMouseClicked
@@ -177,13 +211,43 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_mnClienteMouseClicked
 
     private void mnVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnVeiculoActionPerformed
-      
+
     }//GEN-LAST:event_mnVeiculoActionPerformed
 
     private void mnVeiculoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnVeiculoMouseClicked
         frmVeiculo fVei = new frmVeiculo();
         fVei.setVisible(true);
     }//GEN-LAST:event_mnVeiculoMouseClicked
+
+    private void btnPesqClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesqClienteMouseEntered
+        btnPesqCliente.setForeground(Color.decode("#3C005A"));
+        btnPesqCliente.setBackground(Color.decode("#b280ff"));
+    }//GEN-LAST:event_btnPesqClienteMouseEntered
+
+    private void btnPesqVeiculoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesqVeiculoMouseEntered
+        btnPesqVeiculo.setForeground(Color.decode("#3C005A"));
+        btnPesqVeiculo.setBackground(Color.decode("#b280ff"));
+    }//GEN-LAST:event_btnPesqVeiculoMouseEntered
+
+    private void btnAlugarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlugarMouseEntered
+        btnAlugar.setForeground(Color.decode("#3C005A"));
+        btnAlugar.setBackground(Color.decode("#b280ff"));
+    }//GEN-LAST:event_btnAlugarMouseEntered
+
+    private void btnPesqClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesqClienteMouseExited
+        btnPesqCliente.setBackground(Color.decode("#3C005A"));
+        btnPesqCliente.setForeground(Color.decode("#FFFFFF"));
+    }//GEN-LAST:event_btnPesqClienteMouseExited
+
+    private void btnPesqVeiculoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesqVeiculoMouseExited
+        btnPesqVeiculo.setBackground(Color.decode("#3C005A"));
+        btnPesqVeiculo.setForeground(Color.decode("#FFFFFF"));
+    }//GEN-LAST:event_btnPesqVeiculoMouseExited
+
+    private void btnAlugarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlugarMouseExited
+        btnAlugar.setBackground(Color.decode("#3C005A"));
+        btnAlugar.setForeground(Color.decode("#FFFFFF"));
+    }//GEN-LAST:event_btnAlugarMouseExited
 
     /**
      * @param args the command line arguments
@@ -221,9 +285,9 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnAlugar;
+    private javax.swing.JButton btnPesqCliente;
+    private javax.swing.JButton btnPesqVeiculo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;

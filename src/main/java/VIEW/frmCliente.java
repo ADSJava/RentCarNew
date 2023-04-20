@@ -18,7 +18,7 @@ public class frmCliente extends JDialog {
         listarClientes();
         panBotCad.setVisible(false);
         panBotEdit.setVisible(false);
-        
+
         // ESCONDE OS CAMPOS ID DA DELA DE "DADOS CLIENTE"
         txtId.setVisible(false);
         lblId.setVisible(false);
@@ -478,7 +478,7 @@ public class frmCliente extends JDialog {
                         .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelUF)
                             .addComponent(cbUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(txtNomeDados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtNomeDados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(labelEndereco)
@@ -550,7 +550,7 @@ public class frmCliente extends JDialog {
         this.abaDados.setSelectedIndex(1);
         panBotCad.setVisible(false);
         panBotEdit.setVisible(true);
-        
+
         // ESCONDE OS CAMPOS ID DA DELA DE "DADOS CLIENTE"
         txtId.setVisible(false);
         lblId.setVisible(false);
@@ -653,7 +653,7 @@ public class frmCliente extends JDialog {
 
     private void btnCancelarBotCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarBotCadActionPerformed
         this.abaDados.setSelectedIndex(0);
-        
+
         panBotEdit.setVisible(false);
         LimparCampo();
         bloquearCampos();
@@ -724,8 +724,8 @@ public class frmCliente extends JDialog {
                 c.getId()
             });
         }
-        
-     
+
+
     }//GEN-LAST:event_txtNomeConsKeyPressed
 
     private void tabelaClMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClMouseClicked
@@ -756,28 +756,26 @@ public class frmCliente extends JDialog {
     }//GEN-LAST:event_btnCancelarBotEditMouseExited
 
     private void btnCancelarBotEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarBotEditActionPerformed
-       this.abaDados.setSelectedIndex(0);
-        
+        this.abaDados.setSelectedIndex(0);
+
         panBotEdit.setVisible(false);
         LimparCampo();
         bloquearCampos();
     }//GEN-LAST:event_btnCancelarBotEditActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        // JOptionPane tratando a confirmação da exclusão.
-        int resposta = JOptionPane.showConfirmDialog(null,
-                "Você tem certeza que deseja excluir?", "Confirmação",
-                JOptionPane.YES_NO_OPTION);
+        
+// TRADUZ OS BOTÕES DE INGLES PARA PORTUGUES
+        Object[] options = {"Sim", "Não"};
+
+        // Exibe um diálogo de confirmação com os botões personalizados
+        int resposta = JOptionPane.showOptionDialog(null, "Você tem certeza que deseja excluir?", "Confirmação", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+
+        // Verifica qual botão foi clicado
         if (resposta == JOptionPane.YES_OPTION) {
-            // O usuário clicou em "Sim"
-            ClienteDTO obj = new ClienteDTO();                  // abastecendo o campo do ID
-            obj.setId(Integer.parseInt(txtId.getText()));
-
-            ClienteDAO dao = new ClienteDAO();
-            dao.excluirCliente(obj);                 // enviando o objeto para o metodo da exclusão no ClienteDAO
-
-            this.abaDados.setSelectedIndex(0);
-            listarClientes();
+            // Código se a opção "Sim" for selecionada
+        } else if (resposta == JOptionPane.NO_OPTION) {
+            // Código se a opção "Não" for selecionada
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
@@ -871,8 +869,6 @@ public class frmCliente extends JDialog {
     private javax.swing.JFormattedTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
 
-    
-    
     private void Cadastrar() {
         String nome, endereco, uf, cpf, telefone, email;
         nome = txtNomeDados.getText();
@@ -894,8 +890,6 @@ public class frmCliente extends JDialog {
         clientedao.cadastrarFuncionario(clientedto);
     }
 
-
-    
     private void listarClientes() {
         try {
 
@@ -943,7 +937,6 @@ public class frmCliente extends JDialog {
         txtCpf.setText(tabelaCl.getModel().getValueAt(setar, 4).toString());
         txtTelefone.setText(tabelaCl.getModel().getValueAt(setar, 5).toString());
         txtEmail.setText(tabelaCl.getModel().getValueAt(setar, 6).toString());
-        
 
     }
 
@@ -989,5 +982,4 @@ public class frmCliente extends JDialog {
         this.setModal(true);
     }
 
-    
 }
