@@ -1,6 +1,4 @@
-/*
- * Interface grafica, onde o usuario interage.
- */
+
 package VIEW;
 
 import DAO.ConexaoDAO;
@@ -13,10 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Lellis
- */
 public class frmLogin extends javax.swing.JFrame {
 
     ConexaoDAO conexaoDAO = new ConexaoDAO();
