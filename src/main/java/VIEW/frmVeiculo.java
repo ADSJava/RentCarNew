@@ -64,6 +64,7 @@ public class frmVeiculo extends JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Veículo");
         setBackground(new java.awt.Color(0, 204, 204));
+        setPreferredSize(new java.awt.Dimension(900, 550));
 
         panPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -319,7 +320,7 @@ public class frmVeiculo extends JDialog {
                         .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panDadosLayout.createSequentialGroup()
                                 .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(IdPlaca)
+                                    .addComponent(IdPlaca, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(IdAno))
                                 .addGap(53, 53, 53)
                                 .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -356,10 +357,12 @@ public class frmVeiculo extends JDialog {
                         .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnCancEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnCancCad, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap(276, Short.MAX_VALUE))
+                .addContainerGap(273, Short.MAX_VALUE))
         );
 
         panDadosLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCancCad, btnCancEdit, btnSalvarEdit});
+
+        panDadosLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtAno, txtFabricante, txtModelo, txtNum, txtPlaca});
 
         panDadosLayout.setVerticalGroup(
             panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -370,22 +373,22 @@ public class frmVeiculo extends JDialog {
                     .addComponent(cbQtdPortas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(IdFabricante)
                     .addComponent(txtFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panDadosLayout.createSequentialGroup()
                         .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtAcessorios, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(IdAcessorios))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtIdVe, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(IdVe))
                         .addGap(155, 155, 155))
                     .addGroup(panDadosLayout.createSequentialGroup()
                         .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtModelo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(IdModelo))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(IdModelo)
+                            .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(IdPlaca))
@@ -397,7 +400,7 @@ public class frmVeiculo extends JDialog {
                         .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(IdNum)
                             .addComponent(txtNum, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGap(77, 77, 77)))
                 .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnSalvarEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCancEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -409,6 +412,8 @@ public class frmVeiculo extends JDialog {
         );
 
         panDadosLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCadDados, btnCancCad});
+
+        panDadosLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtAno, txtFabricante, txtModelo, txtNum, txtPlaca});
 
         abaDados.addTab("Dados do Veículo", panDados);
 

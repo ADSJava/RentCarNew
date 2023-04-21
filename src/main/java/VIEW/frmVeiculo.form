@@ -7,6 +7,9 @@
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="cc" green="cc" red="0" type="rgb"/>
     </Property>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[900, 550]"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -270,29 +273,29 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="IdPlaca" min="-2" max="-2" attributes="0"/>
+                                              <Component id="IdPlaca" alignment="1" min="-2" max="-2" attributes="0"/>
                                               <Component id="IdAno" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="txtAno" min="-2" pref="169" max="-2" attributes="0"/>
-                                              <Component id="txtPlaca" min="-2" pref="169" max="-2" attributes="0"/>
+                                              <Component id="txtAno" linkSize="3" min="-2" pref="169" max="-2" attributes="0"/>
+                                              <Component id="txtPlaca" linkSize="3" min="-2" pref="169" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="IdFabricante" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtFabricante" min="-2" pref="169" max="-2" attributes="0"/>
+                                          <Component id="txtFabricante" linkSize="3" min="-2" pref="169" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="IdModelo" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                                          <Component id="txtModelo" min="-2" pref="169" max="-2" attributes="0"/>
+                                          <Component id="txtModelo" linkSize="3" min="-2" pref="169" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="IdNum" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                          <Component id="txtNum" min="-2" pref="169" max="-2" attributes="0"/>
+                                          <Component id="txtNum" linkSize="3" min="-2" pref="169" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
@@ -321,7 +324,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="276" max="32767" attributes="0"/>
+                          <EmptySpace pref="273" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -333,43 +336,43 @@
                               <Component id="IdQtdPortas" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cbQtdPortas" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="IdFabricante" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtFabricante" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                              <Component id="txtFabricante" linkSize="4" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="txtAcessorios" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                                       <Component id="IdAcessorios" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="txtIdVe" alignment="0" min="-2" pref="27" max="-2" attributes="0"/>
                                       <Component id="IdVe" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtModelo" alignment="0" max="32767" attributes="0"/>
                                       <Component id="IdModelo" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtModelo" linkSize="4" min="-2" pref="27" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtPlaca" alignment="0" min="-2" pref="27" max="-2" attributes="0"/>
+                                      <Component id="txtPlaca" linkSize="4" alignment="0" min="-2" pref="27" max="-2" attributes="0"/>
                                       <Component id="IdPlaca" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="IdAno" max="32767" attributes="0"/>
-                                      <Component id="txtAno" min="-2" pref="27" max="-2" attributes="0"/>
+                                      <Component id="txtAno" linkSize="4" min="-2" pref="27" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="IdNum" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtNum" alignment="0" min="-2" pref="27" max="-2" attributes="0"/>
+                                      <Component id="txtNum" linkSize="4" alignment="0" min="-2" pref="27" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
