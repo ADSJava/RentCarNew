@@ -24,6 +24,7 @@ public class frmCliente extends JDialog {
 
         //setExtendedState(MAXIMIZED_BOTH);
         this.setModal(true);
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -260,6 +261,13 @@ public class frmCliente extends JDialog {
         }
         txtCpf.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         txtCpf.setPreferredSize(new java.awt.Dimension(64, 19));
+        txtCpf.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                txtCpfInputMethodTextChanged(evt);
+            }
+        });
 
         labelTelefone.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         labelTelefone.setForeground(new java.awt.Color(60, 0, 90));
@@ -477,7 +485,7 @@ public class frmCliente extends JDialog {
                     .addGroup(panDadosClienteLayout.createSequentialGroup()
                         .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelNome)
-                            .addComponent(txtNomeDados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNomeDados, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(14, 14, 14)
                         .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(labelEndereco)
@@ -543,6 +551,8 @@ public class frmCliente extends JDialog {
             abaDados.setSelectedIndex(1);
             this.panBotEdit.setVisible(true);
             this.panBotCad.setVisible(false);
+            
+            this.txtCpf.setEnabled(false); // TORNA CAMPO CPF NAO EDITAVEL
             
             txtNomeDados.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 0).toString());
             txtEndereco.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 1).toString());
@@ -633,6 +643,8 @@ public class frmCliente extends JDialog {
             dao.alterarCliente(obj);                 // enviando o objeto para o metodo da alteração no ClienteDAO
             JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
             this.abaDados.setSelectedIndex(0);
+            
+            this.panBotEdit.setVisible(false); // TORNA VISIBILIDADE DOS BOTOES FALSO
             listarClientes();
             LimparCampo();
             bloquearCampos();
@@ -674,6 +686,8 @@ public class frmCliente extends JDialog {
             //validarDados();
             Cadastrar();
             JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+            
+            this.panBotCad.setVisible(false); // APOS CADASTRAR OS BOTOES SOMEM DA TELA "DADOS"
             listarClientes();
             LimparCampo();            
             this.abaDados.setSelectedIndex(0);
@@ -789,6 +803,10 @@ public class frmCliente extends JDialog {
     private void cbUFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbUFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbUFActionPerformed
+
+    private void txtCpfInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtCpfInputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCpfInputMethodTextChanged
 
     /**
      * @param args the command line arguments
