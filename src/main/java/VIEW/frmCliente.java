@@ -552,8 +552,6 @@ public class frmCliente extends JDialog {
             this.panBotEdit.setVisible(true);
             this.panBotCad.setVisible(false);
             
-            this.txtCpf.setEnabled(false); // TORNA CAMPO CPF NAO EDITAVEL
-            
             txtNomeDados.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 0).toString());
             txtEndereco.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 1).toString());
             cbUF.setSelectedItem(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 2).toString());

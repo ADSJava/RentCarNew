@@ -417,7 +417,7 @@ public class frmAluguel extends JDialog {
                 dao.cadastrarAluguel(obj);
 
                 JOptionPane.showMessageDialog(null, "Aluguel bem sucedido!");
-                LimparCampos();
+                LimparCampos();                
             } catch (Exception erro) {
                 JOptionPane.showMessageDialog(null, "ERRO CAD:" + erro);
             }
