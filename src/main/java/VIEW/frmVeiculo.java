@@ -66,6 +66,7 @@ public class frmVeiculo extends JDialog {
         setBackground(new java.awt.Color(0, 204, 204));
         setPreferredSize(new java.awt.Dimension(900, 550));
 
+        panPrincipal.setPreferredSize(new java.awt.Dimension(910, 621));
         panPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         abaDados.setForeground(new java.awt.Color(60, 0, 90));
@@ -74,6 +75,7 @@ public class frmVeiculo extends JDialog {
 
         panCons.setForeground(new java.awt.Color(60, 0, 90));
         panCons.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panCons.setPreferredSize(new java.awt.Dimension(900, 500));
 
         tabelaVe.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         tabelaVe.setModel(new javax.swing.table.DefaultTableModel(
@@ -86,7 +88,7 @@ public class frmVeiculo extends JDialog {
                 {null, null, null, null}
             },
             new String [] {
-                "Nome", "Numero", "Placa", "Fabricante", "Ano", "QtdPortas", "Acessorios", "ID"
+                "Modelo", "Numero", "Placa", "Fabricante", "Ano", "QtdPortas", "Acessorios", "ID"
             }
         ));
         tabelaVe.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -97,7 +99,7 @@ public class frmVeiculo extends JDialog {
         jScrollPane1.setViewportView(tabelaVe);
 
         btnNovo.setBackground(new java.awt.Color(60, 0, 90));
-        btnNovo.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        btnNovo.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         btnNovo.setForeground(new java.awt.Color(255, 255, 255));
         btnNovo.setText("NOVO");
         btnNovo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -108,7 +110,7 @@ public class frmVeiculo extends JDialog {
         });
 
         btnEditarCons.setBackground(new java.awt.Color(60, 0, 90));
-        btnEditarCons.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        btnEditarCons.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         btnEditarCons.setForeground(new java.awt.Color(255, 255, 255));
         btnEditarCons.setText("EDITAR");
         btnEditarCons.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -119,7 +121,7 @@ public class frmVeiculo extends JDialog {
         });
 
         btnExcluir.setBackground(new java.awt.Color(60, 0, 90));
-        btnExcluir.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        btnExcluir.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         btnExcluir.setForeground(new java.awt.Color(255, 255, 255));
         btnExcluir.setText("EXCLUIR");
         btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -154,7 +156,6 @@ public class frmVeiculo extends JDialog {
         panCons.setLayout(panConsLayout);
         panConsLayout.setHorizontalGroup(
             panConsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 910, Short.MAX_VALUE)
             .addGroup(panConsLayout.createSequentialGroup()
                 .addGroup(panConsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panConsLayout.createSequentialGroup()
@@ -163,13 +164,16 @@ public class frmVeiculo extends JDialog {
                             .addComponent(jLabel9)
                             .addComponent(txtBuscaVe, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panConsLayout.createSequentialGroup()
-                        .addGap(215, 215, 215)
+                        .addGap(247, 247, 247)
                         .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75)
+                        .addGap(70, 70, 70)
                         .addComponent(btnEditarCons, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(70, 70, 70)
-                        .addComponent(btnExcluir)))
-                .addContainerGap(271, Short.MAX_VALUE))
+                        .addComponent(btnExcluir))
+                    .addGroup(panConsLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 865, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         panConsLayout.setVerticalGroup(
             panConsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,45 +184,51 @@ public class frmVeiculo extends JDialog {
                 .addComponent(txtBuscaVe, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panConsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditarCons, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(350, Short.MAX_VALUE))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
 
         abaDados.addTab("Consultar Veículos", panCons);
 
         panDados.setForeground(new java.awt.Color(60, 0, 90));
         panDados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panDados.setPreferredSize(new java.awt.Dimension(900, 500));
 
-        IdNum.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
+        IdNum.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         IdNum.setForeground(new java.awt.Color(60, 0, 90));
         IdNum.setText("Número:");
 
-        IdPlaca.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
+        IdPlaca.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         IdPlaca.setForeground(new java.awt.Color(60, 0, 90));
         IdPlaca.setText("Placa:");
 
-        IdFabricante.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
+        IdFabricante.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         IdFabricante.setForeground(new java.awt.Color(60, 0, 90));
         IdFabricante.setText("Fabricante:");
 
-        IdAno.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
+        IdAno.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         IdAno.setForeground(new java.awt.Color(60, 0, 90));
         IdAno.setText("Ano:");
 
-        IdQtdPortas.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
+        IdQtdPortas.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         IdQtdPortas.setForeground(new java.awt.Color(60, 0, 90));
         IdQtdPortas.setText("Portas:");
 
-        IdAcessorios.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
+        IdAcessorios.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         IdAcessorios.setForeground(new java.awt.Color(60, 0, 90));
         IdAcessorios.setText("Acessórios:");
 
         txtAno.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         txtAno.setPreferredSize(new java.awt.Dimension(64, 19));
+        txtAno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAnoActionPerformed(evt);
+            }
+        });
 
         txtNum.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         txtNum.setPreferredSize(new java.awt.Dimension(64, 19));
@@ -238,9 +248,9 @@ public class frmVeiculo extends JDialog {
         });
 
         btnCadDados.setBackground(new java.awt.Color(60, 0, 90));
-        btnCadDados.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        btnCadDados.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         btnCadDados.setForeground(new java.awt.Color(255, 255, 255));
-        btnCadDados.setText("CADASTRAR");
+        btnCadDados.setText("Cadastrar");
         btnCadDados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCadDados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -248,17 +258,17 @@ public class frmVeiculo extends JDialog {
             }
         });
 
-        IdModelo.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
+        IdModelo.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         IdModelo.setForeground(new java.awt.Color(60, 0, 90));
-        IdModelo.setText("Nome:");
+        IdModelo.setText("Modelo:");
 
         txtModelo.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         txtModelo.setPreferredSize(new java.awt.Dimension(64, 19));
 
         btnSalvarEdit.setBackground(new java.awt.Color(60, 0, 90));
-        btnSalvarEdit.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        btnSalvarEdit.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         btnSalvarEdit.setForeground(new java.awt.Color(255, 255, 255));
-        btnSalvarEdit.setText("SALVAR");
+        btnSalvarEdit.setText("Salvar");
         btnSalvarEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalvarEdit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -271,7 +281,7 @@ public class frmVeiculo extends JDialog {
             }
         });
 
-        IdVe.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
+        IdVe.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         IdVe.setForeground(new java.awt.Color(60, 0, 90));
         IdVe.setText("Id:");
 
@@ -284,9 +294,9 @@ public class frmVeiculo extends JDialog {
         });
 
         btnCancEdit.setBackground(new java.awt.Color(60, 0, 90));
-        btnCancEdit.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        btnCancEdit.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         btnCancEdit.setForeground(new java.awt.Color(255, 255, 255));
-        btnCancEdit.setText("CANCELAR");
+        btnCancEdit.setText("Cancelar");
         btnCancEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -295,9 +305,9 @@ public class frmVeiculo extends JDialog {
         });
 
         btnCancCad.setBackground(new java.awt.Color(60, 0, 90));
-        btnCancCad.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        btnCancCad.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         btnCancCad.setForeground(new java.awt.Color(255, 255, 255));
-        btnCancCad.setText("CANCELAR");
+        btnCancCad.setText("Cancelar");
         btnCancCad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancCad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -317,28 +327,29 @@ public class frmVeiculo extends JDialog {
                 .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panDadosLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panDadosLayout.createSequentialGroup()
-                                .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(IdPlaca, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(IdAno))
-                                .addGap(53, 53, 53)
-                                .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtAno, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(panDadosLayout.createSequentialGroup()
                                 .addComponent(IdFabricante)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panDadosLayout.createSequentialGroup()
-                                .addComponent(IdModelo)
-                                .addGap(47, 47, 47)
-                                .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panDadosLayout.createSequentialGroup()
-                                .addComponent(IdNum)
-                                .addGap(28, 28, 28)
-                                .addComponent(txtNum, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(71, 71, 71)
+                                .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panDadosLayout.createSequentialGroup()
+                                        .addComponent(IdModelo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(37, 37, 37))
+                                    .addGroup(panDadosLayout.createSequentialGroup()
+                                        .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(IdPlaca)
+                                            .addComponent(IdAno)
+                                            .addComponent(IdNum))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtNum, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtAno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                                        .addComponent(txtPlaca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)))))
+                        .addGap(30, 30, 30)
                         .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(IdQtdPortas)
                             .addComponent(IdAcessorios)
@@ -349,58 +360,63 @@ public class frmVeiculo extends JDialog {
                             .addComponent(txtIdVe, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbQtdPortas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panDadosLayout.createSequentialGroup()
-                        .addGap(240, 240, 240)
-                        .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSalvarEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCadDados))
+                        .addGap(315, 315, 315)
+                        .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnSalvarEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                            .addComponent(btnCadDados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(31, 31, 31)
                         .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnCancEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnCancCad, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap(273, Short.MAX_VALUE))
+                .addContainerGap(312, Short.MAX_VALUE))
         );
 
         panDadosLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCancCad, btnCancEdit, btnSalvarEdit});
 
-        panDadosLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtAno, txtFabricante, txtModelo, txtNum, txtPlaca});
+        panDadosLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtAcessorios, txtAno, txtFabricante, txtIdVe, txtNum, txtPlaca});
 
         panDadosLayout.setVerticalGroup(
             panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panDadosLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(IdQtdPortas)
-                    .addComponent(cbQtdPortas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(IdFabricante)
-                    .addComponent(txtFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panDadosLayout.createSequentialGroup()
                         .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(IdFabricante)
+                            .addComponent(txtFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panDadosLayout.createSequentialGroup()
+                                .addComponent(IdModelo)
+                                .addGap(18, 18, 18)
+                                .addComponent(IdPlaca)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(IdAno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(IdNum)
+                                .addGap(46, 46, 46))
+                            .addGroup(panDadosLayout.createSequentialGroup()
+                                .addComponent(txtModelo, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtAno, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtNum, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(panDadosLayout.createSequentialGroup()
+                        .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(IdQtdPortas)
+                            .addComponent(cbQtdPortas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtAcessorios, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(IdAcessorios))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtIdVe, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(IdVe))
-                        .addGap(155, 155, 155))
-                    .addGroup(panDadosLayout.createSequentialGroup()
-                        .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(IdModelo)
-                            .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(IdPlaca))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(IdAno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtAno, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(IdNum)
-                            .addComponent(txtNum, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(77, 77, 77)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnSalvarEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCancEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -408,16 +424,16 @@ public class frmVeiculo extends JDialog {
                 .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadDados, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancCad))
-                .addGap(354, 354, 354))
+                .addGap(318, 318, 318))
         );
 
         panDadosLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCadDados, btnCancCad});
 
-        panDadosLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtAno, txtFabricante, txtModelo, txtNum, txtPlaca});
+        panDadosLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtAcessorios, txtAno, txtFabricante, txtIdVe, txtModelo, txtNum, txtPlaca});
 
         abaDados.addTab("Dados do Veículo", panDados);
 
-        panPrincipal.add(abaDados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 910, -1));
+        panPrincipal.add(abaDados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 930, 540));
 
         panHeader.setBackground(new java.awt.Color(178, 128, 255));
 
@@ -654,6 +670,10 @@ public class frmVeiculo extends JDialog {
         bloquearCampos();
         LimparCampo();
     }//GEN-LAST:event_btnCancCadActionPerformed
+
+    private void txtAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAnoActionPerformed
 
     /**
      * @param args the command line arguments

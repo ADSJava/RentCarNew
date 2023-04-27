@@ -100,7 +100,20 @@ public class VeiculoDAO {
             JOptionPane.showMessageDialog(null, "ERRO ALTERAR: " + erro);
         }
     }
-
+    //METODO QUE VAI FAZER A INSERÇÃO NO COMBOBOX DE ALUGUEL PARA SER LISTADO NO COMBOBOX.
+    public ResultSet listarModelo(){
+        c = new ConexaoDAO().conectaBD();
+        String sql = "SELECT * FROM veiculo ORDER BY nome";
+        
+        try {
+            p = c.prepareStatement(sql);
+             return p.executeQuery();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERRO" + e);
+            return null;
+        }
+    }
+    // METODO QUE FAZ A BUSCA DOS VEICULOS PELO NOME OU PLACA
     public ArrayList<VeiculoDTO> buscarVeiculo(String nome, String placa) {
         String buscar = "SELECT * FROM veiculo WHERE nome like ? OR placa like ? ORDER BY nome";
         c = new ConexaoDAO().conectaBD();

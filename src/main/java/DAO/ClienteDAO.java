@@ -46,6 +46,19 @@ public class ClienteDAO {
         }
 
     }
+    //METODO QUE FAZ A INSERÇÃO NO COMBOBOX DE ALUGUEL, LISTANDO CADA NOME NO COMBOBOX.
+    public ResultSet listarNomes(){
+        c = new ConexaoDAO().conectaBD();
+        String sql = "SELECT * FROM cliente ORDER BY nomeCliente";
+        
+        try {
+            p = c.prepareStatement(sql);
+             return p.executeQuery();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERRO" + e);
+            return null;
+        }
+    }
 
     // ALIMENTA A TABELA -----------------------------------------------
     public ArrayList<ClienteDTO> PesquisarCliente() {
