@@ -79,6 +79,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         });
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tabelaAlu.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         tabelaAlu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -101,6 +102,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 510, 290));
 
+        tabelaEntregue.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         tabelaEntregue.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -152,59 +154,77 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         IdBuscaC.setFont(new java.awt.Font("Lucida Fax", 1, 14)); // NOI18N
         IdBuscaC.setForeground(new java.awt.Color(60, 0, 90));
         IdBuscaC.setText("Período:");
-        jPanel1.add(IdBuscaC, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, 20));
+        jPanel1.add(IdBuscaC, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, -1, 20));
 
         IdBuscaV.setFont(new java.awt.Font("Lucida Fax", 1, 14)); // NOI18N
         IdBuscaV.setForeground(new java.awt.Color(60, 0, 90));
         IdBuscaV.setText("Status:");
-        jPanel1.add(IdBuscaV, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 230, 130, 20));
+        jPanel1.add(IdBuscaV, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 80, 60, 20));
 
         jLabel2.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(60, 0, 90));
         jLabel2.setText("até");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 50, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 30, 30));
 
         btnPesqPer.setBackground(new java.awt.Color(60, 0, 90));
         btnPesqPer.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         btnPesqPer.setForeground(new java.awt.Color(255, 255, 255));
         btnPesqPer.setText("Pesquisar");
+        btnPesqPer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPesqPer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPesqPerMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPesqPerMouseExited(evt);
+            }
+        });
         btnPesqPer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesqPerActionPerformed(evt);
             }
         });
-        jPanel1.add(btnPesqPer, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 120, -1));
+        jPanel1.add(btnPesqPer, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, 120, -1));
 
         txtP1D.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        jPanel1.add(txtP1D, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 50, -1));
+        txtP1D.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(txtP1D, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 50, -1));
 
         txtP1M.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
+        txtP1M.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         txtP1M.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtP1MActionPerformed(evt);
             }
         });
-        jPanel1.add(txtP1M, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 50, -1));
+        jPanel1.add(txtP1M, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 100, 50, -1));
 
         txtP1A.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030" }));
-        jPanel1.add(txtP1A, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 60, -1));
+        txtP1A.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(txtP1A, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 60, -1));
 
         txtP2D.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        jPanel1.add(txtP2D, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 50, -1));
+        txtP2D.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(txtP2D, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 50, -1));
 
         txtP2M.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
-        jPanel1.add(txtP2M, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 50, -1));
+        txtP2M.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(txtP2M, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 50, -1));
 
         txtP2A.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030" }));
-        jPanel1.add(txtP2A, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 60, -1));
+        txtP2A.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(txtP2A, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 60, -1));
 
         cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "S", "N" }));
+        cbStatus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cbStatus.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbStatusItemStateChanged(evt);
             }
         });
-        jPanel1.add(cbStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 250, -1, -1));
+        jPanel1.add(cbStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 110, -1, -1));
 
+        jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setFont(new java.awt.Font("Lucida Fax", 0, 14)); // NOI18N
 
         mnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8-usuário-masculino-tipo-de-pele-com-círculo-1-2.gif"))); // NOI18N
@@ -358,6 +378,16 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbStatusItemStateChanged
 
+    private void btnPesqPerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesqPerMouseEntered
+        btnPesqPer.setForeground(Color.decode("#3C005A"));
+        btnPesqPer.setBackground(Color.decode("#b280ff"));
+    }//GEN-LAST:event_btnPesqPerMouseEntered
+
+    private void btnPesqPerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesqPerMouseExited
+        btnPesqPer.setBackground(Color.decode("#3C005A"));
+        btnPesqPer.setForeground(Color.decode("#FFFFFF"));
+    }//GEN-LAST:event_btnPesqPerMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -393,51 +423,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         });
     }
 
-    /*private void listarClientes() {
-        try {
-            ClienteDAO userdao = new ClienteDAO();
-
-            DefaultTableModel model = (DefaultTableModel) tabelaAlu.getModel();
-            model.setNumRows(0);
-
-            ArrayList<ClienteDTO> lista = userdao.PesquisarCliente();
-
-            for (int rows = 0; rows < lista.size(); rows++) {
-                model.addRow(new Object[]{
-                    lista.get(rows).getNomeCliente(),
-                    lista.get(rows).getCpf(),
-                    lista.get(rows).getEmail(),
-                    lista.get(rows).getTelefone()
-                });
-            }
-        } catch (Exception erro) {
-            JOptionPane.showMessageDialog(null, "Listar Usuarios View" + erro);
-        }
-
-    }
-    
-    
-    private void listarVeiculos() {
-        try {
-            VeiculoDAO userdao = new VeiculoDAO();
-
-            DefaultTableModel model = (DefaultTableModel) tabelaEntregue.getModel();
-            model.setNumRows(0);
-            ArrayList<VeiculoDTO> lista = userdao.pesquisarVeiculo();
-
-            for (int rows = 0; rows < lista.size(); rows++) {
-                model.addRow(new Object[]{
-                    lista.get(rows).getNome(),
-                    lista.get(rows).getNumero(),
-                    lista.get(rows).getPlaca(),
-                    lista.get(rows).getQtdPortas()
-                });
-            }
-        } catch (Exception erro) {
-            JOptionPane.showMessageDialog(null, "Listar Usuarios View" + erro);
-        }
-    }
-    */
+   
     
     // LISTA DE VEICULOS ALUGADOS
     public void listarAluguel() { //TABELA DA ESQUERDA

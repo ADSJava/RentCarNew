@@ -185,7 +185,7 @@
                               <Component id="btnExcluir" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                               <Component id="btnEditar" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="70" max="32767" attributes="0"/>
+                          <EmptySpace pref="80" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -302,7 +302,7 @@
                 <Component class="javax.swing.JTextField" name="txtNomeCons">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Lucida Sans" size="12" style="0"/>
+                      <Font name="Lucida Sans" size="12" style="1"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -330,27 +330,23 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="284" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="panBotCad" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="panBotEdit" pref="686" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="labelEndereco" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="labelNome" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="labelCPF" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="txtEndereco" linkSize="1" min="-2" pref="292" max="-2" attributes="0"/>
-                                              <Component id="txtNomeDados" linkSize="1" min="-2" pref="292" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                                          <Component id="txtCpf" linkSize="1" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                                  <Component id="labelEndereco" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                  <Component id="txtEndereco" linkSize="1" min="-2" pref="292" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -361,6 +357,17 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="txtTelefone" linkSize="1" min="-2" pref="162" max="-2" attributes="0"/>
                                       <Component id="txtEmail" linkSize="1" min="-2" pref="260" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="labelNome" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelCPF" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txtCpf" linkSize="1" pref="292" max="32767" attributes="0"/>
+                                      <Component id="txtNomeDados" linkSize="1" min="-2" pref="292" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -377,18 +384,7 @@
                                   <Component id="txtId" min="-2" pref="46" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="358" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="284" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="panBotCad" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="panBotEdit" pref="686" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -402,31 +398,32 @@
                                       <Component id="labelUF" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="cbUF" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="130" pref="130" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="txtId" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                                       <Component id="IdCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="labelNome" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtNomeDados" alignment="0" min="-2" pref="27" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="labelCPF" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtCpf" min="-2" pref="27" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="labelEndereco" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                                          <Component id="txtEndereco" pref="27" max="32767" attributes="0"/>
+                                          <Component id="txtEndereco" min="-2" pref="27" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="labelCPF" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtCpf" alignment="3" pref="27" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="labelTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtTelefone" alignment="3" pref="27" max="32767" attributes="0"/>

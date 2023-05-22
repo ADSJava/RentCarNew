@@ -1,5 +1,7 @@
 package VIEW;
 
+import java.awt.Color;
+
 public class frmRelatorio extends javax.swing.JDialog {
 
     public frmRelatorio(java.awt.Frame parent, boolean modal) {
@@ -20,7 +22,7 @@ public class frmRelatorio extends javax.swing.JDialog {
         txtNomeDados = new javax.swing.JTextField();
         labelEmail = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
-        btnCadastrar = new javax.swing.JButton();
+        btnConsultar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -31,10 +33,10 @@ public class frmRelatorio extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(178, 128, 255));
 
         labelCadastro.setFont(new java.awt.Font("Lucida Fax", 1, 24)); // NOI18N
-        labelCadastro.setForeground(new java.awt.Color(255, 255, 255));
+        labelCadastro.setForeground(new java.awt.Color(25, 0, 63));
         labelCadastro.setText("Relatórios");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -76,25 +78,25 @@ public class frmRelatorio extends javax.swing.JDialog {
         panDadosCliente.add(labelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(454, 30, -1, -1));
         panDadosCliente.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(573, 28, 260, -1));
 
-        btnCadastrar.setBackground(new java.awt.Color(223, 255, 223));
-        btnCadastrar.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        btnCadastrar.setForeground(new java.awt.Color(63, 125, 63));
-        btnCadastrar.setText("Consultar");
-        btnCadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnConsultar.setBackground(new java.awt.Color(60, 0, 90));
+        btnConsultar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        btnConsultar.setForeground(new java.awt.Color(255, 255, 255));
+        btnConsultar.setText("Consultar");
+        btnConsultar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnConsultar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnCadastrarMouseEntered(evt);
+                btnConsultarMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnCadastrarMouseExited(evt);
+                btnConsultarMouseExited(evt);
             }
         });
-        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrarActionPerformed(evt);
+                btnConsultarActionPerformed(evt);
             }
         });
-        panDadosCliente.add(btnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 400, 108, 43));
+        panDadosCliente.add(btnConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 400, 108, 43));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -196,17 +198,19 @@ public class frmRelatorio extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCadastrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrarMouseEntered
-       
-    }//GEN-LAST:event_btnCadastrarMouseEntered
+    private void btnConsultarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMouseEntered
+       btnConsultar.setForeground(Color.decode("#3C005A"));
+       btnConsultar.setBackground(Color.decode("#b280ff"));
+    }//GEN-LAST:event_btnConsultarMouseEntered
 
-    private void btnCadastrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrarMouseExited
- 
-    }//GEN-LAST:event_btnCadastrarMouseExited
+    private void btnConsultarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMouseExited
+        btnConsultar.setBackground(Color.decode("#3C005A"));
+        btnConsultar.setForeground(Color.decode("#FFFFFF"));
+    }//GEN-LAST:event_btnConsultarMouseExited
 
-    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
        
-    }//GEN-LAST:event_btnCadastrarActionPerformed
+    }//GEN-LAST:event_btnConsultarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,7 +255,7 @@ public class frmRelatorio extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCadastrar;
+    private javax.swing.JButton btnConsultar;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

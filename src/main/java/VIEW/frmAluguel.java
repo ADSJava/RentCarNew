@@ -349,7 +349,7 @@ public class frmAluguel extends JDialog {
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
-        panPrincipal.add(panHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, -1));
+        panPrincipal.add(panHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

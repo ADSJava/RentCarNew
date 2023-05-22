@@ -103,6 +103,14 @@ public class frmVeiculo extends JDialog {
         btnNovo.setForeground(new java.awt.Color(255, 255, 255));
         btnNovo.setText("NOVO");
         btnNovo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNovo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnNovoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnNovoMouseExited(evt);
+            }
+        });
         btnNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNovoActionPerformed(evt);
@@ -114,6 +122,14 @@ public class frmVeiculo extends JDialog {
         btnEditarCons.setForeground(new java.awt.Color(255, 255, 255));
         btnEditarCons.setText("EDITAR");
         btnEditarCons.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditarCons.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEditarConsMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEditarConsMouseExited(evt);
+            }
+        });
         btnEditarCons.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarConsActionPerformed(evt);
@@ -125,12 +141,21 @@ public class frmVeiculo extends JDialog {
         btnExcluir.setForeground(new java.awt.Color(255, 255, 255));
         btnExcluir.setText("EXCLUIR");
         btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExcluir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnExcluirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnExcluirMouseExited(evt);
+            }
+        });
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
             }
         });
 
+        txtBuscaVe.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         txtBuscaVe.setForeground(new java.awt.Color(153, 153, 153));
         txtBuscaVe.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -674,6 +699,36 @@ public class frmVeiculo extends JDialog {
     private void txtAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAnoActionPerformed
+
+    private void btnNovoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoMouseEntered
+        btnNovo.setForeground(Color.decode("#3C005A"));
+        btnNovo.setBackground(Color.decode("#b280ff"));
+    }//GEN-LAST:event_btnNovoMouseEntered
+
+    private void btnEditarConsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarConsMouseEntered
+        btnEditarCons.setForeground(Color.decode("#3C005A"));
+        btnEditarCons.setBackground(Color.decode("#b280ff"));
+    }//GEN-LAST:event_btnEditarConsMouseEntered
+
+    private void btnExcluirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseEntered
+        btnExcluir.setForeground(Color.decode("#3C005A"));
+        btnExcluir.setBackground(Color.decode("#b280ff"));
+    }//GEN-LAST:event_btnExcluirMouseEntered
+
+    private void btnNovoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoMouseExited
+        btnNovo.setBackground(Color.decode("#3C005A"));
+        btnNovo.setForeground(Color.decode("#FFFFFF"));
+    }//GEN-LAST:event_btnNovoMouseExited
+
+    private void btnEditarConsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarConsMouseExited
+        btnEditarCons.setBackground(Color.decode("#3C005A"));
+        btnEditarCons.setForeground(Color.decode("#FFFFFF"));
+    }//GEN-LAST:event_btnEditarConsMouseExited
+
+    private void btnExcluirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseExited
+        btnExcluir.setBackground(Color.decode("#3C005A"));
+        btnExcluir.setForeground(Color.decode("#FFFFFF"));
+    }//GEN-LAST:event_btnExcluirMouseExited
 
     /**
      * @param args the command line arguments
