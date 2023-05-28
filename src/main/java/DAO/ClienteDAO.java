@@ -89,7 +89,7 @@ public class ClienteDAO {
     }
 
     public void alterarCliente(ClienteDTO clienteDTO) {
-        String alterar = "UPDATE cliente SET nomeCliente=?, endereco=?,uf=?, telefone=?,cpf=?, email=? where idCliente = ?";
+        String alterar = "UPDATE cliente SET nomeCliente=?, endereco=?,uf=?, telefone=?,cpf=?, email=? where cpf=?";
         c = new ConexaoDAO().conectaBD();
 
         try {
@@ -101,7 +101,7 @@ public class ClienteDAO {
             p.setString(5, clienteDTO.getCpf());
             p.setString(6, clienteDTO.getEmail());
 
-            p.setInt(7, clienteDTO.getId());
+            p.setString(7, clienteDTO.getCpf());
 
             p.execute();
             p.close();
@@ -141,13 +141,13 @@ public class ClienteDAO {
     }
 
     public void excluirCliente(ClienteDTO obj) {
-        String excluir = "DELETE FROM cliente WHERE idCliente = ?";
+        String excluir = "DELETE FROM cliente WHERE cpf=?";
         c = new ConexaoDAO().conectaBD();
 
         try {
 
             p = c.prepareStatement(excluir);
-            p.setInt(1, obj.getId());
+            p.setString(1, obj.getCpf());
 
             p.execute();
             p.close();

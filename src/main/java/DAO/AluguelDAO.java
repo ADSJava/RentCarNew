@@ -158,6 +158,7 @@ public class AluguelDAO {
         }
         return lista;
     }
+    
     // METODO QUE FAZ A FILTRAGEM DA TABELA PELA ESCOLHA FEITA PELO COMBOBOX.
     public ArrayList<AluguelDTO> buscarAluguel(String status) {
         String pesquisar = "SELECT * FROM aluguel WHERE entregue=? ORDER BY modelo";

@@ -3,8 +3,8 @@ package DTO;
 
 public class VeiculoDTO {
     private int idVeiculo;
-    private String nome;
-    private int numero;
+    private String modelo;
+    private String cor;
     private String placa;
     private String fabricante;
     private int anoModelo;
@@ -19,20 +19,20 @@ public class VeiculoDTO {
         this.idVeiculo = idVeiculo;
     }
 
-    public String getNome() {
-        return nome;
+    public String getModelo() {
+        return modelo;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
     }
 
-    public int getNumero() {
-        return numero;
+    public String getCor() {
+        return cor;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public void setCor(String cor) {
+        this.cor = cor;
     }
 
     public String getPlaca() {

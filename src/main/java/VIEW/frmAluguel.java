@@ -25,7 +25,7 @@ import javax.swing.ComboBoxModel;
 public class frmAluguel extends JDialog {
 
     int resp;
-    SimpleDateFormat form = new SimpleDateFormat("yyyy/MM/dd");   
+    SimpleDateFormat form = new SimpleDateFormat("yyyy/MM/dd");
     ArrayList<String> placa = new ArrayList<>();
     ArrayList<String> cpf = new ArrayList<>();
 
@@ -376,9 +376,9 @@ public class frmAluguel extends JDialog {
 
         if (cbModelo.getSelectedItem().equals("") || cbNomeC.equals("") || txtPlaca.getText().equals("")
                 || txtCpf.getText().equals("")
-                || txtValor.getText().equals("") || cbEntregue.equals("") ||
-                txtDataE.getText().equals("") || txtDataA.getText().equals("") ||
-                txtObservacoes.getText().equals("")) {
+                || txtValor.getText().equals("") || cbEntregue.equals("")
+                || txtDataE.getText().equals("") || txtDataA.getText().equals("")
+                || txtObservacoes.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
         } else {
             try {
@@ -417,7 +417,10 @@ public class frmAluguel extends JDialog {
                 dao.cadastrarAluguel(obj);
 
                 JOptionPane.showMessageDialog(null, "Aluguel bem sucedido!");
-                LimparCampos();                
+                
+                PrincipalVIEW p = new PrincipalVIEW();                
+                p.buscarStatus("*");
+                dispose();
             } catch (Exception erro) {
                 JOptionPane.showMessageDialog(null, "ERRO CAD:" + erro);
             }
@@ -536,7 +539,7 @@ public class frmAluguel extends JDialog {
             ResultSet rs = obj.listarModelo();
 
             while (rs.next()) {
-                placa.add(rs.getString(4));                
+                placa.add(rs.getString(4));
                 cbModelo.addItem(rs.getString(2));
             }
 
@@ -551,7 +554,7 @@ public class frmAluguel extends JDialog {
             ClienteDAO obj = new ClienteDAO();
             ResultSet rs = obj.listarNomes();
 
-            while (rs.next()) {                
+            while (rs.next()) {
                 cpf.add(rs.getString(6));
                 cbNomeC.addItem(rs.getString(2));
             }
@@ -599,18 +602,17 @@ public class frmAluguel extends JDialog {
         IdValor.setVisible(false);
         IdDataAluguel.setVisible(false);
         IdDataEntrega.setVisible(false);
-        /* cbDE.setVisible(false);
-        cbME.setVisible(false);
-        cbAE.setVisible(false);
-        cbDA.setVisible(false);
-        cbMA.setVisible(false);
-        cbAA.setVisible(false); */
+         txtDataA.setVisible(false);
+        txtDataE.setVisible(false);
         txtObservacoes.setVisible(false);
+        btnSalvarAlu.setVisible(false);        
         IdObs.setVisible(false);
         cbEntregue.setVisible(false);
         IdEntregue.setVisible(false);
         txtIdVe.setVisible(false);
         IdVe.setVisible(false);
+        /*cbMA.setVisible(false);
+        cbAA.setVisible(false); */
         //setExtendedState(MAXIMIZED_BOTH);
         this.setModal(true);
         LimparCampos();
@@ -634,13 +636,12 @@ public class frmAluguel extends JDialog {
         IdValor.setVisible(true);
         IdDataAluguel.setVisible(true);
         IdDataEntrega.setVisible(true);
-        /* cbDE.setVisible(true);
-        cbME.setVisible(true);
-        cbAE.setVisible(true);
-        cbDA.setVisible(true);
-        cbMA.setVisible(true);
-        cbAA.setVisible(true); */
+        txtDataA.setVisible(true);
+        txtDataE.setVisible(true);
         txtObservacoes.setVisible(true);
+        btnSalvarAlu.setVisible(true);
+        /*cbMA.setVisible(true);
+        cbAA.setVisible(true); */        
         IdObs.setVisible(true);
         cbEntregue.setVisible(true);
         IdEntregue.setVisible(true);

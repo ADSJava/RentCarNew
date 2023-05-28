@@ -79,6 +79,11 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         });
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tabelaAlu = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         tabelaAlu.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         tabelaAlu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,6 +98,8 @@ public class PrincipalVIEW extends javax.swing.JFrame {
                 "Nome Cliente", "Modelo", "Data do Aluguel", "Valor do Aluguel"
             }
         ));
+        tabelaAlu.getTableHeader().setResizingAllowed(false);
+        tabelaAlu.getTableHeader().setReorderingAllowed(false);
         tabelaAlu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabelaAluMouseClicked(evt);
@@ -100,8 +107,13 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabelaAlu);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 510, 290));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 620, 290));
 
+        tabelaEntregue = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         tabelaEntregue.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         tabelaEntregue.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -116,6 +128,8 @@ public class PrincipalVIEW extends javax.swing.JFrame {
                 "Modelo", "Data do Aluguel", "Data da Entrega", "Entregue"
             }
         ));
+        tabelaEntregue.getTableHeader().setResizingAllowed(false);
+        tabelaEntregue.getTableHeader().setReorderingAllowed(false);
         tabelaEntregue.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabelaEntregueMouseClicked(evt);
@@ -123,7 +137,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tabelaEntregue);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 230, 460, 290));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 230, 560, 290));
 
         btnAlugar.setBackground(new java.awt.Color(60, 0, 90));
         btnAlugar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -222,9 +236,13 @@ public class PrincipalVIEW extends javax.swing.JFrame {
                 cbStatusItemStateChanged(evt);
             }
         });
+        cbStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbStatusActionPerformed(evt);
+            }
+        });
         jPanel1.add(cbStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 110, -1, -1));
 
-        jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setFont(new java.awt.Font("Lucida Fax", 0, 14)); // NOI18N
 
         mnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8-usuário-masculino-tipo-de-pele-com-círculo-1-2.gif"))); // NOI18N
@@ -387,6 +405,10 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         btnPesqPer.setBackground(Color.decode("#3C005A"));
         btnPesqPer.setForeground(Color.decode("#FFFFFF"));
     }//GEN-LAST:event_btnPesqPerMouseExited
+
+    private void cbStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbStatusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbStatusActionPerformed
 
     /**
      * @param args the command line arguments

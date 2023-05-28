@@ -38,14 +38,14 @@ public class frmVeiculo extends JDialog {
         txtBuscaVe = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         panDados = new javax.swing.JPanel();
-        IdNum = new javax.swing.JLabel();
+        IdCor = new javax.swing.JLabel();
         IdPlaca = new javax.swing.JLabel();
         IdFabricante = new javax.swing.JLabel();
         IdAno = new javax.swing.JLabel();
         IdQtdPortas = new javax.swing.JLabel();
         IdAcessorios = new javax.swing.JLabel();
         txtAno = new javax.swing.JTextField();
-        txtNum = new javax.swing.JTextField();
+        txtCor = new javax.swing.JTextField();
         txtPlaca = new javax.swing.JTextField();
         txtFabricante = new javax.swing.JTextField();
         txtAcessorios = new javax.swing.JTextField();
@@ -77,6 +77,11 @@ public class frmVeiculo extends JDialog {
         panCons.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         panCons.setPreferredSize(new java.awt.Dimension(900, 500));
 
+        tabelaVe = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         tabelaVe.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         tabelaVe.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -88,9 +93,11 @@ public class frmVeiculo extends JDialog {
                 {null, null, null, null}
             },
             new String [] {
-                "Modelo", "Numero", "Placa", "Fabricante", "Ano", "QtdPortas", "Acessorios", "ID"
+                "Modelo", "Numero", "Placa", "Fabricante", "Ano", "QtdPortas", "Acessorios"
             }
         ));
+        tabelaVe.getTableHeader().setResizingAllowed(false);
+        tabelaVe.getTableHeader().setReorderingAllowed(false);
         tabelaVe.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabelaVeMouseClicked(evt);
@@ -223,9 +230,9 @@ public class frmVeiculo extends JDialog {
         panDados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         panDados.setPreferredSize(new java.awt.Dimension(900, 500));
 
-        IdNum.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
-        IdNum.setForeground(new java.awt.Color(60, 0, 90));
-        IdNum.setText("Número:");
+        IdCor.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
+        IdCor.setForeground(new java.awt.Color(60, 0, 90));
+        IdCor.setText("Cor:");
 
         IdPlaca.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         IdPlaca.setForeground(new java.awt.Color(60, 0, 90));
@@ -255,8 +262,8 @@ public class frmVeiculo extends JDialog {
             }
         });
 
-        txtNum.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        txtNum.setPreferredSize(new java.awt.Dimension(64, 19));
+        txtCor.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        txtCor.setPreferredSize(new java.awt.Dimension(64, 19));
 
         txtPlaca.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         txtPlaca.setPreferredSize(new java.awt.Dimension(64, 19));
@@ -366,12 +373,12 @@ public class frmVeiculo extends JDialog {
                                         .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(IdPlaca)
                                             .addComponent(IdAno)
-                                            .addComponent(IdNum))
+                                            .addComponent(IdCor))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtNum, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtCor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(txtAno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
                                         .addComponent(txtPlaca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)))))
                         .addGap(30, 30, 30)
@@ -398,7 +405,7 @@ public class frmVeiculo extends JDialog {
 
         panDadosLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCancCad, btnCancEdit, btnSalvarEdit});
 
-        panDadosLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtAcessorios, txtAno, txtFabricante, txtIdVe, txtNum, txtPlaca});
+        panDadosLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtAcessorios, txtAno, txtCor, txtFabricante, txtIdVe, txtPlaca});
 
         panDadosLayout.setVerticalGroup(
             panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -415,11 +422,11 @@ public class frmVeiculo extends JDialog {
                                 .addComponent(IdModelo)
                                 .addGap(18, 18, 18)
                                 .addComponent(IdPlaca)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(18, 18, 18)
                                 .addComponent(IdAno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(IdNum)
-                                .addGap(46, 46, 46))
+                                .addComponent(IdCor)
+                                .addGap(40, 40, 40))
                             .addGroup(panDadosLayout.createSequentialGroup()
                                 .addComponent(txtModelo, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -427,7 +434,7 @@ public class frmVeiculo extends JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtAno, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtNum, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCor, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(panDadosLayout.createSequentialGroup()
                         .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -454,7 +461,7 @@ public class frmVeiculo extends JDialog {
 
         panDadosLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCadDados, btnCancCad});
 
-        panDadosLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtAcessorios, txtAno, txtFabricante, txtIdVe, txtModelo, txtNum, txtPlaca});
+        panDadosLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtAcessorios, txtAno, txtCor, txtFabricante, txtIdVe, txtModelo, txtPlaca});
 
         abaDados.addTab("Dados do Veículo", panDados);
 
@@ -510,7 +517,7 @@ public class frmVeiculo extends JDialog {
 
     private void btnCadDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadDadosActionPerformed
 
-        if (txtModelo.getText().equals("") || txtNum.equals("") || txtPlaca.getText().equals("")
+        if (txtModelo.getText().equals("") || txtCor.equals("") || txtPlaca.getText().equals("")
                 || txtFabricante.getText().equals("")
                 || txtAno.getText().equals("") || cbQtdPortas.getSelectedItem().equals("") || txtAcessorios.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
@@ -540,7 +547,7 @@ public class frmVeiculo extends JDialog {
             this.txtIdVe.setVisible(false);
 
             txtModelo.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 0).toString());
-            txtNum.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 1).toString());
+            txtCor.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 1).toString());
             txtPlaca.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 2).toString());
             txtFabricante.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 3).toString());
             txtAno.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 4).toString());
@@ -558,21 +565,20 @@ public class frmVeiculo extends JDialog {
 
     private void btnSalvarEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarEditActionPerformed
 
-        if (txtModelo.getText().equals("") || txtNum.equals("") || txtPlaca.getText().equals("")
+        if (txtModelo.getText().equals("") || txtCor.equals("") || txtPlaca.getText().equals("")
                 || txtFabricante.getText().equals("")
                 || txtAno.getText().equals("") || cbQtdPortas.getSelectedItem().equals("") || txtAcessorios.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
         } else {
             //validarDados();
             VeiculoDTO obj = new VeiculoDTO();                  // abastecendo os campos
-            obj.setNome(txtModelo.getText());
-            obj.setNumero(Integer.parseInt(txtNum.getText()));
+            obj.setModelo(txtModelo.getText());
+            obj.setCor(txtCor.getText());
             obj.setPlaca(txtPlaca.getText());
             obj.setFabricante(txtFabricante.getText());
             obj.setAnoModelo(Integer.parseInt(txtAno.getText()));
             obj.setQtdPortas(Integer.parseInt(cbQtdPortas.getSelectedItem().toString()));
-            obj.setAcessorios(txtAcessorios.getText());
-            obj.setIdVeiculo(Integer.parseInt(txtIdVe.getText()));
+            obj.setAcessorios(txtAcessorios.getText());            
 
             VeiculoDAO dao = new VeiculoDAO();
             dao.alterarVeiculo(obj);
@@ -588,7 +594,7 @@ public class frmVeiculo extends JDialog {
 
     private void tabelaVeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaVeMouseClicked
         txtModelo.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 0).toString());
-        txtNum.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 1).toString());
+        txtCor.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 1).toString());
         txtPlaca.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 2).toString());
         txtFabricante.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 3).toString());
         txtAno.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 4).toString());
@@ -617,8 +623,8 @@ public class frmVeiculo extends JDialog {
 
         for (VeiculoDTO c : lista) {
             dados.addRow(new Object[]{ // A CADA REGISTRO NO BANCO DE DADOS, ELE SERÁ SETADO OS DADOS.
-                c.getNome(),
-                c.getNumero(),
+                c.getModelo(),
+                c.getCor(),
                 c.getPlaca(),
                 c.getFabricante(),
                 c.getAnoModelo(),
@@ -638,7 +644,7 @@ public class frmVeiculo extends JDialog {
                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
             if (resposta == JOptionPane.YES_OPTION) {                      // O usuário clicou em "Sim"            
                 VeiculoDTO obj = new VeiculoDTO();                         // abastecendo o campo do ID
-                obj.setIdVeiculo(Integer.parseInt(txtIdVe.getText()));
+                obj.setPlaca(txtPlaca.getText());
 
                 VeiculoDAO dao = new VeiculoDAO();
                 dao.excluirVeiculo(obj);                                   // enviando o objeto para o metodo da exclusão no ClienteDAO
@@ -664,7 +670,7 @@ public class frmVeiculo extends JDialog {
         this.btnSalvarEdit.setVisible(false);
 
         this.txtModelo.setEnabled(true);
-        this.txtNum.setEnabled(true);
+        this.txtCor.setEnabled(true);
         this.txtPlaca.setEnabled(true);
         this.txtFabricante.setEnabled(true);
         this.txtAno.setEnabled(true);
@@ -674,7 +680,7 @@ public class frmVeiculo extends JDialog {
         this.txtIdVe.setVisible(false);
 
         this.txtModelo.setText("");
-        this.txtNum.setText("");
+        this.txtCor.setText("");
         this.txtPlaca.setText("");
         this.txtFabricante.setText("");
         this.txtAno.setText("");
@@ -768,8 +774,8 @@ public class frmVeiculo extends JDialog {
     private void Cadastrar() {
         VeiculoDTO obj = new VeiculoDTO();
 
-        obj.setNome(txtModelo.getText());
-        obj.setNumero(Integer.parseInt(txtNum.getText()));
+        obj.setModelo(txtModelo.getText());
+        obj.setCor(txtCor.getText());
         obj.setPlaca(txtPlaca.getText());
         obj.setFabricante(txtFabricante.getText());
         obj.setAnoModelo(Integer.parseInt(txtAno.getText()));
@@ -782,16 +788,15 @@ public class frmVeiculo extends JDialog {
 
     private void listarVeiculos() {
         try {
-            VeiculoDAO userdao = new VeiculoDAO();
-
+            VeiculoDAO userdao = new VeiculoDAO();            
             DefaultTableModel model = (DefaultTableModel) tabelaVe.getModel();
             model.setNumRows(0);
             ArrayList<VeiculoDTO> lista = userdao.pesquisarVeiculo();
 
             for (int rows = 0; rows < lista.size(); rows++) {
                 model.addRow(new Object[]{
-                    lista.get(rows).getNome(),
-                    lista.get(rows).getNumero(),
+                    lista.get(rows).getModelo(),
+                    lista.get(rows).getCor(),
                     lista.get(rows).getPlaca(),
                     lista.get(rows).getFabricante(),
                     lista.get(rows).getAnoModelo(),
@@ -807,7 +812,7 @@ public class frmVeiculo extends JDialog {
 
     public void LimparCampo() {
         txtModelo.setText("");
-        txtNum.setText("");
+        txtCor.setText("");
         txtPlaca.setText("");
         txtFabricante.setText("");
         txtAno.setText("");
@@ -818,7 +823,7 @@ public class frmVeiculo extends JDialog {
     public void CarregarDados() {
         int setar = tabelaVe.getSelectedRow();
         txtModelo.setText(tabelaVe.getModel().getValueAt(setar, 1).toString());
-        txtNum.setText(tabelaVe.getModel().getValueAt(setar, 2).toString());
+        txtCor.setText(tabelaVe.getModel().getValueAt(setar, 2).toString());
         txtPlaca.setText(tabelaVe.getModel().getValueAt(setar, 3).toString());
         txtFabricante.setText(tabelaVe.getModel().getValueAt(setar, 4).toString());
         txtAno.setText(tabelaVe.getModel().getValueAt(setar, 5).toString());
@@ -828,8 +833,8 @@ public class frmVeiculo extends JDialog {
 
     private void AlterarCliente() {
         VeiculoDTO obj = new VeiculoDTO();
-        obj.setNome(txtModelo.getText());
-        obj.setNumero(Integer.parseInt(txtNum.getText()));
+        obj.setModelo(txtModelo.getText());
+        obj.setCor(txtCor.getText());
         obj.setPlaca(txtPlaca.getText());
         obj.setFabricante(txtModelo.getText());
         obj.setAnoModelo(Integer.parseInt(txtAno.getText()));
@@ -848,9 +853,10 @@ public class frmVeiculo extends JDialog {
         //TORNANDO OS CAMPOS DE DADOS NÃO VISÍVEIS
         this.IdModelo.setVisible(false);
         this.txtModelo.setVisible(false);
-        this.txtNum.setVisible(false);
-        this.IdNum.setVisible(false);
+        this.txtCor.setVisible(false);
+        this.IdCor.setVisible(false);
         this.txtPlaca.setVisible(false);
+        this.txtPlaca.setEnabled(false);
         this.IdPlaca.setVisible(false);
         this.txtFabricante.setVisible(false);
         this.IdFabricante.setVisible(false);
@@ -880,8 +886,8 @@ public class frmVeiculo extends JDialog {
         //TORNANDO OS CAMPOS DE DADOS VISÍVEIS
         this.IdModelo.setVisible(true);
         this.txtModelo.setVisible(true);
-        this.txtNum.setVisible(true);
-        this.IdNum.setVisible(true);
+        this.txtCor.setVisible(true);
+        this.IdCor.setVisible(true);
         this.txtPlaca.setVisible(true);
         this.IdPlaca.setVisible(true);
         this.txtFabricante.setVisible(true);
@@ -906,9 +912,9 @@ public class frmVeiculo extends JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IdAcessorios;
     private javax.swing.JLabel IdAno;
+    private javax.swing.JLabel IdCor;
     private javax.swing.JLabel IdFabricante;
     private javax.swing.JLabel IdModelo;
-    private javax.swing.JLabel IdNum;
     private javax.swing.JLabel IdPlaca;
     private javax.swing.JLabel IdQtdPortas;
     private javax.swing.JLabel IdVe;
@@ -932,10 +938,10 @@ public class frmVeiculo extends JDialog {
     private javax.swing.JTextField txtAcessorios;
     private javax.swing.JTextField txtAno;
     private javax.swing.JTextField txtBuscaVe;
+    private javax.swing.JTextField txtCor;
     private javax.swing.JTextField txtFabricante;
     private javax.swing.JTextField txtIdVe;
     private javax.swing.JTextField txtModelo;
-    private javax.swing.JTextField txtNum;
     private javax.swing.JTextField txtPlaca;
     // End of variables declaration//GEN-END:variables
 }

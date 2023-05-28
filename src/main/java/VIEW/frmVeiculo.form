@@ -157,18 +157,21 @@
                           <Font name="Lucida Sans" size="12" style="1"/>
                         </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {null, null, null, null},&#xa;        {null, null, null, null},&#xa;        {null, null, null, null},&#xa;        {null, null, null, null},&#xa;        {null, null, null, null},&#xa;        {null, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Modelo&quot;, &quot;Numero&quot;, &quot;Placa&quot;, &quot;Fabricante&quot;, &quot;Ano&quot;, &quot;QtdPortas&quot;, &quot;Acessorios&quot;, &quot;ID&quot;&#xa;    }&#xa;)" type="code"/>
+                          <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {null, null, null, null},&#xa;        {null, null, null, null},&#xa;        {null, null, null, null},&#xa;        {null, null, null, null},&#xa;        {null, null, null, null},&#xa;        {null, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Modelo&quot;, &quot;Numero&quot;, &quot;Placa&quot;, &quot;Fabricante&quot;, &quot;Ano&quot;, &quot;QtdPortas&quot;, &quot;Acessorios&quot;&#xa;    }&#xa;)" type="code"/>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0"/>
                         </Property>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                          <TableHeader reorderingAllowed="false" resizingAllowed="false"/>
                         </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tabelaVeMouseClicked"/>
                       </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="tabelaVe = new javax.swing.JTable(){&#xa;    public boolean isCellEditable(int rowIndex, int colIndex){&#xa;    return false;&#xa;}&#xa;};"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -309,7 +312,7 @@
                                                   <Group type="103" groupAlignment="0" attributes="0">
                                                       <Component id="IdPlaca" min="-2" max="-2" attributes="0"/>
                                                       <Component id="IdAno" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="IdNum" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="IdCor" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                                   <EmptySpace max="32767" attributes="0"/>
                                               </Group>
@@ -317,7 +320,7 @@
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="txtModelo" alignment="0" min="-2" pref="169" max="-2" attributes="0"/>
                                               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="txtNum" linkSize="3" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="txtCor" linkSize="3" alignment="1" max="32767" attributes="0"/>
                                                   <Component id="txtAno" linkSize="3" alignment="1" pref="169" max="32767" attributes="0"/>
                                                   <Component id="txtPlaca" linkSize="3" alignment="1" pref="169" max="32767" attributes="0"/>
                                               </Group>
@@ -370,11 +373,11 @@
                                           <Component id="IdModelo" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                           <Component id="IdPlaca" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                           <Component id="IdAno" max="32767" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="IdNum" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                          <Component id="IdCor" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Component id="txtModelo" linkSize="5" pref="27" max="32767" attributes="0"/>
@@ -383,7 +386,7 @@
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="txtAno" linkSize="5" min="-2" pref="27" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="txtNum" linkSize="5" min="-2" pref="27" max="-2" attributes="0"/>
+                                          <Component id="txtCor" linkSize="5" min="-2" pref="27" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -421,7 +424,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="IdNum">
+                <Component class="javax.swing.JLabel" name="IdCor">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Lucida Fax" size="18" style="1"/>
@@ -429,7 +432,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="5a" green="0" red="3c" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="N&#xfa;mero:"/>
+                    <Property name="text" type="java.lang.String" value="Cor:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="IdPlaca">
@@ -500,7 +503,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAnoActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtNum">
+                <Component class="javax.swing.JTextField" name="txtCor">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Lucida Sans" size="14" style="1"/>

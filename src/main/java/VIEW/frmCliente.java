@@ -103,6 +103,11 @@ public class frmCliente extends JDialog {
 
         panConsultarClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        tabelaCl = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         tabelaCl.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         tabelaCl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -114,9 +119,11 @@ public class frmCliente extends JDialog {
                 {null, null, null, null}
             },
             new String [] {
-                "Nome", "Endereço", "UF", "CPF", "Telefone", "E-mail", "ID"
+                "Nome", "Endereço", "UF", "CPF", "Telefone", "E-mail"
             }
         ));
+        tabelaCl.getTableHeader().setResizingAllowed(false);
+        tabelaCl.getTableHeader().setReorderingAllowed(false);
         tabelaCl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabelaClMouseClicked(evt);
@@ -503,7 +510,6 @@ public class frmCliente extends JDialog {
                         .addGroup(panDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelEmail))))
-                .addGap(18, 18, 18)
                 .addComponent(panBotEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panBotCad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -634,8 +640,7 @@ public class frmCliente extends JDialog {
             obj.setCpf(txtCpf.getText());
             obj.setTelefone(txtTelefone.getText());
             obj.setEmail(txtEmail.getText());
-            obj.setUf(cbUF.getSelectedItem().toString());
-            obj.setId(Integer.parseInt(txtId.getText()));
+            obj.setUf(cbUF.getSelectedItem().toString());            
 
             ClienteDAO dao = new ClienteDAO();
             dao.alterarCliente(obj);                 // enviando o objeto para o metodo da alteração no ClienteDAO
@@ -782,7 +787,7 @@ public class frmCliente extends JDialog {
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
             if (resposta == JOptionPane.YES_OPTION) {                      // O usuário clicou em "Sim"
                 ClienteDTO obj = new ClienteDTO();                         // abastecendo o campo do ID
-                obj.setId(Integer.parseInt(txtId.getText()));
+                obj.setCpf(txtCpf.getText());
 
                 ClienteDAO dao = new ClienteDAO();
                 dao.excluirCliente(obj);

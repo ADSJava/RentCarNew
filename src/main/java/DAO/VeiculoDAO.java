@@ -26,14 +26,14 @@ public class VeiculoDAO {
 
     //SOMENTE FUNÇÃO CADASTRAR VEÍCULO
     public void cadastrarVeiculo(VeiculoDTO obj) {
-        String cadastrar = "INSERT INTO veiculo (nome,numero,placa,fabricante,anoModelo,qntPortas,acessorios) VALUES(?,?,?,?,?,?,?)";
+        String cadastrar = "INSERT INTO veiculo (modelo,cor,placa,fabricante,anoModelo,qntPortas,acessorios) VALUES(?,?,?,?,?,?,?)";
         c = new ConexaoDAO().conectaBD();
 
         try {
             p = c.prepareStatement(cadastrar);
 
-            p.setString(1, obj.getNome());
-            p.setInt(2, obj.getNumero());
+            p.setString(1, obj.getModelo());
+            p.setString(2, obj.getCor());
             p.setString(3, obj.getPlaca());
             p.setString(4, obj.getFabricante());
             p.setInt(5, obj.getAnoModelo());
@@ -50,7 +50,7 @@ public class VeiculoDAO {
     }
 
     public ArrayList<VeiculoDTO> pesquisarVeiculo() {
-        String pesquisar = "SELECT * FROM veiculo ORDER BY nome";
+        String pesquisar = "SELECT * FROM veiculo ORDER BY modelo";
         c = new ConexaoDAO().conectaBD();
 
         try {
@@ -59,8 +59,8 @@ public class VeiculoDAO {
 
             while (rs.next()) {
                 VeiculoDTO c = new VeiculoDTO();
-                c.setNome(rs.getString("nome"));
-                c.setNumero(rs.getInt("numero"));
+                c.setModelo(rs.getString("modelo"));
+                c.setCor(rs.getString("cor"));
                 c.setPlaca(rs.getString("placa"));
                 c.setFabricante(rs.getString("fabricante"));
                 c.setAnoModelo(rs.getInt("anoModelo"));
@@ -78,20 +78,20 @@ public class VeiculoDAO {
     }
 
     public void alterarVeiculo(VeiculoDTO obj) {
-        String alterar = "UPDATE veiculo SET nome=?,numero=?,placa=?,fabricante=?,anoModelo=?,qntPortas=?,acessorios=? WHERE idVeiculo=?";
+        String alterar = "UPDATE veiculo SET modelo=?,cor=?,placa=?,fabricante=?,anoModelo=?,qntPortas=?,acessorios=? WHERE placa=?";
         c = new ConexaoDAO().conectaBD();
 
         try {
             p = c.prepareStatement(alterar);
-            p.setString(1, obj.getNome());
-            p.setInt(2, obj.getNumero());
+            p.setString(1, obj.getModelo());
+            p.setString(2, obj.getCor());
             p.setString(3, obj.getPlaca());
             p.setString(4, obj.getFabricante());
             p.setInt(5, obj.getAnoModelo());
             p.setInt(6, obj.getQtdPortas());
             p.setString(7, obj.getAcessorios());
 
-            p.setInt(8, obj.getIdVeiculo());
+            p.setString(8, obj.getPlaca());
 
             p.execute();
             p.close();
@@ -103,7 +103,7 @@ public class VeiculoDAO {
     //METODO QUE VAI FAZER A INSERÇÃO NO COMBOBOX DE ALUGUEL PARA SER LISTADO NO COMBOBOX.
     public ResultSet listarModelo(){
         c = new ConexaoDAO().conectaBD();
-        String sql = "SELECT * FROM veiculo ORDER BY nome";
+        String sql = "SELECT * FROM veiculo ORDER BY modelo";
         
         try {
             p = c.prepareStatement(sql);
@@ -114,20 +114,20 @@ public class VeiculoDAO {
         }
     }
     // METODO QUE FAZ A BUSCA DOS VEICULOS PELO NOME OU PLACA
-    public ArrayList<VeiculoDTO> buscarVeiculo(String nome, String placa) {
-        String buscar = "SELECT * FROM veiculo WHERE nome like ? OR placa like ? ORDER BY nome";
+    public ArrayList<VeiculoDTO> buscarVeiculo(String modelo, String placa) {
+        String buscar = "SELECT * FROM veiculo WHERE modelo like ? OR placa like ? ORDER BY modelo";
         c = new ConexaoDAO().conectaBD();
 
         try {
             p = c.prepareStatement(buscar);
-            p.setString(1, nome);
+            p.setString(1, modelo);
             p.setString(2, placa);
             rs = p.executeQuery();
 
             while (rs.next()) {
                 VeiculoDTO obj = new VeiculoDTO();
-                obj.setNome(rs.getString("nome"));
-                obj.setNumero(rs.getInt("numero"));
+                obj.setModelo(rs.getString("modelo"));
+                obj.setCor(rs.getString("cor"));
                 obj.setPlaca(rs.getString("placa"));
                 obj.setFabricante(rs.getString("fabricante"));
                 obj.setAnoModelo(rs.getInt("anoModelo"));
@@ -145,13 +145,13 @@ public class VeiculoDAO {
     }
     
     public void excluirVeiculo(VeiculoDTO obj) {
-        String excluir = "DELETE FROM veiculo WHERE idVeiculo=?";
+        String excluir = "DELETE FROM veiculo WHERE placa=?";
         c = new ConexaoDAO().conectaBD();
 
         try {
             p = c.prepareStatement(excluir);
             
-            p.setInt(1, obj.getIdVeiculo());
+            p.setString(1, obj.getPlaca());
 
             p.execute();
             p.close();
