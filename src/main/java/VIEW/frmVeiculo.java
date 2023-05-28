@@ -889,6 +889,7 @@ public class frmVeiculo extends JDialog {
         this.txtCor.setVisible(true);
         this.IdCor.setVisible(true);
         this.txtPlaca.setVisible(true);
+        this.txtPlaca.setEnabled(false);
         this.IdPlaca.setVisible(true);
         this.txtFabricante.setVisible(true);
         this.IdFabricante.setVisible(true);
