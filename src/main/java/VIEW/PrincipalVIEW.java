@@ -8,9 +8,13 @@ import DTO.AluguelDTO;
 import DAO.AluguelDAO;
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,10 +28,11 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     /**
      * Creates new form PrincipalVIEW
      */
-    public PrincipalVIEW() {
+    public PrincipalVIEW() throws SQLException {
         initComponents();
         listarAluguel();
         listarStatus();
+        somarAluguel();
 
         //-----------------------------------
         //INICIALIZA A PÁGINA MAXIMIZADA
@@ -51,7 +56,6 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         tabelaEntregue = new javax.swing.JTable();
         btnAlugar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        IdBuscaC = new javax.swing.JLabel();
         IdBuscaV = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnPesqPer = new javax.swing.JButton();
@@ -62,6 +66,10 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         txtP2M = new javax.swing.JComboBox<>();
         txtP2A = new javax.swing.JComboBox<>();
         cbStatus = new javax.swing.JComboBox<>();
+        IdBuscaC1 = new javax.swing.JLabel();
+        txtTotal = new javax.swing.JLabel();
+        IdTotal2 = new javax.swing.JLabel();
+        btnAtualizar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnCliente = new javax.swing.JMenu();
         mnVeiculo = new javax.swing.JMenu();
@@ -72,11 +80,6 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(35, 0, 51));
         jPanel1.setMinimumSize(new java.awt.Dimension(1280, 768));
         jPanel1.setPreferredSize(new java.awt.Dimension(1200, 600));
-        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel1MouseClicked(evt);
-            }
-        });
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tabelaAlu = new javax.swing.JTable(){
@@ -165,11 +168,6 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/20230402_202120_0000.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, -130, -1, -1));
 
-        IdBuscaC.setFont(new java.awt.Font("Lucida Fax", 1, 14)); // NOI18N
-        IdBuscaC.setForeground(new java.awt.Color(178, 128, 255));
-        IdBuscaC.setText("Período:");
-        jPanel1.add(IdBuscaC, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, -1, 20));
-
         IdBuscaV.setFont(new java.awt.Font("Lucida Fax", 1, 14)); // NOI18N
         IdBuscaV.setForeground(new java.awt.Color(178, 128, 255));
         IdBuscaV.setText("Status:");
@@ -243,7 +241,33 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         });
         jPanel1.add(cbStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 110, -1, -1));
 
-        jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
+        IdBuscaC1.setFont(new java.awt.Font("Lucida Fax", 1, 14)); // NOI18N
+        IdBuscaC1.setForeground(new java.awt.Color(178, 128, 255));
+        IdBuscaC1.setText("Período:");
+        jPanel1.add(IdBuscaC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, -1, 20));
+
+        txtTotal.setFont(new java.awt.Font("Lucida Fax", 1, 14)); // NOI18N
+        txtTotal.setForeground(new java.awt.Color(178, 128, 255));
+        jPanel1.add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 530, -1, 20));
+
+        IdTotal2.setFont(new java.awt.Font("Lucida Fax", 1, 14)); // NOI18N
+        IdTotal2.setForeground(new java.awt.Color(178, 128, 255));
+        IdTotal2.setText("Total:");
+        jPanel1.add(IdTotal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 530, -1, 20));
+
+        btnAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/repetir.png"))); // NOI18N
+        btnAtualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAtualizarMouseClicked(evt);
+            }
+        });
+        btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 30, -1));
+
         jMenuBar1.setFont(new java.awt.Font("Lucida Fax", 0, 14)); // NOI18N
 
         mnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8-usuário-masculino-tipo-de-pele-com-círculo-1-2.gif"))); // NOI18N
@@ -352,13 +376,9 @@ public class PrincipalVIEW extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tabelaEntregueMouseClicked
 
-    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-        listarAluguel();
-    }//GEN-LAST:event_jPanel1MouseClicked
-
     private void btnPesqPerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqPerActionPerformed
         //RECEBE A DATA INICIAL DO PERIODO
-        String dataAl1 = txtP1A.getSelectedItem() + "-" + txtP1M.getSelectedItem() + "-" + txtP1D.getSelectedItem();  
+        String dataAl1 = txtP1A.getSelectedItem() + "-" + txtP1M.getSelectedItem() + "-" + txtP1D.getSelectedItem();
         //RECEBE A DATA FINAL DO PERIODO
         String dataAl2 = txtP2A.getSelectedItem() + "-" + txtP2M.getSelectedItem() + "-" + txtP2D.getSelectedItem();
 
@@ -376,6 +396,13 @@ public class PrincipalVIEW extends javax.swing.JFrame {
                 a.getValor()
             });
         }
+        try {
+            String r = somarAluguel(dataAl1, dataAl2);
+            this.txtTotal.setText("R$ " + r);
+        } catch (SQLException ex) {
+            Logger.getLogger(PrincipalVIEW.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_btnPesqPerActionPerformed
 
     private void txtP1MActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtP1MActionPerformed
@@ -387,7 +414,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         String opt = cbStatus.getSelectedItem().toString(); // SEGURANDO A ESCOLHA NO COMBOBOX DO STATUS
 
         if (opt == "Todos") {            // IF PARA CADA ESCOLHA.
-            listarStatus();            
+            listarStatus();
         } else if (opt == "S") {
             AluguelDAO dao = new AluguelDAO();
             buscarStatus(opt);
@@ -411,6 +438,20 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbStatusActionPerformed
 
+    private void btnAtualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAtualizarMouseClicked
+        listarAluguel();
+        listarStatus();
+        try {
+            somarAluguel();
+        } catch (SQLException ex) {
+            Logger.getLogger(PrincipalVIEW.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnAtualizarMouseClicked
+
+    private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAtualizarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -427,27 +468,25 @@ public class PrincipalVIEW extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PrincipalVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PrincipalVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PrincipalVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(PrincipalVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PrincipalVIEW().setVisible(true);
+                try {
+                    new PrincipalVIEW().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(PrincipalVIEW.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
-   
-    
     // LISTA DE VEICULOS ALUGADOS
     public void listarAluguel() { //TABELA DA ESQUERDA
 
@@ -465,9 +504,10 @@ public class PrincipalVIEW extends javax.swing.JFrame {
             });
         }
     }
+
     // LISTA DO STATUS DE CADA ALUGUEL
     public void listarStatus() { //LISTA DA DIREITA
-        
+
         AluguelDAO obj = new AluguelDAO();
         List<AluguelDTO> lista = obj.pesquisarAluguel();
         DefaultTableModel dados = (DefaultTableModel) tabelaEntregue.getModel(); // INSTANCIANDO O MODO PADRÃO DA TABELA
@@ -483,9 +523,10 @@ public class PrincipalVIEW extends javax.swing.JFrame {
             );
         }
     }
+
     // METODO DE BUSCA PELO COMBOBOX, RECEBENDO A ESCOLHA E RETORNANDO A LISTA.
-    public void buscarStatus(String opt) { 
-        AluguelDAO obj = new AluguelDAO();
+    public void buscarStatus(String opt) {
+        AluguelDAO obj = new AluguelDAO();        
         List<AluguelDTO> lista = obj.buscarAluguel(opt);
         DefaultTableModel dados = (DefaultTableModel) tabelaEntregue.getModel(); // INSTANCIANDO O MODO PADRÃO DA TABELA
         dados.setNumRows(0);
@@ -500,10 +541,24 @@ public class PrincipalVIEW extends javax.swing.JFrame {
             );
         }
     }
+
+    public void somarAluguel() throws SQLException {
+        AluguelDAO obj = new AluguelDAO();
+        String r = String.valueOf(obj.somarAluguel());
+        this.txtTotal.setText("R$ " + r);
+    }
+
+    public String somarAluguel(String dataAlu, String dataEnt) throws SQLException {
+        AluguelDAO obj = new AluguelDAO();
+        String r = String.valueOf(obj.somarAluguel(dataAlu, dataEnt));
+        return r;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel IdBuscaC;
+    private javax.swing.JLabel IdBuscaC1;
     private javax.swing.JLabel IdBuscaV;
+    private javax.swing.JLabel IdTotal2;
     private javax.swing.JButton btnAlugar;
+    private javax.swing.JButton btnAtualizar;
     private javax.swing.JButton btnPesqPer;
     private javax.swing.JComboBox<String> cbStatus;
     private javax.swing.JLabel jLabel1;
@@ -522,5 +577,6 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> txtP2A;
     private javax.swing.JComboBox<String> txtP2D;
     private javax.swing.JComboBox<String> txtP2M;
+    private javax.swing.JLabel txtTotal;
     // End of variables declaration//GEN-END:variables
 }

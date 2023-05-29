@@ -100,19 +100,21 @@ public class VeiculoDAO {
             JOptionPane.showMessageDialog(null, "ERRO ALTERAR: " + erro);
         }
     }
+
     //METODO QUE VAI FAZER A INSERÇÃO NO COMBOBOX DE ALUGUEL PARA SER LISTADO NO COMBOBOX.
-    public ResultSet listarModelo(){
+    public ResultSet listarModelo() {
         c = new ConexaoDAO().conectaBD();
         String sql = "SELECT * FROM veiculo ORDER BY modelo";
-        
+
         try {
             p = c.prepareStatement(sql);
-             return p.executeQuery();
+            return p.executeQuery();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ERRO" + e);
             return null;
         }
     }
+
     // METODO QUE FAZ A BUSCA DOS VEICULOS PELO NOME OU PLACA
     public ArrayList<VeiculoDTO> buscarVeiculo(String modelo, String placa) {
         String buscar = "SELECT * FROM veiculo WHERE modelo like ? OR placa like ? ORDER BY modelo";
@@ -143,14 +145,14 @@ public class VeiculoDAO {
         }
         return lista;
     }
-    
+
     public void excluirVeiculo(VeiculoDTO obj) {
         String excluir = "DELETE FROM veiculo WHERE placa=?";
         c = new ConexaoDAO().conectaBD();
 
         try {
             p = c.prepareStatement(excluir);
-            
+
             p.setString(1, obj.getPlaca());
 
             p.execute();
@@ -160,4 +162,20 @@ public class VeiculoDAO {
         }
     }
 
+   /* public String verificarVeiculo(String placa) {
+        String pesquisar = "SELECT placa FROM veiculo WHERE placa=?";
+        c = new ConexaoDAO().conectaBD();
+        String res = null;
+        try {
+            p = c.prepareStatement(pesquisar);
+            p.setString(1, placa);
+            rs = p.executeQuery();
+            while (rs.next()) {
+                res = rs.getString("placa");
+            }
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "ERRO VERIFICAÇÃO: " + erro);
+        }
+        return res;
+    }*/
 }

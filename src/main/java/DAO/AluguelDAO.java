@@ -1,6 +1,7 @@
 package DAO;
 
 import DTO.AluguelDTO;
+import DTO.VeiculoDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,13 +26,15 @@ public class AluguelDAO {
     ArrayList<AluguelDTO> lista = new ArrayList<>();
     SimpleDateFormat form = new SimpleDateFormat("yyyy/MM/dd");
     SimpleDateFormat formN = new SimpleDateFormat("dd/MM/yyyy");
+    String placaVerifica;
 
-    public void cadastrarAluguel(AluguelDTO obj) {
+    public void cadastrarAluguel(AluguelDTO obj) throws SQLException {
         String cadastrar = "INSERT INTO aluguel (modelo,dataAluguel,dataEntrega,nomeCliente,entregue,observacao,valorPago,cpfCliente,placaVeiculo) values (?,?,?,?,?,?,?,?,?)";
         c = new ConexaoDAO().conectaBD();
 
         try {
             p = c.prepareStatement(cadastrar);
+
             p.setString(1, obj.getModelo());
             p.setString(2, obj.getDataAluguel());
             p.setString(3, obj.getDataEntrega());
@@ -46,12 +49,11 @@ public class AluguelDAO {
             p.close();
 
         } catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null, "ERRO C: " + erro);
+            JOptionPane.showMessageDialog(null, "ERRO Cadastro : " + erro);
         }
-
     }
 
-    // ALIMENTA A TABELA -----------------------------------------------
+// ALIMENTA A TABELA -----------------------------------------------
     public ArrayList<AluguelDTO> pesquisarAluguel() {
         String pesquisar = "SELECT * FROM aluguel ORDER BY nomeCliente";
         c = new ConexaoDAO().conectaBD();
@@ -83,6 +85,7 @@ public class AluguelDAO {
                 obj.setEntregue(rs.getString("entregue"));
 
                 lista.add(obj);
+
             }
 
         } catch (SQLException erro) {
@@ -116,9 +119,8 @@ public class AluguelDAO {
         }
     }
      */
-    
     // METODO QUE FAZ A FILTRAGEM DA TABELA PELAS DATAS INICIAL E FINAL DO PERIODO.
-    public ArrayList<AluguelDTO> buscarAluguel(String dataAlu,String dataEnt) {
+    public ArrayList<AluguelDTO> buscarAluguel(String dataAlu, String dataEnt) {
         String pesquisar = "SELECT * FROM aluguel WHERE dataAluguel between ? and ? ORDER BY nomeCliente";
         c = new ConexaoDAO().conectaBD();
 
@@ -128,7 +130,7 @@ public class AluguelDAO {
             p.setString(2, dataEnt);
             rs = p.executeQuery();
 
-            while (rs.next()) {                
+            while (rs.next()) {
                 String anoA = rs.getString("dataAluguel").substring(0, 4);
                 String mesA = rs.getString("dataAluguel").substring(5, 7);
                 String diaA = rs.getString("dataAluguel").substring(8);
@@ -151,6 +153,7 @@ public class AluguelDAO {
                 obj.setEntregue(rs.getString("entregue"));
 
                 lista.add(obj);
+
             }
 
         } catch (SQLException erro) {
@@ -158,18 +161,54 @@ public class AluguelDAO {
         }
         return lista;
     }
-    
-    // METODO QUE FAZ A FILTRAGEM DA TABELA PELA ESCOLHA FEITA PELO COMBOBOX.
+
+    public double somarAluguel(String dataAlu, String dataEnt) throws SQLException {
+        String pesquisar = "SELECT * FROM aluguel WHERE dataAluguel between ? and ?";
+        c = new ConexaoDAO().conectaBD();
+        double rS = 0;
+        try {
+            p = c.prepareStatement(pesquisar);
+            p.setString(1, dataAlu);
+            p.setString(2, dataEnt);
+            rs = p.executeQuery();
+
+            while (rs.next()) {
+                rS += rs.getDouble("valorPago");
+            }
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "AluguelDAO Pesquisar" + erro);
+        }
+        return rS;
+    }
+
+    public double somarAluguel() throws SQLException {
+        String pesquisar = "SELECT * FROM aluguel";
+        c = new ConexaoDAO().conectaBD();
+        double rS = 0;
+        try {
+            p = c.prepareStatement(pesquisar);
+            rs = p.executeQuery();
+
+            while (rs.next()) {
+                rS += rs.getDouble("valorPago");
+            }
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "AluguelDAO Pesquisar" + erro);
+        }
+        return rS;
+    }
+// METODO QUE FAZ A FILTRAGEM DA TABELA PELA ESCOLHA FEITA PELO COMBOBOX.
+
     public ArrayList<AluguelDTO> buscarAluguel(String status) {
         String pesquisar = "SELECT * FROM aluguel WHERE entregue=? ORDER BY modelo";
         c = new ConexaoDAO().conectaBD();
 
         try {
             p = c.prepareStatement(pesquisar);
-            p.setString(1, status);            
+            p.setString(1, status);
             rs = p.executeQuery();
 
-            while (rs.next()) {                
+            while (rs.next()) {
                 String anoA = rs.getString("dataAluguel").substring(0, 4);
                 String mesA = rs.getString("dataAluguel").substring(5, 7);
                 String diaA = rs.getString("dataAluguel").substring(8);
@@ -200,8 +239,22 @@ public class AluguelDAO {
         return lista;
     }
 
+    /*public ResultSet buscarAluguel() {
+        String pesquisar = "SELECT * FROM aluguel";
+        c = new ConexaoDAO().conectaBD();
+
+        try {
+            p = c.prepareStatement(pesquisar);
+            rs = p.executeQuery();
+
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "ERRO BUSCAR A:" + erro);
+        }
+        return rs;
+    }*/
+
     /* public void excluirAluguel(AluguelDTO obj) {
-        String excluir = "DELETE FROM aluguel WHERE idAluguel = ?";
+        String excluir = "DELETE FROM aluguel WHERE idAluguel=?";
         c = new ConexaoDAO().conectaBD();
 
         try {
@@ -211,9 +264,9 @@ public class AluguelDAO {
 
             p.execute();
             p.close();
-            
+
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "AluguelDAO Excluir" + erro);
         }
-    }*/
+    } */
 }
