@@ -69,7 +69,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Principal");
 
-        jPanel1.setBackground(new java.awt.Color(239, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(35, 0, 51));
         jPanel1.setMinimumSize(new java.awt.Dimension(1280, 768));
         jPanel1.setPreferredSize(new java.awt.Dimension(1200, 600));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -166,17 +166,17 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, -130, -1, -1));
 
         IdBuscaC.setFont(new java.awt.Font("Lucida Fax", 1, 14)); // NOI18N
-        IdBuscaC.setForeground(new java.awt.Color(60, 0, 90));
+        IdBuscaC.setForeground(new java.awt.Color(178, 128, 255));
         IdBuscaC.setText("Período:");
         jPanel1.add(IdBuscaC, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, -1, 20));
 
         IdBuscaV.setFont(new java.awt.Font("Lucida Fax", 1, 14)); // NOI18N
-        IdBuscaV.setForeground(new java.awt.Color(60, 0, 90));
+        IdBuscaV.setForeground(new java.awt.Color(178, 128, 255));
         IdBuscaV.setText("Status:");
         jPanel1.add(IdBuscaV, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 80, 60, 20));
 
         jLabel2.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(60, 0, 90));
+        jLabel2.setForeground(new java.awt.Color(178, 128, 255));
         jLabel2.setText("até");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 30, 30));
 
@@ -243,6 +243,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         });
         jPanel1.add(cbStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 110, -1, -1));
 
+        jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setFont(new java.awt.Font("Lucida Fax", 0, 14)); // NOI18N
 
         mnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8-usuário-masculino-tipo-de-pele-com-círculo-1-2.gif"))); // NOI18N

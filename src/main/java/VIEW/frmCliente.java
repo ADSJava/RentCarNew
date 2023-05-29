@@ -102,6 +102,14 @@ public class frmCliente extends JDialog {
         abaDados.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
 
         panConsultarClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panConsultarClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panConsultarClientesMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                panConsultarClientesMousePressed(evt);
+            }
+        });
 
         tabelaCl = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
@@ -810,6 +818,14 @@ public class frmCliente extends JDialog {
     private void txtCpfInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtCpfInputMethodTextChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCpfInputMethodTextChanged
+
+    private void panConsultarClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panConsultarClientesMouseClicked
+        //bloquearCampos();
+    }//GEN-LAST:event_panConsultarClientesMouseClicked
+
+    private void panConsultarClientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panConsultarClientesMousePressed
+        
+    }//GEN-LAST:event_panConsultarClientesMousePressed
 
     /**
      * @param args the command line arguments
