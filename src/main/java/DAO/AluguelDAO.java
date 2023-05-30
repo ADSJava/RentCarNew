@@ -28,7 +28,7 @@ public class AluguelDAO {
     SimpleDateFormat formN = new SimpleDateFormat("dd/MM/yyyy");
     String placaVerifica;
 
-    public void cadastrarAluguel(AluguelDTO obj) throws SQLException {
+    public boolean cadastrarAluguel(AluguelDTO obj) throws SQLException {
         String cadastrar = "INSERT INTO aluguel (modelo,dataAluguel,dataEntrega,nomeCliente,entregue,observacao,valorPago,cpfCliente,placaVeiculo) values (?,?,?,?,?,?,?,?,?)";
         c = new ConexaoDAO().conectaBD();
 
@@ -51,6 +51,7 @@ public class AluguelDAO {
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "ERRO Cadastro : " + erro);
         }
+        return false;
     }
 
 // ALIMENTA A TABELA -----------------------------------------------
@@ -239,8 +240,8 @@ public class AluguelDAO {
         return lista;
     }
 
-    /*public ResultSet buscarAluguel() {
-        String pesquisar = "SELECT * FROM aluguel";
+    public ResultSet buscarAluguel() {
+        String pesquisar = "SELECT modelo FROM aluguel";
         c = new ConexaoDAO().conectaBD();
 
         try {
@@ -251,16 +252,30 @@ public class AluguelDAO {
             JOptionPane.showMessageDialog(null, "ERRO BUSCAR A:" + erro);
         }
         return rs;
-    }*/
+    }
 
-    /* public void excluirAluguel(AluguelDTO obj) {
-        String excluir = "DELETE FROM aluguel WHERE idAluguel=?";
+    public ResultSet listarModelo() {
+        c = new ConexaoDAO().conectaBD();
+        String sql = "select v.modelo, v.placa from veiculo v where v.placa not in (select a.placaVeiculo from aluguel a) group by v.modelo,v.placa";
+
+        try {
+            p = c.prepareStatement(sql);
+            rs = p.executeQuery();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERRO" + e);
+
+        }
+        return rs;
+    }
+
+    public void excluirAluguel(AluguelDTO obj) {
+        String excluir = "DELETE FROM aluguel WHERE placaVeiculo=?";
         c = new ConexaoDAO().conectaBD();
 
         try {
-
             p = c.prepareStatement(excluir);
-            p.setInt(1, obj.getIdAluguel());
+
+            p.setString(1, obj.getPlacaVeiculo());
 
             p.execute();
             p.close();
@@ -268,5 +283,5 @@ public class AluguelDAO {
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "AluguelDAO Excluir" + erro);
         }
-    } */
+    }
 }

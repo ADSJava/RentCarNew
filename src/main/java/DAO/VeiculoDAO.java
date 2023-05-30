@@ -104,7 +104,7 @@ public class VeiculoDAO {
     //METODO QUE VAI FAZER A INSERÇÃO NO COMBOBOX DE ALUGUEL PARA SER LISTADO NO COMBOBOX.
     public ResultSet listarModelo() {
         c = new ConexaoDAO().conectaBD();
-        String sql = "SELECT * FROM veiculo ORDER BY modelo";
+        String sql = "SELECT modelo, placa FROM veiculo ORDER BY modelo";
 
         try {
             p = c.prepareStatement(sql);

@@ -417,8 +417,8 @@ public class frmAluguel extends JDialog {
                 dao.cadastrarAluguel(obj);
 
                 JOptionPane.showMessageDialog(null, "Aluguel bem sucedido!");
-                
-                PrincipalVIEW p = new PrincipalVIEW();                
+
+                PrincipalVIEW p = new PrincipalVIEW();
                 p.buscarStatus("*");
                 dispose();
             } catch (Exception erro) {
@@ -532,20 +532,22 @@ public class frmAluguel extends JDialog {
         cbEntregue.setSelectedItem(0);
     }
 
-    public ResultSet modeloComboBox() {
+    public void modeloComboBox() {
 
         try {
-            VeiculoDAO obj = new VeiculoDAO();
-            ResultSet rs = obj.listarModelo();
+            VeiculoDAO objV = new VeiculoDAO();
+            VeiculoDTO objVe = new VeiculoDTO();
+            AluguelDAO objA = new AluguelDAO();
+            ResultSet rsV = objV.listarModelo();
+            ResultSet rsA = objA.listarModelo();                        
 
-            while (rs.next()) {
-                placa.add(rs.getString(4));
-                cbModelo.addItem(rs.getString(2));
-            }
-
+            while(rsA.next()){
+                placa.add(rsA.getString(2));
+                cbModelo.addItem(rsA.getString(1));
+            };
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERRO COMBO MODELO" + e);
         }
-        return null;
     }
 
     public void nomeComboBox() {
@@ -602,10 +604,10 @@ public class frmAluguel extends JDialog {
         IdValor.setVisible(false);
         IdDataAluguel.setVisible(false);
         IdDataEntrega.setVisible(false);
-         txtDataA.setVisible(false);
+        txtDataA.setVisible(false);
         txtDataE.setVisible(false);
         txtObservacoes.setVisible(false);
-        btnSalvarAlu.setVisible(false);        
+        btnSalvarAlu.setVisible(false);
         IdObs.setVisible(false);
         cbEntregue.setVisible(false);
         IdEntregue.setVisible(false);
@@ -616,6 +618,13 @@ public class frmAluguel extends JDialog {
         //setExtendedState(MAXIMIZED_BOTH);
         this.setModal(true);
         LimparCampos();
+    }
+
+    public void exclusaoAluguel(String placa) {
+        AluguelDTO obj = new AluguelDTO();
+        obj.setPlacaVeiculo(placa);
+        AluguelDAO objD = new AluguelDAO();
+        objD.excluirAluguel(obj);
     }
 
     public void desbloquearCampos() {
@@ -641,7 +650,7 @@ public class frmAluguel extends JDialog {
         txtObservacoes.setVisible(true);
         btnSalvarAlu.setVisible(true);
         /*cbMA.setVisible(true);
-        cbAA.setVisible(true); */        
+        cbAA.setVisible(true); */
         IdObs.setVisible(true);
         cbEntregue.setVisible(true);
         IdEntregue.setVisible(true);

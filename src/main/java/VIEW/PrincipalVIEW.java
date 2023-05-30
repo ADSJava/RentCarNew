@@ -20,6 +20,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import VIEW.frmAluguel;
 
 public class PrincipalVIEW extends javax.swing.JFrame {
 
@@ -70,6 +71,8 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         txtTotal = new javax.swing.JLabel();
         IdTotal2 = new javax.swing.JLabel();
         btnAtualizar = new javax.swing.JButton();
+        btnEdicao = new javax.swing.JButton();
+        btnExclusao = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnCliente = new javax.swing.JMenu();
         mnVeiculo = new javax.swing.JMenu();
@@ -98,7 +101,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Nome Cliente", "Modelo", "Data do Aluguel", "Valor do Aluguel"
+                "Nome Cliente", "Placa" , "Modelo", "Data do Aluguel", "Valor do Aluguel"
             }
         ));
         tabelaAlu.getTableHeader().setResizingAllowed(false);
@@ -128,7 +131,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Modelo", "Data do Aluguel", "Data da Entrega", "Entregue"
+                "Placa","Modelo", "Data do Aluguel", "Data da Entrega", "Entregue"
             }
         ));
         tabelaEntregue.getTableHeader().setResizingAllowed(false);
@@ -266,7 +269,18 @@ public class PrincipalVIEW extends javax.swing.JFrame {
                 btnAtualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 30, -1));
+        jPanel1.add(btnAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 240, 30, -1));
+
+        btnEdicao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/escrever.png"))); // NOI18N
+        jPanel1.add(btnEdicao, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 270, 30, -1));
+
+        btnExclusao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/excluir.png"))); // NOI18N
+        btnExclusao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnExclusaoMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnExclusao, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 300, 30, -1));
 
         jMenuBar1.setFont(new java.awt.Font("Lucida Fax", 0, 14)); // NOI18N
 
@@ -308,7 +322,9 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1416, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -452,6 +468,32 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
+    private void btnExclusaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExclusaoMouseClicked
+        Object[] options = {"Sim", "Não"};
+
+        if (tabelaEntregue.getSelectedRow() > -1) {
+            int resposta = JOptionPane.showOptionDialog(null,
+                    "Você tem certeza que deseja excluir?", "Confirmação",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+            if (resposta == JOptionPane.YES_OPTION) {
+
+                String placa = tabelaEntregue.getValueAt(tabelaEntregue.getSelectedRow(), 0).toString();
+                AluguelDTO a = new AluguelDTO();
+                a.setPlacaVeiculo(placa);
+                AluguelDAO dao = new AluguelDAO();
+                dao.excluirAluguel(a);
+
+                listarAluguel();
+                JOptionPane.showMessageDialog(null, "Excluído com sucesso!");
+
+            } else if (resposta == JOptionPane.NO_OPTION) {
+                listarAluguel();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um cliente na tabela");
+        }
+    }//GEN-LAST:event_btnExclusaoMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -466,10 +508,12 @@ public class PrincipalVIEW extends javax.swing.JFrame {
                 if ("Window".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PrincipalVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalVIEW.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -480,8 +524,10 @@ public class PrincipalVIEW extends javax.swing.JFrame {
             public void run() {
                 try {
                     new PrincipalVIEW().setVisible(true);
+
                 } catch (SQLException ex) {
-                    Logger.getLogger(PrincipalVIEW.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(PrincipalVIEW.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -515,6 +561,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
 
         for (AluguelDTO a : lista) {
             dados.addRow(new Object[]{ // A CADA REGISTRO NO BANCO DE DADOS, ELE SERÁ SETADO OS DADOS.
+                a.getPlacaVeiculo(),
                 a.getModelo(),
                 a.getDataAluguel(),
                 a.getDataEntrega(),
@@ -526,7 +573,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
 
     // METODO DE BUSCA PELO COMBOBOX, RECEBENDO A ESCOLHA E RETORNANDO A LISTA.
     public void buscarStatus(String opt) {
-        AluguelDAO obj = new AluguelDAO();        
+        AluguelDAO obj = new AluguelDAO();
         List<AluguelDTO> lista = obj.buscarAluguel(opt);
         DefaultTableModel dados = (DefaultTableModel) tabelaEntregue.getModel(); // INSTANCIANDO O MODO PADRÃO DA TABELA
         dados.setNumRows(0);
@@ -559,6 +606,8 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel IdTotal2;
     private javax.swing.JButton btnAlugar;
     private javax.swing.JButton btnAtualizar;
+    private javax.swing.JButton btnEdicao;
+    private javax.swing.JButton btnExclusao;
     private javax.swing.JButton btnPesqPer;
     private javax.swing.JComboBox<String> cbStatus;
     private javax.swing.JLabel jLabel1;
