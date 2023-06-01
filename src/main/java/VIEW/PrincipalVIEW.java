@@ -258,7 +258,8 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         IdTotal2.setText("Total:");
         jPanel1.add(IdTotal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 530, -1, 20));
 
-        btnAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/repetir.png"))); // NOI18N
+        btnAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/repetir.png"))); // NOI18N
+        btnAtualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAtualizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAtualizarMouseClicked(evt);
@@ -269,19 +270,22 @@ public class PrincipalVIEW extends javax.swing.JFrame {
                 btnAtualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 240, 30, -1));
+        jPanel1.add(btnAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 240, 30, 30));
 
-        btnEdicao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/escrever.png"))); // NOI18N
-        jPanel1.add(btnEdicao, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 270, 30, -1));
+        btnEdicao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/escrever.png"))); // NOI18N
+        btnEdicao.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(btnEdicao, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 280, 30, 30));
 
-        btnExclusao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/excluir.png"))); // NOI18N
+        btnExclusao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/excluir.png"))); // NOI18N
+        btnExclusao.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExclusao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnExclusaoMouseClicked(evt);
             }
         });
-        jPanel1.add(btnExclusao, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 300, 30, -1));
+        jPanel1.add(btnExclusao, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 320, 30, 30));
 
+        jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setFont(new java.awt.Font("Lucida Fax", 0, 14)); // NOI18N
 
         mnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8-usuário-masculino-tipo-de-pele-com-círculo-1-2.gif"))); // NOI18N
@@ -370,18 +374,6 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     private void btnAlugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlugarActionPerformed
         frmAluguel frmAlu = new frmAluguel();
         frmAlu.setVisible(true);
-        /*
-        frmAlu.txtModelo.setText(tabelaPV.getValueAt(tabelaPC.getSelectedRow(), 0).toString());
-        frmAlu.txtNomeC.setText(tabelaPC.getValueAt(tabelaPC.getSelectedRow(), 0).toString());
-        frmAlu.txtPlaca.setText(tabelaPC.getValueAt(tabelaPV.getSelectedRow(), 2).toString());
-        frmAlu.txtCpf.setText(tabelaPC.getValueAt(tabelaPC.getSelectedRow(), 1).toString());
-        /* txtModelo.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 0).toString());
-            txtEndereco.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 1).toString());
-            cbUF.setSelectedItem(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 2).toString());
-            txtCpf.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 3).toString());
-            txtTelefone.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 4).toString());
-            txtEmail.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 5).toString());
-            txtId.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 6).toString()); */
     }//GEN-LAST:event_btnAlugarActionPerformed
 
     private void btnAlugarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlugarMouseClicked
@@ -544,6 +536,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         for (AluguelDTO a : lista) {
             dados.addRow(new Object[]{ // A CADA REGISTRO NO BANCO DE DADOS, ELE SERÁ SETADO OS DADOS.
                 a.getNomeCliente(),
+                a.getPlacaVeiculo(),
                 a.getModelo(),
                 a.getDataAluguel(),
                 a.getValor()

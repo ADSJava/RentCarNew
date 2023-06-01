@@ -536,6 +536,7 @@ public class frmVeiculo extends JDialog {
     }//GEN-LAST:event_txtAcessoriosActionPerformed
 
     private void btnEditarConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarConsActionPerformed
+   
         if (tabelaVe.getSelectedRow() > -1) {
             desbloquearCampos();
             abaDados.setSelectedIndex(1);
@@ -545,6 +546,7 @@ public class frmVeiculo extends JDialog {
             this.btnSalvarEdit.setVisible(true);
             this.IdVe.setVisible(false);
             this.txtIdVe.setVisible(false);
+            
 
             txtModelo.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 0).toString());
             txtCor.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 1).toString());
