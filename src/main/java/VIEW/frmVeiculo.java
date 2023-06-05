@@ -274,6 +274,14 @@ public class frmVeiculo extends JDialog {
         btnCadDados.setForeground(new java.awt.Color(255, 255, 255));
         btnCadDados.setText("Cadastrar");
         btnCadDados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCadDados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCadDadosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCadDadosMouseExited(evt);
+            }
+        });
         btnCadDados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadDadosActionPerformed(evt);
@@ -295,6 +303,14 @@ public class frmVeiculo extends JDialog {
         btnSalvarEdit.setForeground(new java.awt.Color(255, 255, 255));
         btnSalvarEdit.setText("Salvar");
         btnSalvarEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalvarEdit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSalvarEditMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalvarEditMouseExited(evt);
+            }
+        });
         btnSalvarEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarEditActionPerformed(evt);
@@ -316,6 +332,14 @@ public class frmVeiculo extends JDialog {
         btnCancEdit.setForeground(new java.awt.Color(255, 255, 255));
         btnCancEdit.setText("Cancelar");
         btnCancEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancEdit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCancEditMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCancEditMouseExited(evt);
+            }
+        });
         btnCancEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancEditActionPerformed(evt);
@@ -328,6 +352,14 @@ public class frmVeiculo extends JDialog {
         btnCancCad.setForeground(new java.awt.Color(255, 255, 255));
         btnCancCad.setText("Cancelar");
         btnCancCad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancCad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCancCadMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCancCadMouseExited(evt);
+            }
+        });
         btnCancCad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancCadActionPerformed(evt);
@@ -593,6 +625,46 @@ public class frmVeiculo extends JDialog {
         btnNovo.setForeground(Color.decode("#3C005A"));
         btnNovo.setBackground(Color.decode("#b280ff"));
     }//GEN-LAST:event_btnNovoMouseEntered
+
+    private void btnSalvarEditMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarEditMouseEntered
+        btnSalvarEdit.setForeground(Color.decode("#3C005A"));
+        btnSalvarEdit.setBackground(Color.decode("#b280ff"));
+    }//GEN-LAST:event_btnSalvarEditMouseEntered
+
+    private void btnCadDadosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadDadosMouseEntered
+        btnCadDados.setForeground(Color.decode("#3C005A"));
+        btnCadDados.setBackground(Color.decode("#b280ff"));
+    }//GEN-LAST:event_btnCadDadosMouseEntered
+
+    private void btnCancEditMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancEditMouseEntered
+        btnCancEdit.setForeground(Color.decode("#3C005A"));
+        btnCancEdit.setBackground(Color.decode("#b280ff"));
+    }//GEN-LAST:event_btnCancEditMouseEntered
+
+    private void btnCancCadMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancCadMouseEntered
+        btnCancCad.setForeground(Color.decode("#3C005A"));
+        btnCancCad.setBackground(Color.decode("#b280ff"));
+    }//GEN-LAST:event_btnCancCadMouseEntered
+
+    private void btnSalvarEditMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarEditMouseExited
+        btnSalvarEdit.setBackground(Color.decode("#3C005A"));
+        btnSalvarEdit.setForeground(Color.decode("#FFFFFF"));
+    }//GEN-LAST:event_btnSalvarEditMouseExited
+
+    private void btnCancEditMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancEditMouseExited
+        btnCancEdit.setBackground(Color.decode("#3C005A"));
+        btnCancEdit.setForeground(Color.decode("#FFFFFF"));
+    }//GEN-LAST:event_btnCancEditMouseExited
+
+    private void btnCadDadosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadDadosMouseExited
+        btnCadDados.setBackground(Color.decode("#3C005A"));
+        btnCadDados.setForeground(Color.decode("#FFFFFF"));
+    }//GEN-LAST:event_btnCadDadosMouseExited
+
+    private void btnCancCadMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancCadMouseExited
+        btnCancCad.setBackground(Color.decode("#3C005A"));
+        btnCancCad.setForeground(Color.decode("#FFFFFF"));
+    }//GEN-LAST:event_btnCancCadMouseExited
 
     /**
      * @param args the command line arguments

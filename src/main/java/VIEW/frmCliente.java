@@ -716,13 +716,13 @@ public class frmCliente extends JDialog {
     }//GEN-LAST:event_txtNomeConsKeyPressed
 
     private void btnCancelarBotEditMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarBotEditMouseEntered
-         btnCadastrar.setForeground(Color.decode("#3C005A"));
-        btnCadastrar.setBackground(Color.decode("#b280ff"));
+         btnCancelarBotEdit.setForeground(Color.decode("#3C005A"));
+        btnCancelarBotEdit.setBackground(Color.decode("#b280ff"));
     }//GEN-LAST:event_btnCancelarBotEditMouseEntered
 
     private void btnCancelarBotEditMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarBotEditMouseExited
-        btnCadastrar.setBackground(Color.decode("#3C005A"));
-        btnCadastrar.setForeground(Color.decode("#FFFFFF"));
+        btnCancelarBotEdit.setBackground(Color.decode("#3C005A"));
+        btnCancelarBotEdit.setForeground(Color.decode("#FFFFFF"));
     }//GEN-LAST:event_btnCancelarBotEditMouseExited
 
     private void btnCancelarBotEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarBotEditActionPerformed
