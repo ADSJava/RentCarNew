@@ -10,8 +10,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,7 +23,7 @@ public class ClienteDAO {
     ResultSet rs;
     ArrayList<ClienteDTO> lista = new ArrayList<>();
 
-    public void cadastrarFuncionario(ClienteDTO clientedto) {
+    public void cadastrarCliente(ClienteDTO clientedto) {
         String cadastrar = "INSERT INTO cliente(nomeCliente, endereco, uf, telefone, cpf, email) VALUES(?,?,?,?,?,?)";
         c = new ConexaoDAO().conectaBD();
 
@@ -62,7 +60,7 @@ public class ClienteDAO {
 
     // ALIMENTA A TABELA -----------------------------------------------
     public ArrayList<ClienteDTO> PesquisarCliente() {
-        String pesquisar = "SELECT * FROM cliente ORDER BY nomeCliente";
+       String pesquisar = "SELECT * FROM cliente ORDER BY nomeCliente";
         c = new ConexaoDAO().conectaBD();
 
         try {
@@ -89,7 +87,7 @@ public class ClienteDAO {
     }
 
     public void alterarCliente(ClienteDTO clienteDTO) {
-        String alterar = "UPDATE cliente SET nomeCliente=?, endereco=?,uf=?, telefone=?,cpf=?, email=? where cpf=?";
+        String alterar = "UPDATE cliente SET nomeCliente=?, endereco=?,uf=?, telefone=?,cpf=?, email=? where idCliente=?";
         c = new ConexaoDAO().conectaBD();
 
         try {
@@ -101,7 +99,7 @@ public class ClienteDAO {
             p.setString(5, clienteDTO.getCpf());
             p.setString(6, clienteDTO.getEmail());
 
-            p.setString(7, clienteDTO.getCpf());
+            p.setInt(7, clienteDTO.getId());
 
             p.execute();
             p.close();
@@ -141,18 +139,18 @@ public class ClienteDAO {
     }
 
     public void excluirCliente(ClienteDTO obj) {
-        String excluir = "DELETE FROM cliente WHERE cpf=?";
+        String excluir = "DELETE FROM cliente WHERE idCliente=?";
         c = new ConexaoDAO().conectaBD();
 
         try {
 
             p = c.prepareStatement(excluir);
-            p.setString(1, obj.getCpf());
+            p.setInt(1, obj.getId());
 
             p.execute();
             p.close();
         } catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null, "ClienteDAO Alterar" + erro);
+            JOptionPane.showMessageDialog(null, "ClienteDAO Excluir" + erro);
         }
     }
 }

@@ -4,6 +4,7 @@ import DAO.VeiculoDAO;
 import DTO.VeiculoDTO;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -16,9 +17,9 @@ public class frmVeiculo extends JDialog {
     public frmVeiculo() {
         initComponents();
         listarVeiculos();
-        abaDados.setSelectedIndex(0);        
+        abaDados.setSelectedIndex(0);
         bloquearCampos();
-        
+
         //BLOQUEIA A TELA DE FUNDO / SÓ PERMITE USAR FRMVEICULO
         this.setModal(true);
     }
@@ -31,7 +32,7 @@ public class frmVeiculo extends JDialog {
         abaDados = new javax.swing.JTabbedPane();
         panCons = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaVe = new javax.swing.JTable();
+        tabelaVeiculo = new javax.swing.JTable();
         btnNovo = new javax.swing.JButton();
         btnEditarCons = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
@@ -64,7 +65,6 @@ public class frmVeiculo extends JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Veículo");
         setBackground(new java.awt.Color(0, 204, 204));
-        setPreferredSize(new java.awt.Dimension(900, 550));
 
         panPrincipal.setPreferredSize(new java.awt.Dimension(910, 621));
         panPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -77,13 +77,13 @@ public class frmVeiculo extends JDialog {
         panCons.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         panCons.setPreferredSize(new java.awt.Dimension(900, 500));
 
-        tabelaVe = new javax.swing.JTable(){
+        tabelaVeiculo = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
                 return false;
             }
         };
-        tabelaVe.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        tabelaVe.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaVeiculo.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        tabelaVeiculo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -93,17 +93,12 @@ public class frmVeiculo extends JDialog {
                 {null, null, null, null}
             },
             new String [] {
-                "Modelo", "Numero", "Placa", "Fabricante", "Ano", "QtdPortas", "Acessorios"
+                "ID", "Modelo", "Fabricante", "Placa", "Ano do Modelo", "Qnt de Portas", "Cor","Acessórios"
             }
         ));
-        tabelaVe.getTableHeader().setResizingAllowed(false);
-        tabelaVe.getTableHeader().setReorderingAllowed(false);
-        tabelaVe.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelaVeMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tabelaVe);
+        tabelaVeiculo.getTableHeader().setResizingAllowed(false);
+        tabelaVeiculo.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tabelaVeiculo);
 
         btnNovo.setBackground(new java.awt.Color(60, 0, 90));
         btnNovo.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -167,11 +162,6 @@ public class frmVeiculo extends JDialog {
         txtBuscaVe.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtBuscaVeMouseClicked(evt);
-            }
-        });
-        txtBuscaVe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBuscaVeActionPerformed(evt);
             }
         });
         txtBuscaVe.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -256,11 +246,6 @@ public class frmVeiculo extends JDialog {
 
         txtAno.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         txtAno.setPreferredSize(new java.awt.Dimension(64, 19));
-        txtAno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAnoActionPerformed(evt);
-            }
-        });
 
         txtCor.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         txtCor.setPreferredSize(new java.awt.Dimension(64, 19));
@@ -273,11 +258,6 @@ public class frmVeiculo extends JDialog {
 
         txtAcessorios.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         txtAcessorios.setPreferredSize(new java.awt.Dimension(64, 19));
-        txtAcessorios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAcessoriosActionPerformed(evt);
-            }
-        });
 
         btnCadDados.setBackground(new java.awt.Color(60, 0, 90));
         btnCadDados.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -302,11 +282,6 @@ public class frmVeiculo extends JDialog {
         btnSalvarEdit.setForeground(new java.awt.Color(255, 255, 255));
         btnSalvarEdit.setText("Salvar");
         btnSalvarEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSalvarEdit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSalvarEditMouseClicked(evt);
-            }
-        });
         btnSalvarEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarEditActionPerformed(evt);
@@ -319,11 +294,6 @@ public class frmVeiculo extends JDialog {
 
         txtIdVe.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         txtIdVe.setPreferredSize(new java.awt.Dimension(64, 19));
-        txtIdVe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdVeActionPerformed(evt);
-            }
-        });
 
         btnCancEdit.setBackground(new java.awt.Color(60, 0, 90));
         btnCancEdit.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -522,7 +492,19 @@ public class frmVeiculo extends JDialog {
                 || txtAno.getText().equals("") || cbQtdPortas.getSelectedItem().equals("") || txtAcessorios.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
         } else {
-            Cadastrar();
+            VeiculoDTO obj = new VeiculoDTO();
+
+            obj.setModelo(txtModelo.getText());
+            obj.setCor(txtCor.getText());
+            obj.setPlaca(txtPlaca.getText());
+            obj.setFabricante(txtFabricante.getText());
+            obj.setAnoModelo(Integer.parseInt(txtAno.getText()));
+            obj.setQtdPortas(Integer.parseInt(cbQtdPortas.getSelectedItem().toString()));
+            obj.setAcessorios(txtAcessorios.getText());
+
+            VeiculoDAO dao = new VeiculoDAO();
+            dao.cadastrarVeiculo(obj);
+
             listarVeiculos();
             JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
             LimparCampo();
@@ -531,39 +513,28 @@ public class frmVeiculo extends JDialog {
         }
     }//GEN-LAST:event_btnCadDadosActionPerformed
 
-    private void txtAcessoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAcessoriosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAcessoriosActionPerformed
-
     private void btnEditarConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarConsActionPerformed
-   
-        if (tabelaVe.getSelectedRow() > -1) {
+
+        if (tabelaVeiculo.getSelectedRow() > -1) {
             desbloquearCampos();
             abaDados.setSelectedIndex(1);
             this.btnCadDados.setVisible(false);
             this.btnCancCad.setVisible(false);
             this.btnCancEdit.setVisible(true);
-            this.btnSalvarEdit.setVisible(true);
-            this.IdVe.setVisible(false);
-            this.txtIdVe.setVisible(false);
-            
+            this.btnSalvarEdit.setVisible(true);            
 
-            txtModelo.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 0).toString());
-            txtCor.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 1).toString());
-            txtPlaca.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 2).toString());
-            txtFabricante.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 3).toString());
-            txtAno.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 4).toString());
-            cbQtdPortas.setSelectedItem(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 5).toString());
-            txtAcessorios.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 6).toString());
-            txtIdVe.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 7).toString());
+            txtIdVe.setText(tabelaVeiculo.getValueAt(tabelaVeiculo.getSelectedRow(), 0).toString());
+            txtModelo.setText(tabelaVeiculo.getValueAt(tabelaVeiculo.getSelectedRow(), 1).toString());
+            txtFabricante.setText(tabelaVeiculo.getValueAt(tabelaVeiculo.getSelectedRow(), 2).toString());
+            txtPlaca.setText(tabelaVeiculo.getValueAt(tabelaVeiculo.getSelectedRow(), 3).toString());
+            txtAno.setText(tabelaVeiculo.getValueAt(tabelaVeiculo.getSelectedRow(), 4).toString());
+            cbQtdPortas.setSelectedItem(tabelaVeiculo.getValueAt(tabelaVeiculo.getSelectedRow(), 5).toString());
+            txtCor.setText(tabelaVeiculo.getValueAt(tabelaVeiculo.getSelectedRow(), 6).toString());
+            txtAcessorios.setText(tabelaVeiculo.getValueAt(tabelaVeiculo.getSelectedRow(), 7).toString());
         } else {
             JOptionPane.showMessageDialog(null, "Selecione um veículo na tabela");
         }
     }//GEN-LAST:event_btnEditarConsActionPerformed
-
-    private void btnSalvarEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarEditMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSalvarEditMouseClicked
 
     private void btnSalvarEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarEditActionPerformed
 
@@ -580,7 +551,8 @@ public class frmVeiculo extends JDialog {
             obj.setFabricante(txtFabricante.getText());
             obj.setAnoModelo(Integer.parseInt(txtAno.getText()));
             obj.setQtdPortas(Integer.parseInt(cbQtdPortas.getSelectedItem().toString()));
-            obj.setAcessorios(txtAcessorios.getText());            
+            obj.setAcessorios(txtAcessorios.getText());
+            obj.setIdVeiculo(Integer.parseInt(txtIdVe.getText()));
 
             VeiculoDAO dao = new VeiculoDAO();
             dao.alterarVeiculo(obj);
@@ -594,25 +566,6 @@ public class frmVeiculo extends JDialog {
         }
     }//GEN-LAST:event_btnSalvarEditActionPerformed
 
-    private void tabelaVeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaVeMouseClicked
-        txtModelo.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 0).toString());
-        txtCor.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 1).toString());
-        txtPlaca.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 2).toString());
-        txtFabricante.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 3).toString());
-        txtAno.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 4).toString());
-        cbQtdPortas.setSelectedItem(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 5).toString());
-        txtAcessorios.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 6).toString());
-        txtIdVe.setText(tabelaVe.getValueAt(tabelaVe.getSelectedRow(), 7).toString());
-    }//GEN-LAST:event_tabelaVeMouseClicked
-
-    private void txtIdVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdVeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdVeActionPerformed
-
-    private void txtBuscaVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscaVeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBuscaVeActionPerformed
-
     private void txtBuscaVeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscaVeKeyPressed
         String nome = "%" + txtBuscaVe.getText() + "%"; // A PESQUISA É FEITA NO BD COM O ARGUMENTO LIKE, 
         //NO METODO BUSCAR CLIENTE
@@ -620,33 +573,33 @@ public class frmVeiculo extends JDialog {
         // CRIAÇÃO DO OBJ E DA LISTA QUE TERÁ O RETORNO DO DADOS.
         VeiculoDAO obj = new VeiculoDAO();
         ArrayList<VeiculoDTO> lista = obj.buscarVeiculo(nome, cpf);
-        DefaultTableModel dados = (DefaultTableModel) tabelaVe.getModel(); // INSTANCIANDO O MODO PADRÃO DA TABELA
+        DefaultTableModel dados = (DefaultTableModel) tabelaVeiculo.getModel(); // INSTANCIANDO O MODO PADRÃO DA TABELA
         dados.setNumRows(0);
 
-        for (VeiculoDTO c : lista) {
+        for (VeiculoDTO v : lista) {
             dados.addRow(new Object[]{ // A CADA REGISTRO NO BANCO DE DADOS, ELE SERÁ SETADO OS DADOS.
-                c.getModelo(),
-                c.getCor(),
-                c.getPlaca(),
-                c.getFabricante(),
-                c.getAnoModelo(),
-                c.getQtdPortas(),
-                c.getAcessorios(),
-                c.getIdVeiculo()
+                v.getIdVeiculo(),
+                v.getModelo(),
+                v.getFabricante(),
+                v.getPlaca(),
+                v.getAnoModelo(),
+                v.getQtdPortas(),
+                v.getCor(),
+                v.getAcessorios()
             });
         }
     }//GEN-LAST:event_txtBuscaVeKeyPressed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         Object[] options = {"Sim", "Não"};
-        
-        if (tabelaVe.getSelectedRow() > -1) {
+
+        if (tabelaVeiculo.getSelectedRow() > -1) {
             int resposta = JOptionPane.showOptionDialog(null,
                     "Você tem certeza que deseja excluir?", "Confirmação",
                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
             if (resposta == JOptionPane.YES_OPTION) {                      // O usuário clicou em "Sim"            
                 VeiculoDTO obj = new VeiculoDTO();                         // abastecendo o campo do ID
-                obj.setPlaca(txtPlaca.getText());
+                obj.setIdVeiculo(Integer.parseInt(tabelaVeiculo.getValueAt(tabelaVeiculo.getSelectedRow(),0).toString()));
 
                 VeiculoDAO dao = new VeiculoDAO();
                 dao.excluirVeiculo(obj);                                   // enviando o objeto para o metodo da exclusão no ClienteDAO
@@ -703,10 +656,6 @@ public class frmVeiculo extends JDialog {
         bloquearCampos();
         LimparCampo();
     }//GEN-LAST:event_btnCancCadActionPerformed
-
-    private void txtAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAnoActionPerformed
 
     private void btnNovoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoMouseEntered
         btnNovo.setForeground(Color.decode("#3C005A"));
@@ -773,43 +722,26 @@ public class frmVeiculo extends JDialog {
         });
     }
 
-    private void Cadastrar() {
-        VeiculoDTO obj = new VeiculoDTO();
-
-        obj.setModelo(txtModelo.getText());
-        obj.setCor(txtCor.getText());
-        obj.setPlaca(txtPlaca.getText());
-        obj.setFabricante(txtFabricante.getText());
-        obj.setAnoModelo(Integer.parseInt(txtAno.getText()));
-        obj.setQtdPortas(Integer.parseInt(cbQtdPortas.getSelectedItem().toString()));
-        obj.setAcessorios(txtAcessorios.getText());
-
-        VeiculoDAO dao = new VeiculoDAO();
-        dao.cadastrarVeiculo(obj);
-    }
-
     private void listarVeiculos() {
-        try {
-            VeiculoDAO userdao = new VeiculoDAO();            
-            DefaultTableModel model = (DefaultTableModel) tabelaVe.getModel();
-            model.setNumRows(0);
-            ArrayList<VeiculoDTO> lista = userdao.pesquisarVeiculo();
 
-            for (int rows = 0; rows < lista.size(); rows++) {
-                model.addRow(new Object[]{
-                    lista.get(rows).getModelo(),
-                    lista.get(rows).getCor(),
-                    lista.get(rows).getPlaca(),
-                    lista.get(rows).getFabricante(),
-                    lista.get(rows).getAnoModelo(),
-                    lista.get(rows).getQtdPortas(),
-                    lista.get(rows).getAcessorios(),
-                    lista.get(rows).getIdVeiculo()
-                });
-            }
-        } catch (Exception erro) {
-            JOptionPane.showMessageDialog(null, "Listar Usuarios View" + erro);
+        VeiculoDAO obj = new VeiculoDAO();
+        List<VeiculoDTO> lista = obj.pesquisarVeiculo();
+        DefaultTableModel dados = (DefaultTableModel) tabelaVeiculo.getModel(); // INSTANCIANDO O MODO PADRÃO DA TABELA
+        dados.setNumRows(0);
+
+        for (VeiculoDTO v : lista) {
+            dados.addRow(new Object[]{ // A CADA REGISTRO NO BANCO DE DADOS, ELE SERÁ SETADO OS DADOS.
+                v.getIdVeiculo(),
+                v.getModelo(),
+                v.getFabricante(),
+                v.getPlaca(),
+                v.getAnoModelo(),
+                v.getQtdPortas(),
+                v.getCor(),
+                v.getAcessorios()
+            });
         }
+
     }
 
     public void LimparCampo() {
@@ -822,43 +754,14 @@ public class frmVeiculo extends JDialog {
         txtAcessorios.setText("");
     }
 
-    public void CarregarDados() {
-        int setar = tabelaVe.getSelectedRow();
-        txtModelo.setText(tabelaVe.getModel().getValueAt(setar, 1).toString());
-        txtCor.setText(tabelaVe.getModel().getValueAt(setar, 2).toString());
-        txtPlaca.setText(tabelaVe.getModel().getValueAt(setar, 3).toString());
-        txtFabricante.setText(tabelaVe.getModel().getValueAt(setar, 4).toString());
-        txtAno.setText(tabelaVe.getModel().getValueAt(setar, 5).toString());
-        cbQtdPortas.setSelectedItem(tabelaVe.getModel().getValueAt(setar, 6).toString());
-        txtAcessorios.setText(tabelaVe.getModel().getValueAt(setar, 7).toString());
-    }
-
-    private void AlterarCliente() {
-        VeiculoDTO obj = new VeiculoDTO();
-        obj.setModelo(txtModelo.getText());
-        obj.setCor(txtCor.getText());
-        obj.setPlaca(txtPlaca.getText());
-        obj.setFabricante(txtModelo.getText());
-        obj.setAnoModelo(Integer.parseInt(txtAno.getText()));
-        obj.setQtdPortas(Integer.parseInt(cbQtdPortas.getSelectedItem().toString()));
-        obj.setAcessorios(txtAcessorios.getText());
-
-        VeiculoDAO dao = new VeiculoDAO();
-        dao.alterarVeiculo(obj);
-    }
-
     public void bloquearCampos() {
-        //listarClientes();
-        //panBotCad.setVisible(true);
-        //panBotEdit.setVisible(false);
-
+        
         //TORNANDO OS CAMPOS DE DADOS NÃO VISÍVEIS
         this.IdModelo.setVisible(false);
         this.txtModelo.setVisible(false);
         this.txtCor.setVisible(false);
         this.IdCor.setVisible(false);
-        this.txtPlaca.setVisible(false);
-        this.txtPlaca.setEnabled(false);
+        this.txtPlaca.setVisible(false);        
         this.IdPlaca.setVisible(false);
         this.txtFabricante.setVisible(false);
         this.IdFabricante.setVisible(false);
@@ -881,17 +784,13 @@ public class frmVeiculo extends JDialog {
     }
 
     public void desbloquearCampos() {
-        //listarClientes();
-        //panBotCad.setVisible(true);
-        //panBotEdit.setVisible(false);
-
+       
         //TORNANDO OS CAMPOS DE DADOS VISÍVEIS
         this.IdModelo.setVisible(true);
         this.txtModelo.setVisible(true);
         this.txtCor.setVisible(true);
         this.IdCor.setVisible(true);
-        this.txtPlaca.setVisible(true);
-        this.txtPlaca.setEnabled(false);
+        this.txtPlaca.setVisible(true);        
         this.IdPlaca.setVisible(true);
         this.txtFabricante.setVisible(true);
         this.IdFabricante.setVisible(true);
@@ -904,9 +803,7 @@ public class frmVeiculo extends JDialog {
         this.btnCadDados.setVisible(true);
         this.btnCancCad.setVisible(true);
         this.btnCancEdit.setVisible(true);
-        this.btnSalvarEdit.setVisible(true);
-        this.txtIdVe.setVisible(true);
-        this.IdVe.setVisible(true);
+        this.btnSalvarEdit.setVisible(true);        
 
         //setExtendedState(MAXIMIZED_BOTH);
         this.setModal(true);
@@ -937,7 +834,7 @@ public class frmVeiculo extends JDialog {
     private javax.swing.JPanel panDados;
     private javax.swing.JPanel panHeader;
     private javax.swing.JPanel panPrincipal;
-    private javax.swing.JTable tabelaVe;
+    private javax.swing.JTable tabelaVeiculo;
     private javax.swing.JTextField txtAcessorios;
     private javax.swing.JTextField txtAno;
     private javax.swing.JTextField txtBuscaVe;

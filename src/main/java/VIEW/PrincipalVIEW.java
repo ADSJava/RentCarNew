@@ -1,26 +1,17 @@
 package VIEW;
 
-import DAO.ClienteDAO;
-import DAO.VeiculoDAO;
-import DTO.ClienteDTO;
-import DTO.VeiculoDTO;
 import DTO.AluguelDTO;
 import DAO.AluguelDAO;
 import java.awt.Color;
-import java.awt.Toolkit;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import VIEW.frmAluguel;
 
 public class PrincipalVIEW extends javax.swing.JFrame {
 
@@ -32,8 +23,9 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     public PrincipalVIEW() throws SQLException {
         initComponents();
         listarAluguel();
-        listarStatus();
-        somarAluguel();
+        listarStatus();       
+        this.IdTotal.setVisible(false);
+        this.txtTotal.setVisible(false);
 
         //-----------------------------------
         //INICIALIZA A PÁGINA MAXIMIZADA
@@ -52,9 +44,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaAlu = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tabelaEntregue = new javax.swing.JTable();
+        tabelaAluguel = new javax.swing.JTable();
         btnAlugar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         IdBuscaV = new javax.swing.JLabel();
@@ -69,7 +59,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         cbStatus = new javax.swing.JComboBox<>();
         IdBuscaC1 = new javax.swing.JLabel();
         txtTotal = new javax.swing.JLabel();
-        IdTotal2 = new javax.swing.JLabel();
+        IdTotal = new javax.swing.JLabel();
         btnAtualizar = new javax.swing.JButton();
         btnEdicao = new javax.swing.JButton();
         btnExclusao = new javax.swing.JButton();
@@ -85,13 +75,13 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1200, 600));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tabelaAlu = new javax.swing.JTable(){
+        tabelaAluguel = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
                 return false;
             }
         };
-        tabelaAlu.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        tabelaAlu.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaAluguel.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        tabelaAluguel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -101,49 +91,14 @@ public class PrincipalVIEW extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Nome Cliente", "Placa" , "Modelo", "Data do Aluguel", "Valor do Aluguel"
+                "Id do Aluguel","Nome Cliente","CPF do Cliente", "Modelo","Placa", "Data do Aluguel","Data da Entrega","Entregue","Observações", "Valor do Aluguel"
             }
         ));
-        tabelaAlu.getTableHeader().setResizingAllowed(false);
-        tabelaAlu.getTableHeader().setReorderingAllowed(false);
-        tabelaAlu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelaAluMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tabelaAlu);
+        tabelaAluguel.getTableHeader().setResizingAllowed(false);
+        tabelaAluguel.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tabelaAluguel);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 620, 290));
-
-        tabelaEntregue = new javax.swing.JTable(){
-            public boolean isCellEditable(int rowIndex, int colIndex){
-                return false;
-            }
-        };
-        tabelaEntregue.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        tabelaEntregue.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Placa","Modelo", "Data do Aluguel", "Data da Entrega", "Entregue"
-            }
-        ));
-        tabelaEntregue.getTableHeader().setResizingAllowed(false);
-        tabelaEntregue.getTableHeader().setReorderingAllowed(false);
-        tabelaEntregue.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelaEntregueMouseClicked(evt);
-            }
-        });
-        jScrollPane2.setViewportView(tabelaEntregue);
-
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 230, 560, 290));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 1190, 290));
 
         btnAlugar.setBackground(new java.awt.Color(60, 0, 90));
         btnAlugar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -151,9 +106,6 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         btnAlugar.setText("Alugar");
         btnAlugar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAlugar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAlugarMouseClicked(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnAlugarMouseEntered(evt);
             }
@@ -207,11 +159,6 @@ public class PrincipalVIEW extends javax.swing.JFrame {
 
         txtP1M.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
         txtP1M.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        txtP1M.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtP1MActionPerformed(evt);
-            }
-        });
         jPanel1.add(txtP1M, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 100, 50, -1));
 
         txtP1A.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030" }));
@@ -237,11 +184,6 @@ public class PrincipalVIEW extends javax.swing.JFrame {
                 cbStatusItemStateChanged(evt);
             }
         });
-        cbStatus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbStatusActionPerformed(evt);
-            }
-        });
         jPanel1.add(cbStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 110, -1, -1));
 
         IdBuscaC1.setFont(new java.awt.Font("Lucida Fax", 1, 14)); // NOI18N
@@ -251,12 +193,12 @@ public class PrincipalVIEW extends javax.swing.JFrame {
 
         txtTotal.setFont(new java.awt.Font("Lucida Fax", 1, 14)); // NOI18N
         txtTotal.setForeground(new java.awt.Color(178, 128, 255));
-        jPanel1.add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 530, -1, 20));
+        jPanel1.add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 530, -1, 20));
 
-        IdTotal2.setFont(new java.awt.Font("Lucida Fax", 1, 14)); // NOI18N
-        IdTotal2.setForeground(new java.awt.Color(178, 128, 255));
-        IdTotal2.setText("Total:");
-        jPanel1.add(IdTotal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 530, -1, 20));
+        IdTotal.setFont(new java.awt.Font("Lucida Fax", 1, 14)); // NOI18N
+        IdTotal.setForeground(new java.awt.Color(178, 128, 255));
+        IdTotal.setText("Total:");
+        jPanel1.add(IdTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 530, -1, 20));
 
         btnAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/repetir.png"))); // NOI18N
         btnAtualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -265,15 +207,15 @@ public class PrincipalVIEW extends javax.swing.JFrame {
                 btnAtualizarMouseClicked(evt);
             }
         });
-        btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtualizarActionPerformed(evt);
-            }
-        });
         jPanel1.add(btnAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 240, 30, 30));
 
         btnEdicao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/escrever.png"))); // NOI18N
         btnEdicao.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEdicao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEdicaoActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnEdicao, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 280, 30, 30));
 
         btnExclusao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/excluir.png"))); // NOI18N
@@ -285,7 +227,6 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         });
         jPanel1.add(btnExclusao, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 320, 30, 30));
 
-        jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setFont(new java.awt.Font("Lucida Fax", 0, 14)); // NOI18N
 
         mnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8-usuário-masculino-tipo-de-pele-com-círculo-1-2.gif"))); // NOI18N
@@ -297,11 +238,6 @@ public class PrincipalVIEW extends javax.swing.JFrame {
                 mnClienteMouseClicked(evt);
             }
         });
-        mnCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnClienteActionPerformed(evt);
-            }
-        });
         jMenuBar1.add(mnCliente);
 
         mnVeiculo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/car_telPrinc.gif"))); // NOI18N
@@ -311,11 +247,6 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         mnVeiculo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 mnVeiculoMouseClicked(evt);
-            }
-        });
-        mnVeiculo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnVeiculoActionPerformed(evt);
             }
         });
         jMenuBar1.add(mnVeiculo);
@@ -339,18 +270,10 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnClienteActionPerformed
-
-    }//GEN-LAST:event_mnClienteActionPerformed
-
     private void mnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnClienteMouseClicked
         frmCliente fClien = new frmCliente();
         fClien.setVisible(true);
     }//GEN-LAST:event_mnClienteMouseClicked
-
-    private void mnVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnVeiculoActionPerformed
-
-    }//GEN-LAST:event_mnVeiculoActionPerformed
 
     private void mnVeiculoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnVeiculoMouseClicked
         frmVeiculo fVei = new frmVeiculo();
@@ -367,22 +290,10 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         btnAlugar.setForeground(Color.decode("#FFFFFF"));
     }//GEN-LAST:event_btnAlugarMouseExited
 
-    private void tabelaAluMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaAluMouseClicked
-
-    }//GEN-LAST:event_tabelaAluMouseClicked
-
     private void btnAlugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlugarActionPerformed
-        frmAluguel frmAlu = new frmAluguel();
+        frmAluguel frmAlu = new frmAluguel();        
         frmAlu.setVisible(true);
     }//GEN-LAST:event_btnAlugarActionPerformed
-
-    private void btnAlugarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlugarMouseClicked
-
-    }//GEN-LAST:event_btnAlugarMouseClicked
-
-    private void tabelaEntregueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaEntregueMouseClicked
-
-    }//GEN-LAST:event_tabelaEntregueMouseClicked
 
     private void btnPesqPerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqPerActionPerformed
         //RECEBE A DATA INICIAL DO PERIODO
@@ -393,17 +304,25 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         // CRIAÇÃO DO OBJ E DA LISTA QUE TERÁ O RETORNO DO DADOS.
         AluguelDAO obj = new AluguelDAO();
         ArrayList<AluguelDTO> lista = obj.buscarAluguel(dataAl1, dataAl2);
-        DefaultTableModel dados = (DefaultTableModel) tabelaAlu.getModel(); // INSTANCIANDO O MODO PADRÃO DA TABELA
+        DefaultTableModel dados = (DefaultTableModel) tabelaAluguel.getModel(); // INSTANCIANDO O MODO PADRÃO DA TABELA
         dados.setNumRows(0);
 
         for (AluguelDTO a : lista) {
             dados.addRow(new Object[]{ // A CADA REGISTRO NO BANCO DE DADOS, ELE SERÁ SETADO OS DADOS.
+                a.getIdAluguel(),
                 a.getNomeCliente(),
+                a.getCpfCliente(),
                 a.getModelo(),
+                a.getPlacaVeiculo(),
                 a.getDataAluguel(),
+                a.getDataEntrega(),
+                a.getEntregue(),
+                a.getObservacao(),
                 a.getValor()
             });
         }
+        this.IdTotal.setVisible(true);
+        this.txtTotal.setVisible(true);
         try {
             String r = somarAluguel(dataAl1, dataAl2);
             this.txtTotal.setText("R$ " + r);
@@ -413,14 +332,11 @@ public class PrincipalVIEW extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnPesqPerActionPerformed
 
-    private void txtP1MActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtP1MActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtP1MActionPerformed
-
     private void cbStatusItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbStatusItemStateChanged
 
         String opt = cbStatus.getSelectedItem().toString(); // SEGURANDO A ESCOLHA NO COMBOBOX DO STATUS
-
+        this.IdTotal.setVisible(false);
+        this.txtTotal.setVisible(false);
         if (opt == "Todos") {            // IF PARA CADA ESCOLHA.
             listarStatus();
         } else if (opt == "S") {
@@ -442,13 +358,11 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         btnPesqPer.setForeground(Color.decode("#FFFFFF"));
     }//GEN-LAST:event_btnPesqPerMouseExited
 
-    private void cbStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbStatusActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbStatusActionPerformed
-
     private void btnAtualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAtualizarMouseClicked
         listarAluguel();
         listarStatus();
+        this.IdTotal.setVisible(false);
+        this.txtTotal.setVisible(false);
         try {
             somarAluguel();
         } catch (SQLException ex) {
@@ -456,35 +370,61 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAtualizarMouseClicked
 
-    private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAtualizarActionPerformed
-
     private void btnExclusaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExclusaoMouseClicked
         Object[] options = {"Sim", "Não"};
 
-        if (tabelaEntregue.getSelectedRow() > -1) {
+        if (tabelaAluguel.getSelectedRow() > -1) {
             int resposta = JOptionPane.showOptionDialog(null,
                     "Você tem certeza que deseja excluir?", "Confirmação",
                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
             if (resposta == JOptionPane.YES_OPTION) {
 
-                String placa = tabelaEntregue.getValueAt(tabelaEntregue.getSelectedRow(), 0).toString();
                 AluguelDTO a = new AluguelDTO();
-                a.setPlacaVeiculo(placa);
+                a.setIdAluguel(Integer.parseInt(tabelaAluguel.getValueAt(tabelaAluguel.getSelectedRow(), 0).toString()));
+                
                 AluguelDAO dao = new AluguelDAO();
                 dao.excluirAluguel(a);
 
                 listarAluguel();
+                listarStatus();
                 JOptionPane.showMessageDialog(null, "Excluído com sucesso!");
 
             } else if (resposta == JOptionPane.NO_OPTION) {
                 listarAluguel();
+                listarStatus();
             }
         } else {
             JOptionPane.showMessageDialog(null, "Selecione um cliente na tabela");
         }
+
     }//GEN-LAST:event_btnExclusaoMouseClicked
+
+    private void btnEdicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdicaoActionPerformed
+        if (tabelaAluguel.getSelectedRow() > -1) {
+            
+            AluguelDTO obj = new AluguelDTO();
+
+            obj.setIdAluguel(Integer.parseInt(tabelaAluguel.getValueAt(tabelaAluguel.getSelectedRow(), 0).toString()));
+            obj.setNomeCliente(tabelaAluguel.getValueAt(tabelaAluguel.getSelectedRow(), 1).toString());
+            obj.setCpfCliente(tabelaAluguel.getValueAt(tabelaAluguel.getSelectedRow(), 2).toString());
+            obj.setModelo(tabelaAluguel.getValueAt(tabelaAluguel.getSelectedRow(), 3).toString());
+            obj.setPlacaVeiculo(tabelaAluguel.getValueAt(tabelaAluguel.getSelectedRow(), 4).toString());
+            obj.setDataAluguel(tabelaAluguel.getValueAt(tabelaAluguel.getSelectedRow(), 5).toString());
+            obj.setDataEntrega(tabelaAluguel.getValueAt(tabelaAluguel.getSelectedRow(), 6).toString());
+            obj.setEntregue(tabelaAluguel.getValueAt(tabelaAluguel.getSelectedRow(), 7).toString());            
+            obj.setObservacao(tabelaAluguel.getValueAt(tabelaAluguel.getSelectedRow(), 8).toString());
+            obj.setValor(Double.parseDouble(tabelaAluguel.getValueAt(tabelaAluguel.getSelectedRow(), 9).toString()));
+
+            frmAluguel frmA = new frmAluguel();
+            frmA.setarEdiçãoAluguel(obj);
+            frmA.setVisible(true);                  
+
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecione a linha da tabela");
+        }
+        
+
+    }//GEN-LAST:event_btnEdicaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -530,15 +470,20 @@ public class PrincipalVIEW extends javax.swing.JFrame {
 
         AluguelDAO obj = new AluguelDAO();
         List<AluguelDTO> lista = obj.pesquisarAluguel();
-        DefaultTableModel dados = (DefaultTableModel) tabelaAlu.getModel(); // INSTANCIANDO O MODO PADRÃO DA TABELA
+        DefaultTableModel dados = (DefaultTableModel) tabelaAluguel.getModel(); // INSTANCIANDO O MODO PADRÃO DA TABELA
         dados.setNumRows(0);
 
         for (AluguelDTO a : lista) {
             dados.addRow(new Object[]{ // A CADA REGISTRO NO BANCO DE DADOS, ELE SERÁ SETADO OS DADOS.
+                a.getIdAluguel(),
                 a.getNomeCliente(),
-                a.getPlacaVeiculo(),
+                a.getCpfCliente(),
                 a.getModelo(),
+                a.getPlacaVeiculo(),
                 a.getDataAluguel(),
+                a.getDataEntrega(),
+                a.getEntregue(),
+                a.getObservacao(),
                 a.getValor()
             });
         }
@@ -549,16 +494,21 @@ public class PrincipalVIEW extends javax.swing.JFrame {
 
         AluguelDAO obj = new AluguelDAO();
         List<AluguelDTO> lista = obj.pesquisarAluguel();
-        DefaultTableModel dados = (DefaultTableModel) tabelaEntregue.getModel(); // INSTANCIANDO O MODO PADRÃO DA TABELA
+        DefaultTableModel dados = (DefaultTableModel) tabelaAluguel.getModel(); // INSTANCIANDO O MODO PADRÃO DA TABELA
         dados.setNumRows(0);
 
         for (AluguelDTO a : lista) {
             dados.addRow(new Object[]{ // A CADA REGISTRO NO BANCO DE DADOS, ELE SERÁ SETADO OS DADOS.
-                a.getPlacaVeiculo(),
+                a.getIdAluguel(),
+                a.getNomeCliente(),
+                a.getCpfCliente(),
                 a.getModelo(),
+                a.getPlacaVeiculo(),
                 a.getDataAluguel(),
                 a.getDataEntrega(),
-                a.getEntregue()
+                a.getEntregue(),
+                a.getObservacao(),
+                a.getValor()
             }
             );
         }
@@ -568,15 +518,21 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     public void buscarStatus(String opt) {
         AluguelDAO obj = new AluguelDAO();
         List<AluguelDTO> lista = obj.buscarAluguel(opt);
-        DefaultTableModel dados = (DefaultTableModel) tabelaEntregue.getModel(); // INSTANCIANDO O MODO PADRÃO DA TABELA
+        DefaultTableModel dados = (DefaultTableModel) tabelaAluguel.getModel(); // INSTANCIANDO O MODO PADRÃO DA TABELA
         dados.setNumRows(0);
 
         for (AluguelDTO a : lista) {
             dados.addRow(new Object[]{ // A CADA REGISTRO NO BANCO DE DADOS, ELE SERÁ SETADO OS DADOS.
+                a.getIdAluguel(),
+                a.getNomeCliente(),
+                a.getCpfCliente(),
                 a.getModelo(),
+                a.getPlacaVeiculo(),
                 a.getDataAluguel(),
                 a.getDataEntrega(),
-                a.getEntregue()
+                a.getEntregue(),
+                a.getObservacao(),
+                a.getValor()
             }
             );
         }
@@ -593,10 +549,11 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         String r = String.valueOf(obj.somarAluguel(dataAlu, dataEnt));
         return r;
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IdBuscaC1;
     private javax.swing.JLabel IdBuscaV;
-    private javax.swing.JLabel IdTotal2;
+    private javax.swing.JLabel IdTotal;
     private javax.swing.JButton btnAlugar;
     private javax.swing.JButton btnAtualizar;
     private javax.swing.JButton btnEdicao;
@@ -608,11 +565,9 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JMenu mnCliente;
     private javax.swing.JMenu mnVeiculo;
-    private javax.swing.JTable tabelaAlu;
-    private javax.swing.JTable tabelaEntregue;
+    private javax.swing.JTable tabelaAluguel;
     private javax.swing.JComboBox<String> txtP1A;
     private javax.swing.JComboBox<String> txtP1D;
     private javax.swing.JComboBox<String> txtP1M;

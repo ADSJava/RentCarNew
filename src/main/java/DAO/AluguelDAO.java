@@ -1,22 +1,17 @@
 package DAO;
 
 import DTO.AluguelDTO;
-import DTO.VeiculoDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.sql.Date;
-import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author igora
+ * @author Paulo Soares
  */
 public class AluguelDAO {
 
@@ -26,7 +21,7 @@ public class AluguelDAO {
     ArrayList<AluguelDTO> lista = new ArrayList<>();
     SimpleDateFormat form = new SimpleDateFormat("yyyy/MM/dd");
     SimpleDateFormat formN = new SimpleDateFormat("dd/MM/yyyy");
-    String placaVerifica;
+
 
     public boolean cadastrarAluguel(AluguelDTO obj) throws SQLException {
         String cadastrar = "INSERT INTO aluguel (modelo,dataAluguel,dataEntrega,nomeCliente,entregue,observacao,valorPago,cpfCliente,placaVeiculo) values (?,?,?,?,?,?,?,?,?)";
@@ -75,6 +70,7 @@ public class AluguelDAO {
                 String dataAl = diaA + "-" + mesA + "-" + anoA;
 
                 AluguelDTO obj = new AluguelDTO();
+                obj.setIdAluguel(rs.getInt("idAluguel"));
                 obj.setModelo(rs.getString("modelo"));
                 obj.setNomeCliente(rs.getString("nomeCliente"));
                 obj.setPlacaVeiculo(rs.getString("placaVeiculo"));
@@ -95,31 +91,7 @@ public class AluguelDAO {
         return lista;
     }
 
-    /* public void alterarCliente(AluguelDTO obj) {
-        String alterar = "UPDATE aluguel SET modelo=?, nomeCliente=?, placaVeiculo=?, cpfCliente=?,valor=?, dataEntrega=?, dataSaida=?, observacoes=? where idAluguel=?";
-        c = new ConexaoDAO().conectaBD();
-
-        try {
-            p = c.prepareStatement(alterar);
-            p.setString(1, obj.getModelo());
-            p.setString(2, obj.getNomeCliente());
-            p.setString(3, obj.getPlacaVeiculo());
-            p.setString(4, obj.getCpfCliente());
-            p.setDouble(5, obj.getValor());
-            p.setString(6, obj.getDataEntrega());
-            p.setString(7, obj.getDataSaida());
-            p.setString(8, obj.getObservacao());
-
-            p.setInt(9, obj.getIdAluguel());
-
-            p.execute();
-            p.close();
-
-        } catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null, "AluguelDAO Alterar" + erro);
-        }
-    }
-     */
+    
     // METODO QUE FAZ A FILTRAGEM DA TABELA PELAS DATAS INICIAL E FINAL DO PERIODO.
     public ArrayList<AluguelDTO> buscarAluguel(String dataAlu, String dataEnt) {
         String pesquisar = "SELECT * FROM aluguel WHERE dataAluguel between ? and ? ORDER BY nomeCliente";
@@ -143,6 +115,7 @@ public class AluguelDAO {
                 String dataAl = diaA + "-" + mesA + "-" + anoA;
 
                 AluguelDTO obj = new AluguelDTO();
+                obj.setIdAluguel(rs.getInt("idAluguel"));
                 obj.setModelo(rs.getString("modelo"));
                 obj.setNomeCliente(rs.getString("nomeCliente"));
                 obj.setPlacaVeiculo(rs.getString("placaVeiculo"));
@@ -164,7 +137,7 @@ public class AluguelDAO {
     }
 
     public double somarAluguel(String dataAlu, String dataEnt) throws SQLException {
-        String pesquisar = "SELECT * FROM aluguel WHERE dataAluguel between ? and ?";
+        String pesquisar = "SELECT * FROM aluguel WHERE dataAluguel between ? and ? ORDER BY nomeCliente";
         c = new ConexaoDAO().conectaBD();
         double rS = 0;
         try {
@@ -183,7 +156,7 @@ public class AluguelDAO {
     }
 
     public double somarAluguel() throws SQLException {
-        String pesquisar = "SELECT * FROM aluguel";
+        String pesquisar = "SELECT * FROM aluguel ORDER BY nomeCliente";
         c = new ConexaoDAO().conectaBD();
         double rS = 0;
         try {
@@ -201,7 +174,7 @@ public class AluguelDAO {
 // METODO QUE FAZ A FILTRAGEM DA TABELA PELA ESCOLHA FEITA PELO COMBOBOX.
 
     public ArrayList<AluguelDTO> buscarAluguel(String status) {
-        String pesquisar = "SELECT * FROM aluguel WHERE entregue=? ORDER BY modelo";
+        String pesquisar = "SELECT * FROM aluguel WHERE entregue=? ORDER BY nomeCliente";
         c = new ConexaoDAO().conectaBD();
 
         try {
@@ -221,6 +194,7 @@ public class AluguelDAO {
                 String dataAl = diaA + "-" + mesA + "-" + anoA;
 
                 AluguelDTO obj = new AluguelDTO();
+                obj.setIdAluguel(rs.getInt("idAluguel"));
                 obj.setModelo(rs.getString("modelo"));
                 obj.setNomeCliente(rs.getString("nomeCliente"));
                 obj.setPlacaVeiculo(rs.getString("placaVeiculo"));
@@ -241,7 +215,7 @@ public class AluguelDAO {
     }
 
     public ResultSet buscarAluguel() {
-        String pesquisar = "SELECT modelo FROM aluguel";
+        String pesquisar = "SELECT modelo FROM aluguel ORDER BY nomeCliente";
         c = new ConexaoDAO().conectaBD();
 
         try {
@@ -269,19 +243,46 @@ public class AluguelDAO {
     }
 
     public void excluirAluguel(AluguelDTO obj) {
-        String excluir = "DELETE FROM aluguel WHERE placaVeiculo=?";
+        String excluir = "DELETE FROM aluguel WHERE idAluguel=?";
         c = new ConexaoDAO().conectaBD();
 
         try {
             p = c.prepareStatement(excluir);
 
-            p.setString(1, obj.getPlacaVeiculo());
+            p.setInt(1, obj.getIdAluguel());
 
             p.execute();
             p.close();
 
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "AluguelDAO Excluir" + erro);
+        }
+    }
+
+    public void alterarAluguel(AluguelDTO obj) {
+        String alterar = "UPDATE aluguel SET modelo=?,dataAluguel=?,dataEntrega=?,nomeCliente=?,entregue=?,observacao=?,valorPago=?,cpfCliente=?,placaVeiculo=? WHERE idAluguel=?";
+        c = new ConexaoDAO().conectaBD();
+
+        try {
+            p = c.prepareStatement(alterar);
+            
+            p.setString(1, obj.getModelo());
+            p.setString(2, obj.getDataAluguel());
+            p.setString(3, obj.getDataEntrega());
+            p.setString(4, obj.getNomeCliente());
+            p.setString(5, obj.getEntregue());
+            p.setString(6, obj.getObservacao());
+            p.setDouble(7, obj.getValor());
+            p.setString(8, obj.getCpfCliente());
+            p.setString(9, obj.getPlacaVeiculo());            
+
+            p.setInt(10, obj.getIdAluguel());
+
+            p.execute();
+            p.close();
+
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "ClienteDAO Alterar" + erro);
         }
     }
 }

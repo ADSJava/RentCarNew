@@ -1,11 +1,8 @@
 package VIEW;
 
 import DAO.ClienteDAO;
-import DAO.ConexaoDAO;
 import DTO.ClienteDTO;
 import java.awt.Color;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -24,7 +21,7 @@ public class frmCliente extends JDialog {
 
         //setExtendedState(MAXIMIZED_BOTH);
         this.setModal(true);
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -37,7 +34,7 @@ public class frmCliente extends JDialog {
         abaDados = new javax.swing.JTabbedPane();
         panConsultarClientes = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaCl = new javax.swing.JTable();
+        tabelaCliente = new javax.swing.JTable();
         labelNome1 = new javax.swing.JLabel();
         btnNovo = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
@@ -68,7 +65,6 @@ public class frmCliente extends JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cliente");
         setBackground(new java.awt.Color(221, 221, 221));
-        setPreferredSize(new java.awt.Dimension(900, 550));
 
         jPanel1.setBackground(new java.awt.Color(178, 128, 255));
 
@@ -102,22 +98,14 @@ public class frmCliente extends JDialog {
         abaDados.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
 
         panConsultarClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panConsultarClientes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                panConsultarClientesMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                panConsultarClientesMousePressed(evt);
-            }
-        });
 
-        tabelaCl = new javax.swing.JTable(){
+        tabelaCliente = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
                 return false;
             }
         };
-        tabelaCl.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        tabelaCl.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaCliente.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        tabelaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -127,17 +115,12 @@ public class frmCliente extends JDialog {
                 {null, null, null, null}
             },
             new String [] {
-                "Nome", "Endereço", "UF", "CPF", "Telefone", "E-mail"
+                "Id", "Nome", "CPF", "Telefone", "E-mail", "Endereço", "Estado"
             }
         ));
-        tabelaCl.getTableHeader().setResizingAllowed(false);
-        tabelaCl.getTableHeader().setReorderingAllowed(false);
-        tabelaCl.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelaClMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tabelaCl);
+        tabelaCliente.getTableHeader().setResizingAllowed(false);
+        tabelaCliente.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tabelaCliente);
 
         labelNome1.setFont(new java.awt.Font("Lucida Fax", 1, 16)); // NOI18N
         labelNome1.setForeground(new java.awt.Color(60, 0, 90));
@@ -201,11 +184,6 @@ public class frmCliente extends JDialog {
         });
 
         txtNomeCons.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        txtNomeCons.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeConsActionPerformed(evt);
-            }
-        });
         txtNomeCons.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNomeConsKeyPressed(evt);
@@ -276,13 +254,6 @@ public class frmCliente extends JDialog {
         }
         txtCpf.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         txtCpf.setPreferredSize(new java.awt.Dimension(64, 19));
-        txtCpf.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                txtCpfInputMethodTextChanged(evt);
-            }
-        });
 
         labelTelefone.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         labelTelefone.setForeground(new java.awt.Color(60, 0, 90));
@@ -310,11 +281,6 @@ public class frmCliente extends JDialog {
         cbUF.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         cbUF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
         cbUF.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cbUF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbUFActionPerformed(evt);
-            }
-        });
 
         txtEndereco.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         txtEndereco.setPreferredSize(new java.awt.Dimension(64, 19));
@@ -334,9 +300,6 @@ public class frmCliente extends JDialog {
         btnSalvar.setText("Salvar");
         btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSalvarMouseClicked(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnSalvarMouseEntered(evt);
             }
@@ -559,20 +522,19 @@ public class frmCliente extends JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        if (tabelaCl.getSelectedRow() > -1) {
-            desbloquearCampos();
-            txtCpf.setEnabled(false);
+        if (tabelaCliente.getSelectedRow() > -1) {
+            desbloquearCampos();            
             abaDados.setSelectedIndex(1);
             this.panBotEdit.setVisible(true);
             this.panBotCad.setVisible(false);
-            
-            txtNomeDados.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 0).toString());
-            txtEndereco.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 1).toString());
-            cbUF.setSelectedItem(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 2).toString());
-            txtCpf.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 3).toString());
-            txtTelefone.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 4).toString());
-            txtEmail.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 5).toString());
-            txtId.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 6).toString());
+
+            txtId.setText(tabelaCliente.getValueAt(tabelaCliente.getSelectedRow(), 0).toString());
+            txtNomeDados.setText(tabelaCliente.getValueAt(tabelaCliente.getSelectedRow(), 1).toString());
+            txtCpf.setText(tabelaCliente.getValueAt(tabelaCliente.getSelectedRow(), 2).toString());
+            txtTelefone.setText(tabelaCliente.getValueAt(tabelaCliente.getSelectedRow(), 3).toString());
+            txtEmail.setText(tabelaCliente.getValueAt(tabelaCliente.getSelectedRow(), 4).toString());
+            txtEndereco.setText(tabelaCliente.getValueAt(tabelaCliente.getSelectedRow(), 5).toString());
+            cbUF.setSelectedItem(tabelaCliente.getValueAt(tabelaCliente.getSelectedRow(), 6).toString());
         } else {
             JOptionPane.showMessageDialog(null, "Selecione um cliente na tabela");
         }
@@ -634,27 +596,29 @@ public class frmCliente extends JDialog {
     }//GEN-LAST:event_btnExcluirMouseExited
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-       if (txtNomeDados.getText().equals("") || cbUF.getSelectedItem().equals("") || txtCpf.getText().equals("")
-            || txtEndereco.getText().equals("")
-            || txtTelefone.getText().equals("")
-            || txtEmail.getText().equals("")) {
+        if (txtNomeDados.getText().equals("") || cbUF.getSelectedItem().equals("") || txtCpf.getText().equals("")
+                || txtEndereco.getText().equals("")
+                || txtTelefone.getText().equals("")
+                || txtEmail.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
         } else {
             this.abaDados.setSelectedIndex(1);       // botao do metodo de alteração dos clientes
 
-            ClienteDTO obj = new ClienteDTO();                  // abastecendo os campos
+            ClienteDTO obj = new ClienteDTO();
+            // abastecendo os campos
             obj.setNomeCliente(txtNomeDados.getText());
             obj.setEndereco(txtEndereco.getText());
             obj.setCpf(txtCpf.getText());
             obj.setTelefone(txtTelefone.getText());
             obj.setEmail(txtEmail.getText());
-            obj.setUf(cbUF.getSelectedItem().toString());            
+            obj.setUf(cbUF.getSelectedItem().toString());
+            obj.setId(Integer.parseInt(txtId.getText()));
 
             ClienteDAO dao = new ClienteDAO();
             dao.alterarCliente(obj);                 // enviando o objeto para o metodo da alteração no ClienteDAO
             JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
             this.abaDados.setSelectedIndex(0);
-            
+
             this.panBotEdit.setVisible(false); // TORNA VISIBILIDADE DOS BOTOES FALSO
             listarClientes();
             LimparCampo();
@@ -691,16 +655,26 @@ public class frmCliente extends JDialog {
     }//GEN-LAST:event_btnCancelarBotCadMouseEntered
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-       if (txtNomeDados.getText().equals("") || cbUF.getSelectedItem().equals("") || txtCpf.getText().equals("") || txtTelefone.getText().equals("")|| txtEmail.getText().equals("") || txtEndereco.getText().equals("")){
+        if (txtNomeDados.getText().equals("") || cbUF.getSelectedItem().equals("") || txtCpf.getText().equals("") || txtTelefone.getText().equals("") || txtEmail.getText().equals("") || txtEndereco.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
         } else {
-            //validarDados();
-            Cadastrar();
+            ClienteDTO obj = new ClienteDTO();
+
+            obj.setNomeCliente(txtNomeDados.getText());
+            obj.setEndereco(txtEndereco.getText());
+            obj.setUf(cbUF.getSelectedItem().toString());
+            obj.setTelefone(txtTelefone.getText());
+            obj.setCpf(txtCpf.getText());
+            obj.setEmail(txtEmail.getText());
+
+            ClienteDAO dao = new ClienteDAO();
+            dao.cadastrarCliente(obj);
+
             JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
-            
+
             this.panBotCad.setVisible(false); // APOS CADASTRAR OS BOTOES SOMEM DA TELA "DADOS"
             listarClientes();
-            LimparCampo();            
+            LimparCampo();
             this.abaDados.setSelectedIndex(0);
             bloquearCampos();
         }
@@ -716,12 +690,6 @@ public class frmCliente extends JDialog {
         btnCadastrar.setBackground(Color.decode("#b280ff"));
     }//GEN-LAST:event_btnCadastrarMouseEntered
 
-    private void txtNomeConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeConsActionPerformed
-        // TODO add your handling code here:
-
-
-    }//GEN-LAST:event_txtNomeConsActionPerformed
-
     private void txtNomeConsKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeConsKeyPressed
         // A PESQUISA OCORRE ENQUANTO ESTÁ SENDO DIGITADO O NOME.
 
@@ -731,49 +699,30 @@ public class frmCliente extends JDialog {
         // CRIAÇÃO DO OBJ E DA LISTA QUE TERÁ O RETORNO DO DADOS.
         ClienteDAO obj = new ClienteDAO();
         List<ClienteDTO> lista = obj.buscarCliente(nome, cpf);
-        DefaultTableModel dados = (DefaultTableModel) tabelaCl.getModel(); // INSTANCIANDO O MODO PADRÃO DA TABELA
+        DefaultTableModel dados = (DefaultTableModel) tabelaCliente.getModel(); // INSTANCIANDO O MODO PADRÃO DA TABELA
         dados.setNumRows(0);
 
         for (ClienteDTO c : lista) {
             dados.addRow(new Object[]{ // A CADA REGISTRO NO BANCO DE DADOS, ELE SERÁ SETADO OS DADOS.
+                c.getId(),
                 c.getNomeCliente(),
-                c.getEndereco(),
-                c.getUf(),
                 c.getCpf(),
                 c.getTelefone(),
                 c.getEmail(),
-                c.getId()
+                c.getEndereco(),
+                c.getUf()
             });
         }
-
-
     }//GEN-LAST:event_txtNomeConsKeyPressed
 
-    private void tabelaClMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClMouseClicked
-        // TODO add your handling code here:
-        abaDados.setSelectedIndex(0);
-
-        txtNomeDados.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 0).toString());
-        txtEndereco.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 1).toString());
-        cbUF.setSelectedItem(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 2).toString());
-        txtCpf.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 3).toString());
-        txtTelefone.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 4).toString());
-        txtEmail.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 5).toString());
-        txtId.setText(tabelaCl.getValueAt(tabelaCl.getSelectedRow(), 6).toString());
-
-
-    }//GEN-LAST:event_tabelaClMouseClicked
-
-    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
-        // TODO add your handling code here:                
-    }//GEN-LAST:event_btnSalvarMouseClicked
-
     private void btnCancelarBotEditMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarBotEditMouseEntered
-        // TODO add your handling code here:
+         btnCadastrar.setForeground(Color.decode("#3C005A"));
+        btnCadastrar.setBackground(Color.decode("#b280ff"));
     }//GEN-LAST:event_btnCancelarBotEditMouseEntered
 
     private void btnCancelarBotEditMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarBotEditMouseExited
-        // TODO add your handling code here:
+        btnCadastrar.setBackground(Color.decode("#3C005A"));
+        btnCadastrar.setForeground(Color.decode("#FFFFFF"));
     }//GEN-LAST:event_btnCancelarBotEditMouseExited
 
     private void btnCancelarBotEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarBotEditActionPerformed
@@ -786,16 +735,16 @@ public class frmCliente extends JDialog {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
 
- // TRADUZ OS BOTÕES DE INGLES PARA PORTUGUES
+        // TRADUZ OS BOTÕES DE INGLES PARA PORTUGUES
         Object[] options = {"Sim", "Não"};
 
-        if (tabelaCl.getSelectedRow() > -1) {
+        if (tabelaCliente.getSelectedRow() > -1) {
             int resposta = JOptionPane.showOptionDialog(null,
-                "Você tem certeza que deseja excluir?", "Confirmação",
-                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+                    "Você tem certeza que deseja excluir?", "Confirmação",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
             if (resposta == JOptionPane.YES_OPTION) {                      // O usuário clicou em "Sim"
                 ClienteDTO obj = new ClienteDTO();                         // abastecendo o campo do ID
-                obj.setCpf(txtCpf.getText());
+                obj.setId(Integer.parseInt(tabelaCliente.getValueAt(tabelaCliente.getSelectedRow(), 0).toString()));
 
                 ClienteDAO dao = new ClienteDAO();
                 dao.excluirCliente(obj);
@@ -810,22 +759,6 @@ public class frmCliente extends JDialog {
             JOptionPane.showMessageDialog(null, "Selecione um cliente na tabela");
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
-
-    private void cbUFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbUFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbUFActionPerformed
-
-    private void txtCpfInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtCpfInputMethodTextChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCpfInputMethodTextChanged
-
-    private void panConsultarClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panConsultarClientesMouseClicked
-        //bloquearCampos();
-    }//GEN-LAST:event_panConsultarClientesMouseClicked
-
-    private void panConsultarClientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panConsultarClientesMousePressed
-        
-    }//GEN-LAST:event_panConsultarClientesMousePressed
 
     /**
      * @param args the command line arguments
@@ -903,7 +836,7 @@ public class frmCliente extends JDialog {
     private javax.swing.JPanel panBotEdit;
     private javax.swing.JPanel panConsultarClientes;
     private javax.swing.JPanel panDadosCliente;
-    private javax.swing.JTable tabelaCl;
+    private javax.swing.JTable tabelaCliente;
     private javax.swing.JFormattedTextField txtCpf;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereco;
@@ -913,53 +846,24 @@ public class frmCliente extends JDialog {
     private javax.swing.JFormattedTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
 
-    private void Cadastrar() {
-        String nome, endereco, uf, cpf, telefone, email;
-        nome = txtNomeDados.getText();
-        endereco = txtEndereco.getText();
-        uf = cbUF.getSelectedItem().toString();
-        cpf = txtCpf.getText();
-        telefone = txtTelefone.getText();
-        email = txtEmail.getText();
-
-        ClienteDTO clientedto = new ClienteDTO();
-        clientedto.setNomeCliente(nome);
-        clientedto.setEndereco(endereco);
-        clientedto.setUf(uf);
-        clientedto.setCpf(cpf);
-        clientedto.setTelefone(telefone);
-        clientedto.setEmail(email);
-
-        ClienteDAO clientedao = new ClienteDAO();
-        clientedao.cadastrarFuncionario(clientedto);
-    }
-
     private void listarClientes() {
-        try {
 
-            ClienteDAO userdao = new ClienteDAO();
+        ClienteDAO obj = new ClienteDAO();
+        List<ClienteDTO> lista = obj.PesquisarCliente();
+        DefaultTableModel dados = (DefaultTableModel) tabelaCliente.getModel(); // INSTANCIANDO O MODO PADRÃO DA TABELA
+        dados.setNumRows(0);
 
-            DefaultTableModel model = (DefaultTableModel) tabelaCl.getModel();
-            model.setNumRows(0);
-
-            ArrayList<ClienteDTO> lista = userdao.PesquisarCliente();
-
-            for (int rows = 0; rows < lista.size(); rows++) {
-                model.addRow(new Object[]{
-                    lista.get(rows).getNomeCliente(),
-                    lista.get(rows).getEndereco(),
-                    lista.get(rows).getUf(),
-                    lista.get(rows).getCpf(),
-                    lista.get(rows).getTelefone(),
-                    lista.get(rows).getEmail(),
-                    lista.get(rows).getId()
-                });
-            }
-
-        } catch (Exception erro) {
-            JOptionPane.showMessageDialog(null, "Listar Usuarios View" + erro);
+        for (ClienteDTO c : lista) {
+            dados.addRow(new Object[]{ // A CADA REGISTRO NO BANCO DE DADOS, ELE SERÁ SETADO OS DADOS.
+                c.getId(),
+                c.getNomeCliente(),
+                c.getCpf(),
+                c.getTelefone(),
+                c.getEmail(),
+                c.getEndereco(),
+                c.getUf()
+            });
         }
-
     }
 
     public void LimparCampo() {
@@ -971,41 +875,6 @@ public class frmCliente extends JDialog {
         txtTelefone.setText("");
         txtEmail.setText("");
         txtNomeDados.requestFocus();
-    }
-
-    public void CarregarDados() {
-        int setar = tabelaCl.getSelectedRow();
-        txtNomeDados.setText(tabelaCl.getModel().getValueAt(setar, 1).toString());
-        txtEndereco.setText(tabelaCl.getModel().getValueAt(setar, 2).toString());
-        cbUF.setSelectedItem(tabelaCl.getModel().getValueAt(setar, 3).toString());
-        txtCpf.setText(tabelaCl.getModel().getValueAt(setar, 4).toString());
-        txtTelefone.setText(tabelaCl.getModel().getValueAt(setar, 5).toString());
-        txtEmail.setText(tabelaCl.getModel().getValueAt(setar, 6).toString());
-
-    }
-
-    private void AlterarCliente() {
-
-        String nomeCliente, endereco, uf, telefone, cpf, email;
-
-        nomeCliente = txtNomeDados.getText();
-        endereco = txtEndereco.getText();
-        uf = cbUF.getSelectedItem().toString();
-        telefone = txtTelefone.getText();
-        cpf = txtCpf.getText();
-        email = txtEmail.getText();
-
-        ClienteDTO cldto = new ClienteDTO();
-        cldto.setNomeCliente(nomeCliente);
-        cldto.setEndereco(endereco);
-        cldto.setUf(uf);
-        cldto.setTelefone(telefone);
-        cldto.setCpf(cpf);
-        cldto.setEmail(email);
-
-        ClienteDAO cldao = new ClienteDAO();
-        cldao.alterarCliente(cldto);
-
     }
 
     public void bloquearCampos() {

@@ -58,11 +58,6 @@ public class frmLogin extends javax.swing.JFrame {
 
         txtLoginUser.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         txtLoginUser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtLoginUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLoginUserActionPerformed(evt);
-            }
-        });
         txtLoginUser.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtLoginUserKeyPressed(evt);
@@ -71,11 +66,6 @@ public class frmLogin extends javax.swing.JFrame {
 
         txtSenhaUser.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         txtSenhaUser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtSenhaUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSenhaUserActionPerformed(evt);
-            }
-        });
         txtSenhaUser.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtSenhaUserKeyPressed(evt);
@@ -189,10 +179,6 @@ public class frmLogin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtSenhaUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaUserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSenhaUserActionPerformed
-
     private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
         Logar();
     }//GEN-LAST:event_btnLogarActionPerformed
@@ -229,10 +215,6 @@ public class frmLogin extends javax.swing.JFrame {
         btnLogar.setBackground(Color.decode("#3C005A"));
         btnLogar.setForeground(Color.decode("#FFFFFF"));
     }//GEN-LAST:event_btnLogarMouseExited
-
-    private void txtLoginUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginUserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLoginUserActionPerformed
 
     /**
      * @param args the command line arguments

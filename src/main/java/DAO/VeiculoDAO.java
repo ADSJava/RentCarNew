@@ -78,11 +78,12 @@ public class VeiculoDAO {
     }
 
     public void alterarVeiculo(VeiculoDTO obj) {
-        String alterar = "UPDATE veiculo SET modelo=?,cor=?,placa=?,fabricante=?,anoModelo=?,qntPortas=?,acessorios=? WHERE placa=?";
+        String alterar = "UPDATE veiculo SET modelo=?,cor=?,placa=?,fabricante=?,anoModelo=?,qntPortas=?,acessorios=? WHERE idVeiculo=?";
         c = new ConexaoDAO().conectaBD();
 
         try {
             p = c.prepareStatement(alterar);
+            
             p.setString(1, obj.getModelo());
             p.setString(2, obj.getCor());
             p.setString(3, obj.getPlaca());
@@ -90,8 +91,8 @@ public class VeiculoDAO {
             p.setInt(5, obj.getAnoModelo());
             p.setInt(6, obj.getQtdPortas());
             p.setString(7, obj.getAcessorios());
-
-            p.setString(8, obj.getPlaca());
+            
+            p.setInt(8, obj.getIdVeiculo());
 
             p.execute();
             p.close();
@@ -147,13 +148,13 @@ public class VeiculoDAO {
     }
 
     public void excluirVeiculo(VeiculoDTO obj) {
-        String excluir = "DELETE FROM veiculo WHERE placa=?";
+        String excluir = "DELETE FROM veiculo WHERE idVeiculo=?";
         c = new ConexaoDAO().conectaBD();
 
         try {
             p = c.prepareStatement(excluir);
 
-            p.setString(1, obj.getPlaca());
+            p.setInt(1, obj.getIdVeiculo());
 
             p.execute();
             p.close();
@@ -162,20 +163,17 @@ public class VeiculoDAO {
         }
     }
 
-   /* public String verificarVeiculo(String placa) {
-        String pesquisar = "SELECT placa FROM veiculo WHERE placa=?";
+    public ResultSet verificarVeiculo(String placa) {
+        String pesquisar = "select modelo, placaVeiculo from aluguel where placaVeiculo=?";
         c = new ConexaoDAO().conectaBD();
         String res = null;
         try {
             p = c.prepareStatement(pesquisar);
             p.setString(1, placa);
             rs = p.executeQuery();
-            while (rs.next()) {
-                res = rs.getString("placa");
-            }
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "ERRO VERIFICAÇÃO: " + erro);
         }
-        return res;
-    }*/
+        return rs;
+    }
 }
