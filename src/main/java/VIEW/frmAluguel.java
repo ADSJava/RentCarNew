@@ -316,7 +316,7 @@ public class frmAluguel extends JDialog {
                         .addGap(1, 1, 1)
                         .addComponent(IdAluguel))
                     .addComponent(txtIdAluguel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addComponent(btnSalvarAluguel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(126, 126, 126))
             .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -365,8 +365,8 @@ public class frmAluguel extends JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(panPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 594, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         pack();
@@ -439,9 +439,9 @@ public class frmAluguel extends JDialog {
 
     private void btnEditarAluguelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarAluguelActionPerformed
         if (cbModelo.getSelectedItem().equals("") || cbNomeC.equals("") || txtPlaca.getText().equals("")
-                || txtCpf.getText().equals("")
-                || txtValor.getText().equals("") || cbEntregue.equals("")
-                || txtDataE.getText().equals("") || txtDataA.getText().equals("")) {
+            || txtCpf.getText().equals("")
+            || txtValor.getText().equals("") || cbEntregue.equals("")
+            || txtDataE.getText().equals("") || txtDataA.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
         } else {
 
@@ -453,12 +453,12 @@ public class frmAluguel extends JDialog {
                 String mesA = txtDataA.getText().substring(3, 5);
                 String anoE = txtDataE.getText().substring(6);
                 String anoA = txtDataA.getText().substring(6);
-                
+
                 String dataEn = anoE + "-" + mesE + "-" + diaE;
                 String dataAl = anoA + "-" + mesA + "-" + diaA;
-                
+
                 AluguelDTO obj = new AluguelDTO();
-                
+
                 obj.setModelo(cbModelo.getSelectedItem().toString());
                 obj.setNomeCliente(cbNomeC.getSelectedItem().toString());
                 obj.setPlacaVeiculo(txtPlaca.getText());
@@ -469,17 +469,17 @@ public class frmAluguel extends JDialog {
                 obj.setObservacao(txtObservacoes.getText());
                 obj.setEntregue(cbEntregue.getSelectedItem().toString());
                 obj.setIdAluguel(Integer.parseInt(txtIdAluguel.getText()));
-                
+
                 AluguelDAO dao = new AluguelDAO();
                 dao.alterarAluguel(obj);
-                
+
                 JOptionPane.showMessageDialog(null, "Alteração bem sucedida!");
-                
+
                 dispose();
                 PrincipalVIEW prin = new PrincipalVIEW();
                 prin.listarAluguel();
                 prin.listarStatus();
-                
+
                 this.btnEditarAluguel.setVisible(false);
                 this.btnSalvarAluguel.setVisible(true);
             } catch (SQLException ex) {
@@ -487,7 +487,6 @@ public class frmAluguel extends JDialog {
 
             }
         }
-
     }//GEN-LAST:event_btnEditarAluguelActionPerformed
 
     /**

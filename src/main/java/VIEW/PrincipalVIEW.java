@@ -227,6 +227,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         });
         jPanel1.add(btnExclusao, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 320, 30, 30));
 
+        jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setFont(new java.awt.Font("Lucida Fax", 0, 14)); // NOI18N
 
         mnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8-usuário-masculino-tipo-de-pele-com-círculo-1-2.gif"))); // NOI18N

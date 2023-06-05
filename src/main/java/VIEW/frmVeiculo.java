@@ -191,11 +191,9 @@ public class frmVeiculo extends JDialog {
                         .addGap(70, 70, 70)
                         .addComponent(btnEditarCons, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(70, 70, 70)
-                        .addComponent(btnExcluir))
-                    .addGroup(panConsLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 865, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(59, Short.MAX_VALUE))
+                        .addComponent(btnExcluir)))
+                .addContainerGap(245, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
         );
         panConsLayout.setVerticalGroup(
             panConsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,7 +209,7 @@ public class frmVeiculo extends JDialog {
                     .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditarCons, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         abaDados.addTab("Consultar Veículos", panCons);
@@ -219,45 +217,57 @@ public class frmVeiculo extends JDialog {
         panDados.setForeground(new java.awt.Color(60, 0, 90));
         panDados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         panDados.setPreferredSize(new java.awt.Dimension(900, 500));
+        panDados.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         IdCor.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         IdCor.setForeground(new java.awt.Color(60, 0, 90));
         IdCor.setText("Cor:");
+        panDados.add(IdCor, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 184, -1, -1));
 
         IdPlaca.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         IdPlaca.setForeground(new java.awt.Color(60, 0, 90));
         IdPlaca.setText("Placa:");
+        panDados.add(IdPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 110, -1, -1));
 
         IdFabricante.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         IdFabricante.setForeground(new java.awt.Color(60, 0, 90));
         IdFabricante.setText("Fabricante:");
+        panDados.add(IdFabricante, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 26, -1, -1));
 
         IdAno.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         IdAno.setForeground(new java.awt.Color(60, 0, 90));
         IdAno.setText("Ano:");
+        panDados.add(IdAno, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 150, -1, -1));
 
         IdQtdPortas.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         IdQtdPortas.setForeground(new java.awt.Color(60, 0, 90));
         IdQtdPortas.setText("Portas:");
+        panDados.add(IdQtdPortas, new org.netbeans.lib.awtextra.AbsoluteConstraints(333, 26, -1, -1));
 
         IdAcessorios.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         IdAcessorios.setForeground(new java.awt.Color(60, 0, 90));
         IdAcessorios.setText("Acessórios:");
+        panDados.add(IdAcessorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(333, 71, -1, -1));
 
         txtAno.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         txtAno.setPreferredSize(new java.awt.Dimension(64, 19));
+        panDados.add(txtAno, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 148, 169, 27));
 
         txtCor.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         txtCor.setPreferredSize(new java.awt.Dimension(64, 19));
+        panDados.add(txtCor, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 187, 169, 27));
 
         txtPlaca.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         txtPlaca.setPreferredSize(new java.awt.Dimension(64, 19));
+        panDados.add(txtPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 109, 169, 27));
 
         txtFabricante.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         txtFabricante.setPreferredSize(new java.awt.Dimension(64, 19));
+        panDados.add(txtFabricante, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 25, 169, 27));
 
         txtAcessorios.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         txtAcessorios.setPreferredSize(new java.awt.Dimension(64, 19));
+        panDados.add(txtAcessorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 70, 169, 27));
 
         btnCadDados.setBackground(new java.awt.Color(60, 0, 90));
         btnCadDados.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -269,13 +279,16 @@ public class frmVeiculo extends JDialog {
                 btnCadDadosActionPerformed(evt);
             }
         });
+        panDados.add(btnCadDados, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 295, 118, 43));
 
         IdModelo.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         IdModelo.setForeground(new java.awt.Color(60, 0, 90));
         IdModelo.setText("Modelo:");
+        panDados.add(IdModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 70, -1, -1));
 
         txtModelo.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         txtModelo.setPreferredSize(new java.awt.Dimension(64, 19));
+        panDados.add(txtModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 70, 169, 27));
 
         btnSalvarEdit.setBackground(new java.awt.Color(60, 0, 90));
         btnSalvarEdit.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -287,13 +300,16 @@ public class frmVeiculo extends JDialog {
                 btnSalvarEditActionPerformed(evt);
             }
         });
+        panDados.add(btnSalvarEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 246, 118, 43));
 
         IdVe.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         IdVe.setForeground(new java.awt.Color(60, 0, 90));
         IdVe.setText("Id:");
+        panDados.add(IdVe, new org.netbeans.lib.awtextra.AbsoluteConstraints(333, 115, -1, -1));
 
         txtIdVe.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         txtIdVe.setPreferredSize(new java.awt.Dimension(64, 19));
+        panDados.add(txtIdVe, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 115, 169, 27));
 
         btnCancEdit.setBackground(new java.awt.Color(60, 0, 90));
         btnCancEdit.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -305,6 +321,7 @@ public class frmVeiculo extends JDialog {
                 btnCancEditActionPerformed(evt);
             }
         });
+        panDados.add(btnCancEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(464, 246, 118, 43));
 
         btnCancCad.setBackground(new java.awt.Color(60, 0, 90));
         btnCancCad.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -316,126 +333,16 @@ public class frmVeiculo extends JDialog {
                 btnCancCadActionPerformed(evt);
             }
         });
+        panDados.add(btnCancCad, new org.netbeans.lib.awtextra.AbsoluteConstraints(464, 295, 118, 43));
 
         cbQtdPortas.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         cbQtdPortas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "3", "4", "Outros" }));
         cbQtdPortas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        javax.swing.GroupLayout panDadosLayout = new javax.swing.GroupLayout(panDados);
-        panDados.setLayout(panDadosLayout);
-        panDadosLayout.setHorizontalGroup(
-            panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panDadosLayout.createSequentialGroup()
-                .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panDadosLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(panDadosLayout.createSequentialGroup()
-                                .addComponent(IdFabricante)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panDadosLayout.createSequentialGroup()
-                                .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panDadosLayout.createSequentialGroup()
-                                        .addComponent(IdModelo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(37, 37, 37))
-                                    .addGroup(panDadosLayout.createSequentialGroup()
-                                        .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(IdPlaca)
-                                            .addComponent(IdAno)
-                                            .addComponent(IdCor))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtCor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtAno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                                        .addComponent(txtPlaca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)))))
-                        .addGap(30, 30, 30)
-                        .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(IdQtdPortas)
-                            .addComponent(IdAcessorios)
-                            .addComponent(IdVe))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtAcessorios, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtIdVe, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbQtdPortas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panDadosLayout.createSequentialGroup()
-                        .addGap(315, 315, 315)
-                        .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnSalvarEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
-                            .addComponent(btnCadDados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(31, 31, 31)
-                        .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnCancEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCancCad, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap(312, Short.MAX_VALUE))
-        );
-
-        panDadosLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCancCad, btnCancEdit, btnSalvarEdit});
-
-        panDadosLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtAcessorios, txtAno, txtCor, txtFabricante, txtIdVe, txtPlaca});
-
-        panDadosLayout.setVerticalGroup(
-            panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panDadosLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panDadosLayout.createSequentialGroup()
-                        .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(IdFabricante)
-                            .addComponent(txtFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panDadosLayout.createSequentialGroup()
-                                .addComponent(IdModelo)
-                                .addGap(18, 18, 18)
-                                .addComponent(IdPlaca)
-                                .addGap(18, 18, 18)
-                                .addComponent(IdAno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(IdCor)
-                                .addGap(40, 40, 40))
-                            .addGroup(panDadosLayout.createSequentialGroup()
-                                .addComponent(txtModelo, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtAno, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtCor, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(panDadosLayout.createSequentialGroup()
-                        .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(IdQtdPortas)
-                            .addComponent(cbQtdPortas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtAcessorios, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(IdAcessorios))
-                        .addGap(18, 18, 18)
-                        .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtIdVe, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(IdVe))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnSalvarEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCancEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCadDados, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancCad))
-                .addGap(318, 318, 318))
-        );
-
-        panDadosLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCadDados, btnCancCad});
-
-        panDadosLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtAcessorios, txtAno, txtCor, txtFabricante, txtIdVe, txtModelo, txtPlaca});
+        panDados.add(cbQtdPortas, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 25, -1, -1));
 
         abaDados.addTab("Dados do Veículo", panDados);
 
-        panPrincipal.add(abaDados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 930, 540));
+        panPrincipal.add(abaDados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 910, 480));
 
         panHeader.setBackground(new java.awt.Color(178, 128, 255));
 
@@ -467,23 +374,18 @@ public class frmVeiculo extends JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(panPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtBuscaVeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBuscaVeMouseClicked
-        txtBuscaVe.setText("");
-        txtBuscaVe.setForeground(Color.black);
-    }//GEN-LAST:event_txtBuscaVeMouseClicked
 
     private void btnCadDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadDadosActionPerformed
 
@@ -512,29 +414,6 @@ public class frmVeiculo extends JDialog {
             abaDados.setSelectedIndex(0);
         }
     }//GEN-LAST:event_btnCadDadosActionPerformed
-
-    private void btnEditarConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarConsActionPerformed
-
-        if (tabelaVeiculo.getSelectedRow() > -1) {
-            desbloquearCampos();
-            abaDados.setSelectedIndex(1);
-            this.btnCadDados.setVisible(false);
-            this.btnCancCad.setVisible(false);
-            this.btnCancEdit.setVisible(true);
-            this.btnSalvarEdit.setVisible(true);            
-
-            txtIdVe.setText(tabelaVeiculo.getValueAt(tabelaVeiculo.getSelectedRow(), 0).toString());
-            txtModelo.setText(tabelaVeiculo.getValueAt(tabelaVeiculo.getSelectedRow(), 1).toString());
-            txtFabricante.setText(tabelaVeiculo.getValueAt(tabelaVeiculo.getSelectedRow(), 2).toString());
-            txtPlaca.setText(tabelaVeiculo.getValueAt(tabelaVeiculo.getSelectedRow(), 3).toString());
-            txtAno.setText(tabelaVeiculo.getValueAt(tabelaVeiculo.getSelectedRow(), 4).toString());
-            cbQtdPortas.setSelectedItem(tabelaVeiculo.getValueAt(tabelaVeiculo.getSelectedRow(), 5).toString());
-            txtCor.setText(tabelaVeiculo.getValueAt(tabelaVeiculo.getSelectedRow(), 6).toString());
-            txtAcessorios.setText(tabelaVeiculo.getValueAt(tabelaVeiculo.getSelectedRow(), 7).toString());
-        } else {
-            JOptionPane.showMessageDialog(null, "Selecione um veículo na tabela");
-        }
-    }//GEN-LAST:event_btnEditarConsActionPerformed
 
     private void btnSalvarEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarEditActionPerformed
 
@@ -566,8 +445,22 @@ public class frmVeiculo extends JDialog {
         }
     }//GEN-LAST:event_btnSalvarEditActionPerformed
 
+    private void btnCancEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancEditActionPerformed
+        abaDados.setSelectedIndex(0);
+        listarVeiculos();
+        bloquearCampos();
+        LimparCampo();
+    }//GEN-LAST:event_btnCancEditActionPerformed
+
+    private void btnCancCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancCadActionPerformed
+        abaDados.setSelectedIndex(0);
+        listarVeiculos();
+        bloquearCampos();
+        LimparCampo();
+    }//GEN-LAST:event_btnCancCadActionPerformed
+
     private void txtBuscaVeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscaVeKeyPressed
-        String nome = "%" + txtBuscaVe.getText() + "%"; // A PESQUISA É FEITA NO BD COM O ARGUMENTO LIKE, 
+        String nome = "%" + txtBuscaVe.getText() + "%"; // A PESQUISA É FEITA NO BD COM O ARGUMENTO LIKE,
         //NO METODO BUSCAR CLIENTE
         String cpf = "%" + txtBuscaVe.getText() + "%";
         // CRIAÇÃO DO OBJ E DA LISTA QUE TERÁ O RETORNO DO DADOS.
@@ -590,14 +483,19 @@ public class frmVeiculo extends JDialog {
         }
     }//GEN-LAST:event_txtBuscaVeKeyPressed
 
+    private void txtBuscaVeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBuscaVeMouseClicked
+        txtBuscaVe.setText("");
+        txtBuscaVe.setForeground(Color.black);
+    }//GEN-LAST:event_txtBuscaVeMouseClicked
+
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         Object[] options = {"Sim", "Não"};
 
         if (tabelaVeiculo.getSelectedRow() > -1) {
             int resposta = JOptionPane.showOptionDialog(null,
-                    "Você tem certeza que deseja excluir?", "Confirmação",
-                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
-            if (resposta == JOptionPane.YES_OPTION) {                      // O usuário clicou em "Sim"            
+                "Você tem certeza que deseja excluir?", "Confirmação",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+            if (resposta == JOptionPane.YES_OPTION) {                      // O usuário clicou em "Sim"
                 VeiculoDTO obj = new VeiculoDTO();                         // abastecendo o campo do ID
                 obj.setIdVeiculo(Integer.parseInt(tabelaVeiculo.getValueAt(tabelaVeiculo.getSelectedRow(),0).toString()));
 
@@ -614,6 +512,49 @@ public class frmVeiculo extends JDialog {
             JOptionPane.showMessageDialog(null, "Selecione um veiculo na tabela");
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnExcluirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseExited
+        btnExcluir.setBackground(Color.decode("#3C005A"));
+        btnExcluir.setForeground(Color.decode("#FFFFFF"));
+    }//GEN-LAST:event_btnExcluirMouseExited
+
+    private void btnExcluirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseEntered
+        btnExcluir.setForeground(Color.decode("#3C005A"));
+        btnExcluir.setBackground(Color.decode("#b280ff"));
+    }//GEN-LAST:event_btnExcluirMouseEntered
+
+    private void btnEditarConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarConsActionPerformed
+
+        if (tabelaVeiculo.getSelectedRow() > -1) {
+            desbloquearCampos();
+            abaDados.setSelectedIndex(1);
+            this.btnCadDados.setVisible(false);
+            this.btnCancCad.setVisible(false);
+            this.btnCancEdit.setVisible(true);
+            this.btnSalvarEdit.setVisible(true);
+
+            txtIdVe.setText(tabelaVeiculo.getValueAt(tabelaVeiculo.getSelectedRow(), 0).toString());
+            txtModelo.setText(tabelaVeiculo.getValueAt(tabelaVeiculo.getSelectedRow(), 1).toString());
+            txtFabricante.setText(tabelaVeiculo.getValueAt(tabelaVeiculo.getSelectedRow(), 2).toString());
+            txtPlaca.setText(tabelaVeiculo.getValueAt(tabelaVeiculo.getSelectedRow(), 3).toString());
+            txtAno.setText(tabelaVeiculo.getValueAt(tabelaVeiculo.getSelectedRow(), 4).toString());
+            cbQtdPortas.setSelectedItem(tabelaVeiculo.getValueAt(tabelaVeiculo.getSelectedRow(), 5).toString());
+            txtCor.setText(tabelaVeiculo.getValueAt(tabelaVeiculo.getSelectedRow(), 6).toString());
+            txtAcessorios.setText(tabelaVeiculo.getValueAt(tabelaVeiculo.getSelectedRow(), 7).toString());
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um veículo na tabela");
+        }
+    }//GEN-LAST:event_btnEditarConsActionPerformed
+
+    private void btnEditarConsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarConsMouseExited
+        btnEditarCons.setBackground(Color.decode("#3C005A"));
+        btnEditarCons.setForeground(Color.decode("#FFFFFF"));
+    }//GEN-LAST:event_btnEditarConsMouseExited
+
+    private void btnEditarConsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarConsMouseEntered
+        btnEditarCons.setForeground(Color.decode("#3C005A"));
+        btnEditarCons.setBackground(Color.decode("#b280ff"));
+    }//GEN-LAST:event_btnEditarConsMouseEntered
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         desbloquearCampos();
@@ -643,49 +584,15 @@ public class frmVeiculo extends JDialog {
         this.txtAcessorios.setText("");
     }//GEN-LAST:event_btnNovoActionPerformed
 
-    private void btnCancEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancEditActionPerformed
-        abaDados.setSelectedIndex(0);
-        listarVeiculos();
-        bloquearCampos();
-        LimparCampo();
-    }//GEN-LAST:event_btnCancEditActionPerformed
-
-    private void btnCancCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancCadActionPerformed
-        abaDados.setSelectedIndex(0);
-        listarVeiculos();
-        bloquearCampos();
-        LimparCampo();
-    }//GEN-LAST:event_btnCancCadActionPerformed
-
-    private void btnNovoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoMouseEntered
-        btnNovo.setForeground(Color.decode("#3C005A"));
-        btnNovo.setBackground(Color.decode("#b280ff"));
-    }//GEN-LAST:event_btnNovoMouseEntered
-
-    private void btnEditarConsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarConsMouseEntered
-        btnEditarCons.setForeground(Color.decode("#3C005A"));
-        btnEditarCons.setBackground(Color.decode("#b280ff"));
-    }//GEN-LAST:event_btnEditarConsMouseEntered
-
-    private void btnExcluirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseEntered
-        btnExcluir.setForeground(Color.decode("#3C005A"));
-        btnExcluir.setBackground(Color.decode("#b280ff"));
-    }//GEN-LAST:event_btnExcluirMouseEntered
-
     private void btnNovoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoMouseExited
         btnNovo.setBackground(Color.decode("#3C005A"));
         btnNovo.setForeground(Color.decode("#FFFFFF"));
     }//GEN-LAST:event_btnNovoMouseExited
 
-    private void btnEditarConsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarConsMouseExited
-        btnEditarCons.setBackground(Color.decode("#3C005A"));
-        btnEditarCons.setForeground(Color.decode("#FFFFFF"));
-    }//GEN-LAST:event_btnEditarConsMouseExited
-
-    private void btnExcluirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseExited
-        btnExcluir.setBackground(Color.decode("#3C005A"));
-        btnExcluir.setForeground(Color.decode("#FFFFFF"));
-    }//GEN-LAST:event_btnExcluirMouseExited
+    private void btnNovoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoMouseEntered
+        btnNovo.setForeground(Color.decode("#3C005A"));
+        btnNovo.setBackground(Color.decode("#b280ff"));
+    }//GEN-LAST:event_btnNovoMouseEntered
 
     /**
      * @param args the command line arguments
